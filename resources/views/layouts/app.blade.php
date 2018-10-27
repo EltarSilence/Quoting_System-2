@@ -49,14 +49,12 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a id="navbarDropdown" class="nav-link"  href="#" role="button" v-pre>
+                                <a id="navbarDropdown" class="nav-link"  href="{{ route('my-profile') }}" role="button" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" v-pre>
-                                    {{ Auth::user()->coin }} <span class="caret"></span>
-                                </a>
+                                <span class="nav-link">{{ Auth::user()->coin }}</span>
                             </li>
                             <li class="nav-item ">
                               <a class="btn btn-outline-primary" href="{{ route('logout') }}"

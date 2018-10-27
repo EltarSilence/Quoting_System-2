@@ -17,6 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/scommessa/{id}', 'ScommessaController@getAll');
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/my-profile', 'ProfileController@index')->name('my-profile');
