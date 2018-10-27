@@ -2,7 +2,7 @@
   <div id="vincita1">
     <div>Top Vincite Settimanali</div>
     <center>
-      {{ $id }}
+      
       <div class="rank">
         <div class="img"></div>
         <div class="nome">Nome</div>

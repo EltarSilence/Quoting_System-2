@@ -12,7 +12,7 @@ class ScommessaController extends Controller
       return view("auth.login")->with('id', $id);
     }*/
 
-    public function get($value = 0){
+    public function get($value){
       return view("_topWin")->with('id', $value);
     }
 
