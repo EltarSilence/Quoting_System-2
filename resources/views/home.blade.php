@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
           <main>
-            @include('_topWin')
+            @yield('_topWin')
           </main>
         </div>
         <div class="col-md-4">

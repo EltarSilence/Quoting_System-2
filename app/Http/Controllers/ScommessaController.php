@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class ScommessaController extends Controller
 {
-    //
 
-    /*public function getAll($id){
-      return view("auth.login")->with('id', $id);
-    }*/
+    public function getWeekWin(){
 
-    public function get($value){
-      return view("_topWin")->with('id', $value);
+      $ret = array();
+      array_push($ret, array("Zexal087" => "800"));
+      array_push($ret, array("Zexal087" => "200"));
+
+      return $ret;
     }
 
     public function index(){
