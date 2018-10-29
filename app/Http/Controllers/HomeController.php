@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $weekWin = ScommessaController::getWeekWin();
+        $mouthWin = ScommessaController::getMouthWin();
+        return view('home')->with('weekWin', $weekWin)->with('mouthWin', $mouthWin);
     }
+
 }

@@ -5,14 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
           <main>
-            @yield('_topWin')
+
           </main>
         </div>
         <div class="col-md-4">
           <main>
-            @include('_topWin')
+            @include('_topWin', ['weekWin' => $weekWin, 'mouthWin' => $mouthWin])
           </main>
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+<script src="{{ asset('js/_topWin.js') }}"></script>
 @endsection
