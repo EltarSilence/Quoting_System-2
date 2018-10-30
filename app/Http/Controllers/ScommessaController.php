@@ -15,56 +15,90 @@ class ScommessaController extends Controller
     public static function getWeekWin(){
       $ret = array();
       $scom = Scommessa
-                ::join('users', 'users.id', '=', 'scommessas.idUtente')
-                ->whereDate('data', '>=', date("Y-m-d", strtotime(date("Y-m-d")."-7day")))
-                ->where('pagata', 1)
-                ->get();
+        ::join('users', 'users.id', '=', 'scommessas.idUtente')
+        ->whereDate('data', '>=', date("Y-m-d", strtotime(date("Y-m-d")."-7day")))
+        ->where('pagata', 1)
+        ->get();
 
       foreach ($scom as $s) {
-        //getWinCoin or 0
         $winCoin = ScommessaController::isWinned($s);
         if($winCoin > 0){
           array_push($ret, array($s->name => $winCoin));
         }
       }
+      usort($ret, "self::cmp");
       return $ret;
-    }
-
-    private static function isWinned($scommessa){
-
-
-      
-      $mult = Multipla::where('idScommessa', '=', $idScommessa)->get();
-
-      $r = Scommessa::leftJoin('users', 'users.id', '=', 'scommessas.idUtente')->get();
-      foreach ($r as $s) {
-        echo $s->name;
-      }
-
-      return 100;
     }
 
     public static function getMouthWin(){
-      //read all, by primaryKey, where
-  /*    Multipla::all();
-      ::find(1)
-      ::where('idScommessa', '<=', 1)
-
-      //insert
-      $a = new Multipla()
-      $a->idScommessa = 1;
-      $a->save();
-*/
-
       $ret = array();
-      array_push($ret, array("Zexal087" => "800"));
-      array_push($ret, array("Zexal087" => "200"));
+      $scom = Scommessa
+        ::join('users', 'users.id', '=', 'scommessas.idUtente')
+        ->whereDate('data', '>=', date("Y-m-d", strtotime(date("Y-m-d")."-30day")))
+        ->where('pagata', 1)
+        ->get();
 
+      foreach ($scom as $s) {
+        $winCoin = ScommessaController::isWinned($s);
+        if($winCoin > 0){
+          array_push($ret, array($s->name => $winCoin));
+        }
+      }
+      usort($ret, "self::cmp");
       return $ret;
     }
 
-    public function index(){
-      return 1;
+    public static function cmp($a, $b){
+    	foreach($a as $akey => $avalue){
+    		foreach($b as $bkey => $bvalue){
+    			return ($avalue < $bvalue) ? 1 : -1;
+    		}
+    	}
+    	return 0;
     }
+
+    private static function isWinned($scommessa){
+      $vin = 1;
+      $mult = Multipla
+        ::leftJoin('risultatis', 'multiplas.chiave', '=', 'risultatis.chiave')
+        ->where('idScommessa', '=', $scommessa->id)
+        ->get();
+      foreach ($mult as $m) {
+        if(isset($m->risultato)){
+  				switch($m->tipo){
+  					case "ESATTO":
+    					if($m->value == $m->risultato){
+    						$vin = $vin*$m->quota;
+    					}else{
+    						$vin = 0;
+    					}
+    					break;
+  					case "UNDER":
+    					if(floatval($m->value) < floatval($m->risultato)){
+    						$vin = $vin*$m->quota;
+    					}else{
+    						$vin = 0;
+    					}
+    					break;
+  					case "OVER":
+    					if(floatval($m->value) > floatval($m->risultato)){
+    						$vin = $vin*$m->quota;
+    					}else{
+    						$vin = 0;
+    					}
+    					break;
+  					default:
+    					$vin = 0;
+  					break;
+  				}
+  			}else{
+  				$vin = 0;
+  			}
+  		}
+  		$vin = $vin*$scommessa->betCoin;
+      return $vin;
+    }
+
+
 
 }

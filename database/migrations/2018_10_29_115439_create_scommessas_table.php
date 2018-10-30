@@ -16,7 +16,7 @@ class CreateScommessasTable extends Migration
         Schema::create('scommessas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idUtente');
-            $table->integer('coin');
+            $table->integer('betCoin');
             $table->date('data');
             $table->integer('pagata');
         });
