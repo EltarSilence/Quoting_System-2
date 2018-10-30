@@ -13,21 +13,35 @@ class ScommessaController extends Controller
 {
 
     public static function getWeekWin(){
-
       $ret = array();
+      $scom = Scommessa
+                ::join('users', 'users.id', '=', 'scommessas.idUtente')
+                ->whereDate('data', '>=', date("Y-m-d", strtotime(date("Y-m-d")."-7day")))
+                ->where('pagata', 1)
+                ->get();
 
-      $scom = Scommessa::all();
-      //::where('data', '>', '2018-10-21');
-//      date("Y-m-d", strtotime(date("Y-m-d")."-7day")));
       foreach ($scom as $s) {
-        //getWinCOin or 0
-        $winCoin = 100;
+        //getWinCoin or 0
+        $winCoin = ScommessaController::isWinned($s);
         if($winCoin > 0){
-          $u = User::where('id', $s->idUtente)->first();
-          array_push($ret, array($u->name => $winCoin));
+          array_push($ret, array($s->name => $winCoin));
         }
       }
       return $ret;
+    }
+
+    private static function isWinned($scommessa){
+
+
+      
+      $mult = Multipla::where('idScommessa', '=', $idScommessa)->get();
+
+      $r = Scommessa::leftJoin('users', 'users.id', '=', 'scommessas.idUtente')->get();
+      foreach ($r as $s) {
+        echo $s->name;
+      }
+
+      return 100;
     }
 
     public static function getMouthWin(){
