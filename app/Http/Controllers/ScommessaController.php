@@ -92,7 +92,7 @@ class ScommessaController extends Controller
   					break;
   				}
   			}else{
-  				$vin = 0;
+  				return -1;
   			}
   		}
   		$vin = $vin*$scommessa->betCoin;
