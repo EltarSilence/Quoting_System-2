@@ -15,9 +15,9 @@ class ScommessaController extends Controller
     public static function getWeekWin(){
       $ret = array();
       $scom = Scommessa
-        ::join('users', 'users.id', '=', 'scommessas.idUtente')
-        ->whereDate('data', '>=', date("Y-m-d", strtotime(date("Y-m-d")."-7day")))
-        ->where('pagata', 1)
+        ::join('users', 'users.id', '=', 'scommessas.idUtenteS')
+        ->whereDate('dataS', '>=', date("Y-m-d", strtotime(date("Y-m-d")."-7day")))
+        ->where('pagataS', 1)
         ->get();
 
       foreach ($scom as $s) {
@@ -33,9 +33,9 @@ class ScommessaController extends Controller
     public static function getMouthWin(){
       $ret = array();
       $scom = Scommessa
-        ::join('users', 'users.id', '=', 'scommessas.idUtente')
-        ->whereDate('data', '>=', date("Y-m-d", strtotime(date("Y-m-d")."-30day")))
-        ->where('pagata', 1)
+        ::join('users', 'users.id', '=', 'scommessas.idUtenteS')
+        ->whereDate('dataS', '>=', date("Y-m-d", strtotime(date("Y-m-d")."-30day")))
+        ->where('pagataS', 1)
         ->get();
 
       foreach ($scom as $s) {
@@ -60,29 +60,29 @@ class ScommessaController extends Controller
     private static function isWinned($scommessa){
       $vin = 1;
       $mult = Multipla
-        ::leftJoin('risultatis', 'multiplas.chiave', '=', 'risultatis.chiave')
-        ->where('idScommessa', '=', $scommessa->id)
+        ::leftJoin('risultatis', 'multiplas.chiaveM', '=', 'risultatis.chiaveR')
+        ->where('idScommessaM', '=', $scommessa->idS)
         ->get();
       foreach ($mult as $m) {
-        if(isset($m->risultato)){
-  				switch($m->tipo){
+        if(isset($m->risultatoR)){
+  				switch($m->tipoM){
   					case "ESATTO":
-    					if($m->value == $m->risultato){
-    						$vin = $vin*$m->quota;
+    					if($m->valueM == $m->risultatoR){
+    						$vin = $vin*$m->quotaM;
     					}else{
     						$vin = 0;
     					}
     					break;
   					case "UNDER":
-    					if(floatval($m->value) < floatval($m->risultato)){
-    						$vin = $vin*$m->quota;
+    					if(floatval($m->valueM) < floatval($m->risultatoR)){
+    						$vin = $vin*$m->quotaM;
     					}else{
     						$vin = 0;
     					}
     					break;
   					case "OVER":
-    					if(floatval($m->value) > floatval($m->risultato)){
-    						$vin = $vin*$m->quota;
+    					if(floatval($m->valueM) > floatval($m->risultatoR)){
+    						$vin = $vin*$m->quotaM;
     					}else{
     						$vin = 0;
     					}
@@ -95,7 +95,7 @@ class ScommessaController extends Controller
   				return -1;
   			}
   		}
-  		$vin = $vin*$scommessa->betCoin;
+  		$vin = $vin*$scommessa->coinS;
       return $vin;
     }
 

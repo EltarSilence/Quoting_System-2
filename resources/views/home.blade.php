@@ -16,6 +16,11 @@
     </div>
 </div>
 @endsection
+
 @section('js')
 <script src="{{ asset('js/_topWin.js') }}"></script>
+@endsection
+
+@section('css')
+<link href="{{ asset('css/_topWin.css') }}" rel="stylesheet">
 @endsection

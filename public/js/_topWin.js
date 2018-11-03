@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('#topWin').height($('#topWin').width()*0.8);
 	var time = 5000;
 	var active = 1;
 	$('*[id^=vincita]:not(#vincita' + active + ')', $('#topWin')).fadeOut(1);

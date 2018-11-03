@@ -14,9 +14,9 @@ class CreateRisultatisTable extends Migration
     public function up()
     {
         Schema::create('risultatis', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('chiave', 191);
-            $table->string('risultato', 191);
+            $table->increments('idR');
+            $table->string('chiaveR', 191);
+            $table->string('risultatoR', 191);
         });
     }
 

@@ -14,12 +14,12 @@ class CreateMultiplasTable extends Migration
     public function up()
     {
         Schema::create('multiplas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('idScommessa');
-            $table->string('chiave', 191);
-            $table->string('tipo', 191);
-            $table->string('value', 191);
-            $table->float('quota');
+            $table->increments('idM');
+            $table->integer('idScommessaM');
+            $table->string('chiaveM', 191);
+            $table->string('tipoM', 191);
+            $table->string('valueM', 191);
+            $table->float('quotaM');
         });
     }
 

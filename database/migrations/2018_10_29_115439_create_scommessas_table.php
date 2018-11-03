@@ -14,11 +14,11 @@ class CreateScommessasTable extends Migration
     public function up()
     {
         Schema::create('scommessas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('idUtente');
-            $table->integer('betCoin');
-            $table->date('data');
-            $table->integer('pagata');
+            $table->increments('idS');
+            $table->integer('idUtenteS');
+            $table->integer('coinS');
+            $table->date('dataS');
+            $table->integer('pagataS');
         });
     }
 
