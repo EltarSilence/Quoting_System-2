@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-//import the model
 use App\Multipla;
 use App\Scommessa;
 use App\User;
