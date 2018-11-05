@@ -20,6 +20,7 @@
 
 @section('js')
 <script src="{{ asset('js/_topVincite.js') }}"></script>
+<script src="{{ asset('js/_newScommessa.js') }}"></script>
 <script src="{{ asset('js/scommessa.js') }}"></script>
 <script>
   var scommessa = new Scommessa();
