@@ -9,7 +9,12 @@ use App\User;
 
 class ScommessaController extends Controller
 {
-
+    public static function getDisponibili(){
+      $verifiche = ["0" => ['chiave' => 'Informatica_20181031'],
+                    "1" => ['chiave' => 'Matematica_20181031']];
+      return $verifiche;
+    }
+    
     public static function getWeekWin(){
       $ret = array();
       $scom = Scommessa
