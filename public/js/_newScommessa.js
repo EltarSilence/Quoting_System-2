@@ -45,9 +45,12 @@ function setEmpty(){
 	$(".verifica").on('click', function(){
 		$('#newScommessa').attr('ver', $(this).attr('id'));
 	});
+
+
 	$('#newScommessa').html();
 
 }
 function setVerifica(){
 
+	
 }
