@@ -10,12 +10,8 @@ use App\Disponibili;
 
 class ScommessaController extends Controller
 {
+  public static function getDisponibili(){
 
-    public function index(){
-        return view('my-bet');
-    }
-
-    public static function getDisponibili(){
     $verifiche = Disponibili::select('dalD', 'alD', 'fileD')
     ->whereDate('dalD', '<=', date('Y-m-d'))
     ->whereDate('alD', '>=', date('Y-m-d'))
@@ -33,7 +29,7 @@ class ScommessaController extends Controller
     ->get();
 
     foreach ($scom as $s) {
-      $winCoin = ScommessaController::isWinned($s);
+      $winCoin = ScommessaController::isWon($s);
       if($winCoin > 0){
         array_push($ret, array($s->name => $winCoin));
       }
@@ -51,7 +47,7 @@ class ScommessaController extends Controller
     ->get();
 
     foreach ($scom as $s) {
-      $winCoin = ScommessaController::isWinned($s);
+      $winCoin = ScommessaController::isWon($s);
       if($winCoin > 0){
         array_push($ret, array($s->name => $winCoin));
       }
@@ -142,8 +138,8 @@ class ScommessaController extends Controller
       }
 
       return $vin*$scommessa->coinS;
+      //$nome = $chiave[2];
     }
-
 
   }
 
