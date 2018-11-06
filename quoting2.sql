@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `migrations`
 --
 
-CREATE TABLE `migrations` IF NOT EXISTS (
+CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
@@ -52,7 +52,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Struttura della tabella `multiplas`
 --
 
-CREATE TABLE `multiplas` IF NOT EXISTS(
+CREATE TABLE `multiplas` (
   `idM` int(10) UNSIGNED NOT NULL,
   `idScommessaM` int(11) NOT NULL,
   `tipoM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -74,7 +74,7 @@ INSERT INTO `multiplas` (`idM`, `idScommessaM`, `chiaveM`, `tipoM`, `valueM`, `q
 -- Struttura della tabella `password_resets`
 --
 
-CREATE TABLE `password_resets` IF NOT EXISTS(
+CREATE TABLE `password_resets` (
   `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -86,7 +86,7 @@ CREATE TABLE `password_resets` IF NOT EXISTS(
 -- Struttura della tabella `risultatis`
 --
 
-CREATE TABLE `risultatis` IF NOT EXISTS(
+CREATE TABLE `risultatis` (
   `idR` int(10) UNSIGNED NOT NULL,
   `chiaveR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `risultatoR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -105,7 +105,7 @@ INSERT INTO `risultatis` (`idR`, `chiaveR`, `risultatoR`) VALUES
 -- Struttura della tabella `scommessas`
 --
 
-CREATE TABLE `scommessas` IF NOT EXISTS(
+CREATE TABLE `scommessas` (
   `idS` int(10) UNSIGNED NOT NULL,
   `idUtenteS` int(11) NOT NULL,
   `coinS` int(11) NOT NULL,
@@ -126,7 +126,7 @@ INSERT INTO `scommessas` (`idS`, `idUtenteS`, `coinS`, `dataS`, `pagataS`) VALUE
 -- Struttura della tabella `users`
 --
 
-CREATE TABLE `users` IF NOT EXISTS(
+CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -146,7 +146,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (1, 'Zexal0807', 'Gallinar00@gmail.com', NULL, '$2y$10$hZZK5QtT/QoWGh4/uWsP9efN.5K3wsnctg4wQMGUT71tZOWn6.Swu', NULL, '2018-10-29 10:36:46', '2018-10-29 10:36:46', 5000);
 
 
-CREATE TABLE `diponibilis` IF NOT EXISTS(
+CREATE TABLE `diponibilis` (
   `idD` int(10) UNSIGNED NOT NULL,
   `fileD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dalD` date NOT NULL,
