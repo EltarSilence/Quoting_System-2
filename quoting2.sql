@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ott 31, 2018 alle 10:10
+-- Creato il: Nov 06, 2018 alle 09:08
 -- Versione del server: 10.1.36-MariaDB
 -- Versione PHP: 7.2.11
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `quoting2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `disponibilis`
+--
+
+CREATE TABLE `disponibilis` (
+  `idD` int(10) UNSIGNED NOT NULL,
+  `fileD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dalD` date NOT NULL,
+  `alD` date NOT NULL,
+  `descrizioneD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `disponibilis`
+--
+
+INSERT INTO `disponibilis` (`idD`, `fileD`, `dalD`, `alD`, `descrizioneD`) VALUES
+(1, 'pippo.txt', '2018-11-06', '2018-11-15', 'aaa');
 
 -- --------------------------------------------------------
 
@@ -44,7 +65,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2018_10_28_084621_create_multiplas_table', 2),
 (4, '2018_10_29_115439_create_scommessas_table', 2),
 (5, '2018_10_30_072606_create_risultatis_table', 3),
-(6, '2018_10_30_072606_create_disponibili_table', 4);
+(6, '2018_11_06_070350_create_disponibilis_table', 4);
 
 -- --------------------------------------------------------
 
@@ -53,19 +74,19 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `multiplas` (
-  `idM` int(10) UNSIGNED NOT NULL,
-  `idScommessaM` int(11) NOT NULL,
-  `tipoM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `chiaveM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `valueM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quotaM` double(8,2) NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `idScommessa` int(11) NOT NULL,
+  `chiave` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quota` double(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `multiplas`
 --
 
-INSERT INTO `multiplas` (`idM`, `idScommessaM`, `chiaveM`, `tipoM`, `valueM`, `quotaM`) VALUES
+INSERT INTO `multiplas` (`id`, `idScommessa`, `chiave`, `tipo`, `value`, `quota`) VALUES
 (1, 1, 'Informatica_20181031_Gallina', 'ESATTO', '9', 1.65);
 
 -- --------------------------------------------------------
@@ -87,16 +108,16 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `risultatis` (
-  `idR` int(10) UNSIGNED NOT NULL,
-  `chiaveR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `risultatoR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `chiave` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `risultato` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `risultatis`
 --
 
-INSERT INTO `risultatis` (`idR`, `chiaveR`, `risultatoR`) VALUES
+INSERT INTO `risultatis` (`id`, `chiave`, `risultato`) VALUES
 (1, 'Informatica_20181031_Gallina', '9');
 
 -- --------------------------------------------------------
@@ -106,18 +127,18 @@ INSERT INTO `risultatis` (`idR`, `chiaveR`, `risultatoR`) VALUES
 --
 
 CREATE TABLE `scommessas` (
-  `idS` int(10) UNSIGNED NOT NULL,
-  `idUtenteS` int(11) NOT NULL,
-  `coinS` int(11) NOT NULL,
-  `dataS` date NOT NULL,
-  `pagataS` int(11) NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `idUtente` int(11) NOT NULL,
+  `betCoin` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `pagata` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `scommessas`
 --
 
-INSERT INTO `scommessas` (`idS`, `idUtenteS`, `coinS`, `dataS`, `pagataS`) VALUES
+INSERT INTO `scommessas` (`id`, `idUtente`, `betCoin`, `data`, `pagata`) VALUES
 (1, 1, 100, '2018-10-28', 1);
 
 -- --------------------------------------------------------
@@ -145,19 +166,15 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `coin`) VALUES
 (1, 'Zexal0807', 'Gallinar00@gmail.com', NULL, '$2y$10$hZZK5QtT/QoWGh4/uWsP9efN.5K3wsnctg4wQMGUT71tZOWn6.Swu', NULL, '2018-10-29 10:36:46', '2018-10-29 10:36:46', 5000);
 
-
-CREATE TABLE `diponibilis` (
-  `idD` int(10) UNSIGNED NOT NULL,
-  `fileD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dalD` date NOT NULL,
-  `alD` date NOT NULL,
-  `descrizioneD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
 --
 -- Indici per le tabelle scaricate
 --
+
+--
+-- Indici per le tabelle `disponibilis`
+--
+ALTER TABLE `disponibilis`
+  ADD PRIMARY KEY (`idD`);
 
 --
 -- Indici per le tabelle `migrations`
@@ -169,7 +186,7 @@ ALTER TABLE `migrations`
 -- Indici per le tabelle `multiplas`
 --
 ALTER TABLE `multiplas`
-  ADD PRIMARY KEY (`idM`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `password_resets`
@@ -181,16 +198,13 @@ ALTER TABLE `password_resets`
 -- Indici per le tabelle `risultatis`
 --
 ALTER TABLE `risultatis`
-  ADD PRIMARY KEY (`idR`);
-
-ALTER TABLE `disponibilis`
-  ADD PRIMARY KEY (`idD`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `scommessas`
 --
 ALTER TABLE `scommessas`
-  ADD PRIMARY KEY (`idS`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `users`
@@ -204,10 +218,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT per la tabella `disponibilis`
+--
+ALTER TABLE `disponibilis`
+  MODIFY `idD` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT per la tabella `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `multiplas`
@@ -232,11 +252,6 @@ ALTER TABLE `scommessas`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
-  ALTER TABLE `disponibilis`
-    MODIFY `idD` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

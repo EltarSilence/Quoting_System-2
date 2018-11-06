@@ -1,4 +1,9 @@
 $(document).ready(function (){
+	$.ajaxSetup({
+		headers : {
+			'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+		}
+	});
 	if($('#newScommessa').attr('ver') == ""){
 		setEmpty();
 	}else{
@@ -39,18 +44,47 @@ $(document).ready(function (){
 		parent.top.$("#biglietto")[0].contentWindow.postMessage("cookieAreUpdated",'*');
 	});
 	*/
+
 });
 
 function setEmpty(){
 	$(".verifica").on('click', function(){
 		$('#newScommessa').attr('ver', $(this).attr('id'));
 	});
+	$.ajax({
+		url : "/getDisponibili",
+		type : "POST",
+		asinc : false,
+		data : [],
+		beforeSend : function(){
+			debugger;
+		},
+		success : function(data){
+			debugger;
+
+
+			for(var i = 0; i < data.length; i++){
+
+			/*
+			<button class="btn btn-primary verifica" id="{!! $verifiche[$i]['chiave'] !!}">
+				 {!! date("d/m/Y", strtotime(explode("_", $verifiche[$i]['chiave'])[1])) !!} - Verifica di {!!  explode("_", $verifiche[$i]['chiave'])[0] !!}
+			</button>
+*/
+
+			}
+
+
+		},
+		error : function(e){
+			debugger;
+		}
+	});
+
 
 
 	$('#newScommessa').html();
-
 }
 function setVerifica(){
 
-	
+
 }
