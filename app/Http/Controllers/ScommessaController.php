@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Multipla;
 use App\Scommessa;
 use App\User;
@@ -11,25 +12,21 @@ use App\Disponibili;
 class ScommessaController extends Controller
 {
 
-  public function index()
-  {
+  public function index(){
       $userBets = ScommessaController::getAllBetsBy(1);
-
       return view('my-bet')->with('userBets', $userBets);
   }
 
   public static function getDisponibili(){
-
     $verifiche = Disponibili::select('dalD', 'alD', 'fileD')
     ->whereDate('dalD', '<=', date('Y-m-d'))
     ->whereDate('alD', '>=', date('Y-m-d'))
     ->get();
-
     return $verifiche;
   }
   public static function getScommessa(){
     $a = Input::get('scommessa');
-    echo $a;
+    return $a;
     /*
     $verifiche = Disponibili::select('dalD', 'alD', 'fileD')
     ->whereDate('dalD', '<=', date('Y-m-d'))
