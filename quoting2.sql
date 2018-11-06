@@ -43,7 +43,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2018_10_28_084621_create_multiplas_table', 2),
 (4, '2018_10_29_115439_create_scommessas_table', 2),
-(5, '2018_10_30_072606_create_risultatis_table', 3);
+(5, '2018_10_30_072606_create_risultatis_table', 3)
+(6, '2018_10_30_072606_create_disponibili_table', 4)
 
 -- --------------------------------------------------------
 
@@ -52,12 +53,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `multiplas` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `idScommessa` int(11) NOT NULL,
-  `chiave` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quota` double(8,2) NOT NULL
+  `idM` int(10) UNSIGNED NOT NULL,
+  `idScommessaM` int(11) NOT NULL,
+  `tipoM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `chiaveM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `valueM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quotaM` double(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -86,9 +87,9 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `risultatis` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `chiave` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `risultato` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `idR` int(10) UNSIGNED NOT NULL,
+  `chiaveR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `risultatoR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -105,11 +106,11 @@ INSERT INTO `risultatis` (`id`, `chiave`, `risultato`) VALUES
 --
 
 CREATE TABLE `scommessas` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `idUtente` int(11) NOT NULL,
-  `betCoin` int(11) NOT NULL,
-  `data` date NOT NULL,
-  `pagata` int(11) NOT NULL
+  `idS` int(10) UNSIGNED NOT NULL,
+  `idUtenteS` int(11) NOT NULL,
+  `coinS` int(11) NOT NULL,
+  `dataS` date NOT NULL,
+  `pagataS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -143,6 +144,16 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `coin`) VALUES
 (1, 'Zexal0807', 'Gallinar00@gmail.com', NULL, '$2y$10$hZZK5QtT/QoWGh4/uWsP9efN.5K3wsnctg4wQMGUT71tZOWn6.Swu', NULL, '2018-10-29 10:36:46', '2018-10-29 10:36:46', 5000);
+
+
+CREATE TABLE `diponibilis` (
+  `idD` int(10) UNSIGNED NOT NULL,
+  `fileD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dalD` date NOT NULL,
+  `alD` date NOT NULL,
+  `descrizioneD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 --
 -- Indici per le tabelle scaricate
