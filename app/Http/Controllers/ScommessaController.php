@@ -13,7 +13,7 @@ class ScommessaController extends Controller
 
   public function index()
   {
-      $userBets = getAllBetsBy(1);
+      $userBets = ScommessaController::getAllBetsBy(1);
 
       return view('my-bet')->with('userBets', $userBets);
   }
@@ -167,7 +167,7 @@ class ScommessaController extends Controller
     ->orderBy('dataS', 'desc')
     ->get();
 
-    var_dump($bets);
+    return $bets;
   }
 
 }
