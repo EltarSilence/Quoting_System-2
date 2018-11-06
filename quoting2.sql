@@ -169,7 +169,7 @@ ALTER TABLE `migrations`
 -- Indici per le tabelle `multiplas`
 --
 ALTER TABLE `multiplas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idM`);
 
 --
 -- Indici per le tabelle `password_resets`
@@ -181,13 +181,16 @@ ALTER TABLE `password_resets`
 -- Indici per le tabelle `risultatis`
 --
 ALTER TABLE `risultatis`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idR`);
+
+ALTER TABLE `disponibilis`
+  ADD PRIMARY KEY (`idD`);
 
 --
 -- Indici per le tabelle `scommessas`
 --
 ALTER TABLE `scommessas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idS`);
 
 --
 -- Indici per le tabelle `users`
@@ -229,6 +232,11 @@ ALTER TABLE `scommessas`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+  ALTER TABLE `disponibilis`
+    MODIFY `idD` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

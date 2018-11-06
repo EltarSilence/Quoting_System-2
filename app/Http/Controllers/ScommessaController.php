@@ -6,15 +6,20 @@ use Illuminate\Http\Request;
 use App\Multipla;
 use App\Scommessa;
 use App\User;
+use App\Disponibili;
 
 class ScommessaController extends Controller
 {
     public static function getDisponibili(){
-      $verifiche = ["0" => ['chiave' => 'Informatica_20181031'],
-                    "1" => ['chiave' => 'Matematica_20181031']];
+
+      $verifiche = Disponibili::select('dalD', 'alD', 'fileD')
+      ->whereDate('dalD', '<=', date('Y-m-d'))
+      ->whereDate('alD', '>=', date('Y-m-d'))
+      ->get();
+
       return $verifiche;
     }
-    
+
     public static function getWeekWin(){
       $ret = array();
       $scom = Scommessa
