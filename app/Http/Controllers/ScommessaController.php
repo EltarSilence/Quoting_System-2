@@ -25,15 +25,14 @@ class ScommessaController extends Controller
     return $verifiche;
   }
   public static function getScommessa(){
-    $a = Input::get('scommessa');
-    return $a;
-    /*
-    $verifiche = Disponibili::select('dalD', 'alD', 'fileD')
-    ->whereDate('dalD', '<=', date('Y-m-d'))
-    ->whereDate('alD', '>=', date('Y-m-d'))
-    ->get();
+    $key = Input::get('scommessa');
+    $file = $key.'.json';
 
-    return $verifiche;*/
+    $multiple = array();
+    $multiple['type'] = substr($key, 0, stripos($key, "_"));
+    $multiple['multiple'] = json_decode('{"0":{"Descrizione": "Andreoli ammesso...","SI" : 1.56,"NO" : 1.56}}', true);
+
+    return $multiple;
   }
 
   public static function getWeekWin(){
@@ -84,21 +83,15 @@ class ScommessaController extends Controller
   private static function isWon($scommessa){
     $vin = 1;
     $mult = Multipla
-    ::leftJoin('risultatis', 'multiplas.chiaveM', '=', 'risultatis.chiaveR')
-    ->where('idScommessaM', '=', $scommessa->idS)
-    ->get();
-
+      ::leftJoin('risultatis', 'multiplas.chiaveM', '=', 'risultatis.chiaveR')
+      ->where('idScommessaM', '=', $scommessa->idS)
+      ->get();
     foreach ($mult as $m) {
-
       if (!isset($m->chiaveR)){
         return -1;
       }
-
       $chiave = explode('_', $m->chiaveR);
       $tipo = $chiave[0];
-
-      $file = $chiave[0].'_'.$chiave[1].'.json';
-
       switch ($tipo) {
         case 'EUO':
           $cat = $m->tipoM;
@@ -152,11 +145,8 @@ class ScommessaController extends Controller
         return 0;
         break;
       }
-
-      return $vin*$scommessa->coinS;
-      //$nome = $chiave[2];
     }
-
+    return $vin*$scommessa->coinS;
   }
 
   public static function getAllBetsBy($id){

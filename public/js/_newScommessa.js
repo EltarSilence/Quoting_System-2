@@ -18,7 +18,7 @@ function setEmpty(){
 	$.ajax({
 		url : "/getDisponibili",
 		type : "POST",
-		data : [],
+		data : {},
 		success : function(data){
 			for(var i = 0; i < data.length; i++){
 				let chiave = data[i]['fileD'];
@@ -34,12 +34,9 @@ function setEmpty(){
 }
 function setVerifica(){
 	var html = "";
-	var formData = new FormData();
-	formData.append('scommessa', $('#newScommessa').attr('ver'));
 	$.ajax({
 		url : "/getScommessa",
 		type : "POST",
-		dataType : 'json',
 		data : {'scommessa': $('#newScommessa').attr('ver')},
 		success : function(data){
 			debugger;
