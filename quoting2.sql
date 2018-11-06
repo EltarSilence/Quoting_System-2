@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 06, 2018 alle 09:08
+-- Creato il: Nov 06, 2018 alle 09:18
 -- Versione del server: 10.1.36-MariaDB
 -- Versione PHP: 7.2.11
 
@@ -74,19 +74,19 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `multiplas` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `idScommessa` int(11) NOT NULL,
-  `chiave` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quota` double(8,2) NOT NULL
+  `idM` int(10) UNSIGNED NOT NULL,
+  `idScommessaM` int(11) NOT NULL,
+  `chiaveM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipoM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `valueM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quotaM` double(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `multiplas`
 --
 
-INSERT INTO `multiplas` (`id`, `idScommessa`, `chiave`, `tipo`, `value`, `quota`) VALUES
+INSERT INTO `multiplas` (`idM`, `idScommessaM`, `chiaveM`, `tipoM`, `valueM`, `quotaM`) VALUES
 (1, 1, 'Informatica_20181031_Gallina', 'ESATTO', '9', 1.65);
 
 -- --------------------------------------------------------
@@ -108,16 +108,16 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `risultatis` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `chiave` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `risultato` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `idR` int(10) UNSIGNED NOT NULL,
+  `chiaveR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `risultatoR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `risultatis`
 --
 
-INSERT INTO `risultatis` (`id`, `chiave`, `risultato`) VALUES
+INSERT INTO `risultatis` (`idR`, `chiaveR`, `risultatoR`) VALUES
 (1, 'Informatica_20181031_Gallina', '9');
 
 -- --------------------------------------------------------
@@ -127,18 +127,18 @@ INSERT INTO `risultatis` (`id`, `chiave`, `risultato`) VALUES
 --
 
 CREATE TABLE `scommessas` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `idUtente` int(11) NOT NULL,
-  `betCoin` int(11) NOT NULL,
-  `data` date NOT NULL,
-  `pagata` int(11) NOT NULL
+  `idS` int(10) UNSIGNED NOT NULL,
+  `idUtenteS` int(11) NOT NULL,
+  `coinS` int(11) NOT NULL,
+  `dataS` date NOT NULL,
+  `pagataS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `scommessas`
 --
 
-INSERT INTO `scommessas` (`id`, `idUtente`, `betCoin`, `data`, `pagata`) VALUES
+INSERT INTO `scommessas` (`idS`, `idUtenteS`, `coinS`, `dataS`, `pagataS`) VALUES
 (1, 1, 100, '2018-10-28', 1);
 
 -- --------------------------------------------------------
@@ -186,7 +186,7 @@ ALTER TABLE `migrations`
 -- Indici per le tabelle `multiplas`
 --
 ALTER TABLE `multiplas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idM`);
 
 --
 -- Indici per le tabelle `password_resets`
@@ -198,13 +198,13 @@ ALTER TABLE `password_resets`
 -- Indici per le tabelle `risultatis`
 --
 ALTER TABLE `risultatis`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idR`);
 
 --
 -- Indici per le tabelle `scommessas`
 --
 ALTER TABLE `scommessas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idS`);
 
 --
 -- Indici per le tabelle `users`
@@ -233,19 +233,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT per la tabella `multiplas`
 --
 ALTER TABLE `multiplas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idM` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `risultatis`
 --
 ALTER TABLE `risultatis`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idR` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `scommessas`
 --
 ALTER TABLE `scommessas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idS` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `users`
