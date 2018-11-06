@@ -5,13 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
           <main>
-            @include('_newScommessa', ['verifiche' => $verifiche])
+            @include('_newScommessa')
           </main>
         </div>
         <div class="col-md-4">
           <main>
-
-            {{-- @include('_topVincite', ['weekWin' => $weekWin, 'mouthWin' => $mouthWin]) --}}
+            @include('_topVincite', ['weekWin' => $weekWin, 'mouthWin' => $mouthWin])
           </main>
         </div>
     </div>

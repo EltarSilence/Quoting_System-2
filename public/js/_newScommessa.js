@@ -61,9 +61,9 @@ function setEmpty(){
 		},
 		success : function(data){
 			debugger;
-
-
+			var html = "";
 			for(var i = 0; i < data.length; i++){
+			
 
 			/*
 			<button class="btn btn-primary verifica" id="{!! $verifiche[$i]['chiave'] !!}">

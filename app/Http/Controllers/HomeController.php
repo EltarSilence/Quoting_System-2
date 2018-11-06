@@ -24,7 +24,6 @@ class HomeController extends Controller
     public function index()
     {
         $verifiche = ScommessaController::getDisponibili();
-        return view('home')->with('verifiche', $verifiche);
         $weekWin = ScommessaController::getWeekWin();
         $mouthWin = ScommessaController::getMouthWin();
         return view('home')->with('weekWin', $weekWin)->with('mouthWin', $mouthWin);
