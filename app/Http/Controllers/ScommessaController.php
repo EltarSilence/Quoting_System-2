@@ -10,6 +10,12 @@ use App\Disponibili;
 
 class ScommessaController extends Controller
 {
+
+  public function index()
+  {
+      return view('my-bet');
+  }
+
   public static function getDisponibili(){
 
     $verifiche = Disponibili::select('dalD', 'alD', 'fileD')
@@ -18,6 +24,17 @@ class ScommessaController extends Controller
     ->get();
 
     return $verifiche;
+  }
+  public static function getScommessa(){
+    $a = Input::get('scommessa');
+    echo $a;
+    /*
+    $verifiche = Disponibili::select('dalD', 'alD', 'fileD')
+    ->whereDate('dalD', '<=', date('Y-m-d'))
+    ->whereDate('alD', '>=', date('Y-m-d'))
+    ->get();
+
+    return $verifiche;*/
   }
 
   public static function getWeekWin(){

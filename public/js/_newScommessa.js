@@ -74,13 +74,15 @@ function setEmpty(){
 }
 function setVerifica(){
 	var html = "";
-	$('#newScommessa').attr('ver');
+	var formData = new FormData();
+	formData.append('scommessa', $('#newScommessa').attr('ver'));
+	debugger;
 	/*
 	$.ajax({
 		url : "/getScommessa",
 		type : "POST",
 		asinc : false,
-		data : [],
+		data : formData,
 		beforeSend : function(){
 		},
 		success : function(data){
