@@ -10,16 +10,12 @@ use App\Disponibili;
 
 class ScommessaController extends Controller
 {
-<<<<<<< HEAD
+
     public function index(){
         return view('my-bet');
     }
 
     public static function getDisponibili(){
-=======
-  public static function getDisponibili(){
->>>>>>> dc61e6fd205f6a476e94f16a92de980f93966338
-
     $verifiche = Disponibili::select('dalD', 'alD', 'fileD')
     ->whereDate('dalD', '<=', date('Y-m-d'))
     ->whereDate('alD', '>=', date('Y-m-d'))
@@ -73,49 +69,7 @@ class ScommessaController extends Controller
     return 0;
   }
 
-  private static function isWinned($scommessa){
-    $vin = 1;
-    $mult = Multipla
-    ::leftJoin('risultatis', 'multiplas.chiaveM', '=', 'risultatis.chiaveR')
-    ->where('idScommessaM', '=', $scommessa->idS)
-    ->get();
-    foreach ($mult as $m) {
-      if(isset($m->risultatoR)){
-        switch($m->tipoM){
-          case "ESATTO":
-            if($m->valueM == $m->risultatoR){
-              $vin = $vin*$m->quotaM;
-            }else{
-              $vin = 0;
-            }
-            break;
-          case "UNDER":
-            if(floatval($m->valueM) < floatval($m->risultatoR)){
-              $vin = $vin*$m->quotaM;
-            }else{
-              $vin = 0;
-            }
-            break;
-          case "OVER":
-            if(floatval($m->valueM) > floatval($m->risultatoR)){
-              $vin = $vin*$m->quotaM;
-            }else{
-              $vin = 0;
-            }
-            break;
-          default:
-            $vin = 0;
-          break;
-        }
-      }else{
-        return -1;
-      }
-    }
-    $vin = $vin*$scommessa->coinS;
-    return $vin;
-  }
-
-  private static function isWinned2($scommessa){
+  private static function isWon($scommessa){
     $vin = 1;
     $mult = Multipla
     ::leftJoin('risultatis', 'multiplas.chiaveM', '=', 'risultatis.chiaveR')
@@ -188,8 +142,8 @@ class ScommessaController extends Controller
       }
 
       return $vin*$scommessa->coinS;
-      //$nome = $chiave[2];
     }
+
 
   }
 
