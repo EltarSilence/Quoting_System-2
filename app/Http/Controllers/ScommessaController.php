@@ -160,4 +160,12 @@ class ScommessaController extends Controller
 
   }
 
+  public static function getAllBetsBy($id){
+    $bets = Scommessa::where('idUtenteS', '=', $id)
+    ->orderBy('dataS', 'desc')
+    ->get();
+
+    var_dump($bets);
+  }
+
 }
