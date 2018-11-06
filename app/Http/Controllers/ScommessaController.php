@@ -13,7 +13,9 @@ class ScommessaController extends Controller
 
   public function index()
   {
-      return view('my-bet');
+      $userBets = getAllBetsBy(1);
+
+      return view('my-bet')->with('userBets', $userBets);
   }
 
   public static function getDisponibili(){
