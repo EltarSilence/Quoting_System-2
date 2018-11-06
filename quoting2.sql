@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `migrations`
 --
 
-CREATE TABLE `migrations` (
+CREATE TABLE `migrations` IF NOT EXISTS (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
@@ -43,8 +43,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2018_10_28_084621_create_multiplas_table', 2),
 (4, '2018_10_29_115439_create_scommessas_table', 2),
-(5, '2018_10_30_072606_create_risultatis_table', 3)
-(6, '2018_10_30_072606_create_disponibili_table', 4)
+(5, '2018_10_30_072606_create_risultatis_table', 3),
+(6, '2018_10_30_072606_create_disponibili_table', 4);
 
 -- --------------------------------------------------------
 
@@ -52,7 +52,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Struttura della tabella `multiplas`
 --
 
-CREATE TABLE `multiplas` (
+CREATE TABLE `multiplas` IF NOT EXISTS(
   `idM` int(10) UNSIGNED NOT NULL,
   `idScommessaM` int(11) NOT NULL,
   `tipoM` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `multiplas` (
 -- Dump dei dati per la tabella `multiplas`
 --
 
-INSERT INTO `multiplas` (`id`, `idScommessa`, `chiave`, `tipo`, `value`, `quota`) VALUES
+INSERT INTO `multiplas` (`idM`, `idScommessaM`, `chiaveM`, `tipoM`, `valueM`, `quotaM`) VALUES
 (1, 1, 'Informatica_20181031_Gallina', 'ESATTO', '9', 1.65);
 
 -- --------------------------------------------------------
@@ -74,7 +74,7 @@ INSERT INTO `multiplas` (`id`, `idScommessa`, `chiave`, `tipo`, `value`, `quota`
 -- Struttura della tabella `password_resets`
 --
 
-CREATE TABLE `password_resets` (
+CREATE TABLE `password_resets` IF NOT EXISTS(
   `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -86,7 +86,7 @@ CREATE TABLE `password_resets` (
 -- Struttura della tabella `risultatis`
 --
 
-CREATE TABLE `risultatis` (
+CREATE TABLE `risultatis` IF NOT EXISTS(
   `idR` int(10) UNSIGNED NOT NULL,
   `chiaveR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `risultatoR` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -96,7 +96,7 @@ CREATE TABLE `risultatis` (
 -- Dump dei dati per la tabella `risultatis`
 --
 
-INSERT INTO `risultatis` (`id`, `chiave`, `risultato`) VALUES
+INSERT INTO `risultatis` (`idR`, `chiaveR`, `risultatoR`) VALUES
 (1, 'Informatica_20181031_Gallina', '9');
 
 -- --------------------------------------------------------
@@ -105,7 +105,7 @@ INSERT INTO `risultatis` (`id`, `chiave`, `risultato`) VALUES
 -- Struttura della tabella `scommessas`
 --
 
-CREATE TABLE `scommessas` (
+CREATE TABLE `scommessas` IF NOT EXISTS(
   `idS` int(10) UNSIGNED NOT NULL,
   `idUtenteS` int(11) NOT NULL,
   `coinS` int(11) NOT NULL,
@@ -117,7 +117,7 @@ CREATE TABLE `scommessas` (
 -- Dump dei dati per la tabella `scommessas`
 --
 
-INSERT INTO `scommessas` (`id`, `idUtente`, `betCoin`, `data`, `pagata`) VALUES
+INSERT INTO `scommessas` (`idS`, `idUtenteS`, `coinS`, `dataS`, `pagataS`) VALUES
 (1, 1, 100, '2018-10-28', 1);
 
 -- --------------------------------------------------------
@@ -126,7 +126,7 @@ INSERT INTO `scommessas` (`id`, `idUtente`, `betCoin`, `data`, `pagata`) VALUES
 -- Struttura della tabella `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `users` IF NOT EXISTS(
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -146,7 +146,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (1, 'Zexal0807', 'Gallinar00@gmail.com', NULL, '$2y$10$hZZK5QtT/QoWGh4/uWsP9efN.5K3wsnctg4wQMGUT71tZOWn6.Swu', NULL, '2018-10-29 10:36:46', '2018-10-29 10:36:46', 5000);
 
 
-CREATE TABLE `diponibilis` (
+CREATE TABLE `diponibilis` IF NOT EXISTS(
   `idD` int(10) UNSIGNED NOT NULL,
   `fileD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dalD` date NOT NULL,
