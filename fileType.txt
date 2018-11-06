@@ -1,26 +1,26 @@
 Disponibili
-Id		File		Dal			Al			Descrizione	
-1		EUO_1.json	2018-10-24	2018-10-30	...
-2		EUO_2.json	2018-10-24	2018-10-30	....
-3		SN_3.json	2018-10-24	2018-10-30	.....
-4		MT_4.json							Accompa
+Id		File				Dal					Al					Descrizione
+1			EUO_1.json	2018-10-24	2018-10-30	...
+2			EUO_2.json	2018-10-24	2018-10-30	....
+3			SN_3.json		2018-10-24	2018-10-30	.....
+4			MT_4.json														Accompa
 
 
 Scommessa
 Id		idUtente	Coin	Data		Pagata
-1		1			100		2018-10-31	0
+1			1					100		2018-10-31	0
 
 Multipla
-Id		idScommessa		Chiave			Tipo	Value	Quota
-1		1				EUO_1_Gallina	Esatto	9		1.56
+Id		idScommessa		Chiave					Tipo	Value	Quota
+1		1								EUO_1_Gallina		Esatto	9		1.56
 2		1				EUO_2_
 3		1				SN_3_0			/		SI		1.56
-4		1				MT_4			/		0		1.56	
+4		1				MT_4			/		0		1.56
 
 Risultati
 Id		Chiave			Risultati
 1		EUO_1_Gallina	9
-2		
+2
 3		SN_3_0			SI
 4		MT_4			0
 
@@ -43,7 +43,7 @@ SN File
 		"SI" : 1.56,
 		"NO" : 1.56
 	}
-	
+
 }
 
 MT File

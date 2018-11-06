@@ -10,6 +10,10 @@ use App\Disponibili;
 
 class ScommessaController extends Controller
 {
+    public function index(){
+        return view('my-bet');
+    }
+
     public static function getDisponibili(){
 
       $verifiche = Disponibili::select('dalD', 'alD', 'fileD')

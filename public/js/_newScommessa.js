@@ -48,43 +48,54 @@ $(document).ready(function (){
 });
 
 function setEmpty(){
-	$(".verifica").on('click', function(){
-		$('#newScommessa').attr('ver', $(this).attr('id'));
-	});
+	var html = "";
 	$.ajax({
 		url : "/getDisponibili",
 		type : "POST",
 		asinc : false,
 		data : [],
 		beforeSend : function(){
-			debugger;
 		},
 		success : function(data){
-			debugger;
-			var html = "";
 			for(var i = 0; i < data.length; i++){
-			
-
-			/*
-			<button class="btn btn-primary verifica" id="{!! $verifiche[$i]['chiave'] !!}">
-				 {!! date("d/m/Y", strtotime(explode("_", $verifiche[$i]['chiave'])[1])) !!} - Verifica di {!!  explode("_", $verifiche[$i]['chiave'])[0] !!}
-			</button>
-*/
-
+				let chiave = data[i]['fileD'];
+				html += '<button class="btn btn-primary verifica" id="'+chiave+'"> - Verifica di ... </button>';
 			}
-
-
+			$('#newScommessa').html(html);
+			$(".verifica").on('click', function(){
+				$('#newScommessa').attr('ver', $(this).attr('id'));
+				setVerifica();
+			});
 		},
 		error : function(e){
 			debugger;
 		}
 	});
-
-
-
-	$('#newScommessa').html();
 }
 function setVerifica(){
-
-
+	var html = "";
+	$('#newScommessa').attr('ver');
+	/*
+	$.ajax({
+		url : "/getScommessa",
+		type : "POST",
+		asinc : false,
+		data : [],
+		beforeSend : function(){
+		},
+		success : function(data){
+			for(var i = 0; i < data.length; i++){
+				let chiave = data[i]['fileD'];
+				html += '<button class="btn btn-primary verifica" id="'+chiave+'"> - Verifica di ... </button>';
+			}
+			$('#newScommessa').html(html);
+			$(".verifica").on('click', function(){
+				$('#newScommessa').attr('ver', $(this).attr('id'));
+				setVerifica();
+			});
+		},
+		error : function(e){
+			debugger;
+		}
+	});*/
 }
