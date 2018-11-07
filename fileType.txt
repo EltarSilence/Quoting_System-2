@@ -27,7 +27,7 @@ Id		Chiave				Risultati
 
 EUO File
 {
-	"Descrizione": "Verifica di ....",
+	"descrizione": "Verifica di ....",
 	"data" : "2018-10-31",
 	"" : {
 		"Gallina":{
