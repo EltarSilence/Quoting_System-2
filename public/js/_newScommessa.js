@@ -24,7 +24,7 @@ function setEmpty(){
 				let chiave = data[i]['fileD'];
 				html += '<button class="btn btn-primary verifica" id="'+chiave+'"> - Verifica di ... </button>';
 			}
-			$('#newScommessa').html(html);
+			//$('#newScommessa').html(html);
 			$(".verifica").on('click', function(){
 				$('#newScommessa').attr('ver', $(this).attr('id'));
 				setVerifica();
@@ -39,6 +39,24 @@ function setVerifica(){
 		type : "POST",
 		data : {'scommessa': $('#newScommessa').attr('ver')},
 		success : function(data){
+			switch (data['type']) {
+				case "EUO":
+
+					break;
+				case "SN":
+
+					break;
+				case "MT":
+
+					break;
+				default:
+					break;
+			}
+
+			html = '';
+
+
+
 			debugger;
 			/*
 			for(var i = 0; i < data.length; i++){

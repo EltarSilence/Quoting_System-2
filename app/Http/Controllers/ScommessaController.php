@@ -22,6 +22,10 @@ class ScommessaController extends Controller
     ->whereDate('dalD', '<=', date('Y-m-d'))
     ->whereDate('alD', '>=', date('Y-m-d'))
     ->get();
+
+
+
+
     return $verifiche;
   }
   public static function getScommessa(){
@@ -30,7 +34,7 @@ class ScommessaController extends Controller
 
     $multiple = array();
     $multiple['type'] = substr($key, 0, stripos($key, "_"));
-    $multiple['multiple'] = json_decode('{"0":{"Descrizione": "Andreoli ammesso...","SI" : 1.56,"NO" : 1.56}}', true);
+    $multiple['file'] = json_decode('{"0":{"Descrizione": "Andreoli ammesso...","SI" : 1.56,"NO" : 1.56}}', true);
 
     return $multiple;
   }
@@ -42,7 +46,6 @@ class ScommessaController extends Controller
     ->whereDate('dataS', '>=', date("Y-m-d", strtotime(date("Y-m-d")."-7day")))
     ->where('pagataS', 1)
     ->get();
-
     foreach ($scom as $s) {
       $winCoin = ScommessaController::isWon($s);
       if($winCoin > 0){
@@ -96,7 +99,7 @@ class ScommessaController extends Controller
         case 'EUO':
           $cat = $m->tipoM;
           switch ($cat){
-            case 'Esatto':
+            case 'ESATTO':
             if ($m->valueM == $m->risultatoR){
               $vin = $vin*$m->quotaM;
             }
@@ -104,7 +107,7 @@ class ScommessaController extends Controller
               return 0;
             }
             break;
-            case 'Under':
+            case 'UNDER':
             $value = floatval($m->valueM);
             $res = floatval($m->risultatoR);
 
@@ -115,7 +118,7 @@ class ScommessaController extends Controller
               return 0;
             }
             break;
-          case 'Over':
+          case 'OVER':
             $value = floatval($m->valueM);
             $res = floatval($m->risultatoR);
 

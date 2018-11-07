@@ -13,23 +13,29 @@ Id		idUtente	Coin	Data		Pagata
 Multipla
 Id		idScommessa		Chiave					Tipo	Value	Quota
 1		1								EUO_1_Gallina		Esatto	9		1.56
-2		1				EUO_2_
-3		1				SN_3_0			/		SI		1.56
-4		1				MT_4			/		0		1.56
+2		1								EUO_2_
+3		1								SN_3_0					/				SI	1.56
+4		1								MT_4						/				0		1.56
 
 Risultati
-Id		Chiave			Risultati
-1		EUO_1_Gallina	9
+Id		Chiave				Risultati
+1			EUO_1_Gallina	9
 2
-3		SN_3_0			SI
-4		MT_4			0
+3			SN_3_0				SI
+4			MT_4					0
 
 
 EUO File
 {
-	"Gallina":{
-		"Esatto":{
-			"9" : 1.56
+	"Descrizione": "Verifica di ....",
+	"data" : "2018-10-31",
+	"" : {
+		"Gallina":{
+			"Esatto":{
+				"9" : 1.56
+				...
+				..
+			},
 			...
 			..
 		}
@@ -48,6 +54,7 @@ SN File
 
 MT File
 {
+	"Descrizione": "Accompagnatore gita",
 	"0"{
 		"TITOLO": "Prof1",
 		"quota" : 1.56

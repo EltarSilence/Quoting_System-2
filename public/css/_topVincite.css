@@ -9,7 +9,7 @@
 *[id^=vincita] > div:first-child{
     text-align: center;
     padding: 2%;
-	padding-bottom: 5%;
+		padding-bottom: 5%;
     font-weight: bold;
     font-size: 165%;
     font-variant: small-caps;
@@ -18,7 +18,7 @@
 }
 
 *[id^=vincita] .rank{
-	width: 100%;
+		width: 100%;
     display: flex;
     padding: 0.5% 13%;
 }
