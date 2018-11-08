@@ -22,14 +22,14 @@
           <div class="card-body col-6 pt-0 pb-1 border-right">
             <div class="intestazione">SI</div>
             <div class="click active">
-              <div class="">1.56</div>
+              <div>1.56</div>
               <input type="radio" name="SN_2_1" data-value="SI" data-quote="'.round($v, 2).'"/>
             </div>
           </div>
           <div class="card-body col-6 pt-0 pb-1 border-left">
             <div class="intestazione">NO</div>
             <div class="click">
-              <div class="">1.56</div>
+              <div>1.56</div>
               <input type="radio" name="'.$key.'" data-value="NO" data-quote="'.round($v, 2).'"/>
             </div>
           </div>
@@ -46,30 +46,31 @@
         <button class="btn btn-primary col-2">
           Back
         </button>
-        <div class="col-10 text-justify">
-          Insegnate accompagnatore
-        </div>
       </div>
 
-      <div class="card row ml-0 mr-0" style="flex-direction: row;">
-        <div class="card-header col-6" style="border-right: 1px solid rgba(0,0,0,.125); text-align: center;">
-          <h5 class="m-0">Baga</h5>
+      <div class="card">
+        <div class="btn card-header">
+          <h5 class="m-0">
+              Insegnate accompagnatore
+          </h5>
         </div>
-        <div class="card-body col-6 p-0">
-          <div class="click active">1.56</div>
-          <input type="radio" name="MT_1" data-value="Baga" data-quote="'.round($v, 2).'"/>
+        <div class="card-body row ml-0 mr-0 border pt-1 pb-1">
+          <div class="intestazione col-6">Baga</div>
+          <div class="click col-6 active">
+            <div>1.56</div>
+            <input type="radio" name="'.$key.'" data-value="NO" data-quote="'.round($v, 2).'"/>
+          </div>
         </div>
-      </div>
-      <div class="card row ml-0 mr-0" style="flex-direction: row;">
-        <div class="card-header col-6" style="border-right: 1px solid rgba(0,0,0,.125); text-align: center;">
-          <h5 class="m-0">Baga</h5>
+        <div class="card-body row ml-0 mr-0 border pt-1 pb-1">
+          <div class="intestazione col-6">Baga</div>
+          <div class="click col-6">
+            <div>1.56</div>
+            <input type="radio" name="'.$key.'" data-value="NO" data-quote="'.round($v, 2).'"/>
+          </div>
         </div>
-        <div class="card-body col-6 p-0">
-          <div class="click">1.56</div>
-          <input type="radio" name="'.$key.'" data-value="'.$k.'" data-quote="'.round($v, 2).'"/>
-        </div>
-      </div>
 
+
+      </div>
     </div>
   </div>
 
