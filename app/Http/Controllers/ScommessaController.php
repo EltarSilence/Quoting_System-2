@@ -14,7 +14,17 @@ class ScommessaController extends Controller
 
   public function index(){
       $userBets = ScommessaController::getAllBetsBy(1);
-      return view('my-bet')->with('userBets', $userBets);
+      $isWon = array();
+
+      foreach($userBets as $bet){
+        $won = ScommessaController::isWon($bet);
+        array_push($isWon, $won);
+      }
+      var_dump($isWon);
+
+      return view('my-bet')
+      ->with('userBets', $userBets)
+      ->with('isWon', $isWon);
   }
 
   public static function getDisponibili(){
@@ -23,11 +33,9 @@ class ScommessaController extends Controller
     ->whereDate('alD', '>=', date('Y-m-d'))
     ->get();
 
-
-
-
     return $verifiche;
   }
+
   public static function getScommessa(){
     $key = Input::get('scommessa');
     $file = $key.'.json';
@@ -156,7 +164,7 @@ class ScommessaController extends Controller
     $bets = Scommessa::where('idUtenteS', '=', $id)
     ->orderBy('dataS', 'desc')
     ->get();
-
+    var_dump(count($bets));
     return $bets;
   }
 

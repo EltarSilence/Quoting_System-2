@@ -8,18 +8,27 @@
           @for($i=0; $i<count($userBets); $i++)
           {!! $userBets[$i] !!}
 
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 25rem;">
               <div class="card-header">
-                Scommessa n. {!! $userBets[$i]['idS'] !!}
-                <h6>
-                  Puntata:
-                  <span class="badge badge-primary">
-                    {!! $userBets[$i]['coinS'] !!} exacoins
-                  </span>
-                </h6>
+
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"></li>
+                <li class="list-group-item">
+                  Biglietto n. {!! $userBets[$i]['idS'] !!}
+                  <h6>
+                    Puntata: {!! $userBets[$i]['coinS'] !!} exacoins
+                    @if ( $userBets[$i]['pagataS'] == 1)
+                      @if ($isWon[$i]>0)
+                        <span class="badge badge-success">VINCENTE</span>
+                      @elseif ($isWon[$i] == 0)
+                        <span class="badge badge-danger">PERDENTE</span>
+                      @endif
+                    @else
+                      <span class="badge badge-warning">APERTA</span>
+                    @endif
+
+                  </h6>
+                </li>
               </ul>
             </div>
           @endfor
