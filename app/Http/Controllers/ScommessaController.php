@@ -20,7 +20,6 @@ class ScommessaController extends Controller
         $won = ScommessaController::isWon($bet);
         array_push($isWon, $won);
       }
-      var_dump($isWon);
 
       return view('my-bet')
       ->with('userBets', $userBets)
@@ -164,7 +163,7 @@ class ScommessaController extends Controller
     $bets = Scommessa::where('idUtenteS', '=', $id)
     ->orderBy('dataS', 'desc')
     ->get();
-    var_dump(count($bets));
+
     return $bets;
   }
 
