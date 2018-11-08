@@ -45,18 +45,26 @@ EUO File
 SN File
 {
 	"0":{
-		"Descrizione": "Andreoli ammesso...",
-		"SI" : 1.56,
+		"descrizione": "Andreoli ammesso...",
+		"SI" : 1.5,
 		"NO" : 1.56
+	},
+	"1":{
+		"descrizione": "Bacchetti ammesso...",
+		"SI" : 1.56,
+		"NO" : 1.6
 	}
-
 }
 
 MT File
 {
-	"Descrizione": "Accompagnatore gita",
-	"0"{
-		"TITOLO": "Prof1",
+	"descrizione": "Accompagnatore gita",
+	"0" : {
+		"titolo": "Prof1",
 		"quota" : 1.56
+	},
+	"1" : {
+		"titolo": "Prof2",
+		"quota" : 1.6
 	}
 }
