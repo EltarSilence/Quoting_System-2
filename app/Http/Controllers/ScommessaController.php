@@ -14,16 +14,18 @@ class ScommessaController extends Controller
 
   public function index(){
       $userBets = ScommessaController::getAllBetsBy(1);
-      $isWon = array();
+      $vincite = array();
 
       foreach($userBets as $bet){
         $won = ScommessaController::isWon($bet);
-        array_push($isWon, $won);
+        $details = ScommessaController::getBetDetail($bet);
+        array_push($vincite, $won);
       }
 
       return view('my-bet')
       ->with('userBets', $userBets)
-      ->with('isWon', $isWon);
+      ->with('isWon', $vincite)
+      ->with('details', $details);
   }
 
   public static function getDisponibili(){
@@ -166,6 +168,19 @@ class ScommessaController extends Controller
     ->get();
 
     return $bets;
+  }
+
+  public static function getBetDetail($scommessa){
+    // SELECT * FROM multiplas
+    // LEFT JOIN risultatis ON multiplas.chiaveM = risultatis.chiaveR
+    // WHERE idScommessaM = 1
+    $mult = Multipla
+      ::leftJoin('risultatis', 'multiplas.chiaveM', '=', 'risultatis.chiaveR')
+      ->where('idScommessaM', '=', $scommessa->idS)
+      ->get();
+
+    return $mult;
+
   }
 
 }
