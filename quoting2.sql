@@ -7,7 +7,7 @@ CREATE TABLE `disponibilis` (
   `idD` int(10) UNSIGNED NOT NULL,
   `fileD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dalD` date NOT NULL,
-  `alD` date NOT NULL,
+  `alD` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `disponibilis` (`idD`, `fileD`, `dalD`, `alD`) VALUES
