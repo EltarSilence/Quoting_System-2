@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
 
-          @for($i=0; $i<count($userBets); $i++)
+          @for ($i = 0; $i < count($userBets); $i++)
           {!! $userBets[$i] !!}
 
             <div class="card" style="width: 25rem;">
