@@ -7,14 +7,19 @@
   <div class="card">
     <div class="card-body">
       <div class="mb-2 ml-0 mr-0 row">
-        <button class="btn btn-primary col-2">
+        <button class="btn btn-primary col-2 back">
           Back
         </button>
-        <div class="col-10 text-justify">
-          Titolo se c'è
-        </div>
+        <h5 class="col-10">
+          Diponibile fino al 20/10/2018
+        </h5>
       </div>
 
+
+
+      <h5>
+        Verifica di mate il giorno pippo all'ora tizio
+      </h5>
       <div class="card">
         <div class="btn card-header" data-toggle="collapse" data-target="#MT_1_Gallina">
           <h5 class="m-0">
@@ -98,6 +103,7 @@
           </div>
         </div>
       </div>
+
 
 
     </div>

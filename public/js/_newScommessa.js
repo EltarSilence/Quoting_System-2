@@ -40,13 +40,14 @@ function setVerifica(){
 		data : {'scommessa': "SN_1_1"},
 		//data : {'scommessa': $('#newScommessa').attr('ver')},
 		success : function(data){
-			html = '<div class="card"><div class="card-body"><div class="mb-2 ml-0 mr-0 row"><button class="btn btn-primary col-2">Back</button></div>';
+			html = '<div class="card"><div class="card-body"><div class="mb-2 ml-0 mr-0 row"><button class="btn btn-primary col-2 back">Back</button></div>';
 			html += getHtml(data);
 			html += '</div></div>';
 			$('#newScommessa').html(html);
-		},
-		error : function(e){
-			debugger;
+			$(".back").on('click', function(){
+				$('#newScommessa').attr('ver', "");
+				setEmpty();
+			});
 		}
 	});
 
