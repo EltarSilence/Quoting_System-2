@@ -26,6 +26,7 @@
       @endfor
     </div>
     <div class="col-md-8" id="detail">
+
       @for ($i = 0; $i < count($userBets); $i++)
         <div class="card" data-det="{!! $i !!}">
           <div class="card-header">
@@ -35,8 +36,10 @@
           </div>
           <div class="card-body">
             <?php
-              for ($k=0; $k<count($details); $k++){
-                $key = $details[$k]['chiaveM'];
+
+              for ($k=0; $k<count($details[$i]); $k++){
+
+                $key = $details[$i][$k]['chiaveM'];
                 $category = explode('_', $key)[0];
 
                 switch ($category) {
@@ -44,10 +47,10 @@
                     $materia = explode('_', $key)[1];
                     $data = explode('_', $key)[2];
                     $nome = explode('_', $key)[3];
-                    $tipo = $details[$k]['tipoM'];
-                    $value = $details[$k]['valueM'];
-                    $quota = $details[$k]['quotaM'];
-                    $esito = $details[$k]['risultatoR'];
+                    $tipo = $details[$i][$k]['tipoM'];
+                    $value = $details[$i][$k]['valueM'];
+                    $quota = $details[$i][$k]['quotaM'];
+                    $esito = $details[$i][$k]['risultatoR'];
 
                     echo "<i>$materia ($data)</i>
                     <h6>$nome: <b>$tipo $value</b> ($quota) ";

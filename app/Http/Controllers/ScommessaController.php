@@ -15,17 +15,19 @@ class ScommessaController extends Controller
   public function index(){
       $userBets = ScommessaController::getAllBetsBy(1);
       $vincite = array();
+      $dettagli = array();
 
       foreach($userBets as $bet){
         $won = ScommessaController::isWon($bet);
         $details = ScommessaController::getBetDetail($bet);
         array_push($vincite, $won);
+        array_push($dettagli, $details);
       }
 
       return view('my-bet')
       ->with('userBets', $userBets)
       ->with('isWon', $vincite)
-      ->with('details', $details);
+      ->with('details', $dettagli);
   }
 
   public static function getDisponibili(){
