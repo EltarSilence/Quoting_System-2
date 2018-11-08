@@ -92,11 +92,11 @@
 
                     if (!is_null($esito))
                       echo "</h6>
-                      <i>Terminato con esito $esito</i>
+                      <i>Verifica riconsegnata - $esito</i>
                       <br /><br />";
                     else
                       echo "</h6>
-                      <i>Aperto</i>
+                      <i>Scommessa aperta</i>
                       <br /><br />";
                     break;
                   default:
