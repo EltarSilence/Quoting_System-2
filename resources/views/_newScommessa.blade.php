@@ -6,7 +6,7 @@
   SN
   <div class="card">
     <div class="card-body">
-      <div class="mb-1 ml-0 mr-0 row">
+      <div class="mb-2 ml-0 mr-0 row">
         <button class="btn btn-primary col-2">
           Back
         </button>
@@ -18,19 +18,19 @@
               Andreoli ammesso agli esami?
           </h5>
         </div>
-        <div id="SN_2_1" class="collapse row">
-          <div class="card-body col-6 pt-0 pb-1" style="border-right: 1px solid rgba(0,0,0,.125);">
+        <div id="SN_2_1" class="collapse row pl-2 pr-2">
+          <div class="card-body col-6 pt-0 pb-1 border-right">
             <div class="intestazione">SI</div>
             <div class="click active">
               <div class="">1.56</div>
-              <input type="radio" name="'.$key.'" data-type="E" data-value="'.$k.'" data-quote="'.round($v, 2).'"/>
+              <input type="radio" name="SN_2_1" data-value="SI" data-quote="'.round($v, 2).'"/>
             </div>
           </div>
-          <div class="card-body col-6 pt-0 pb-1" style="border-left: 1px solid rgba(0,0,0,.125);">
+          <div class="card-body col-6 pt-0 pb-1 border-left">
             <div class="intestazione">NO</div>
             <div class="click">
               <div class="">1.56</div>
-              <input type="radio" name="'.$key.'" data-type="E" data-value="'.$k.'" data-quote="'.round($v, 2).'"/>
+              <input type="radio" name="'.$key.'" data-value="NO" data-quote="'.round($v, 2).'"/>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@
   MT
   <div class="card">
     <div class="card-body">
-      <div class="mb-1 ml-0 mr-0 row">
+      <div class="mb-2 ml-0 mr-0 row">
         <button class="btn btn-primary col-2">
           Back
         </button>
@@ -57,7 +57,7 @@
         </div>
         <div class="card-body col-6 p-0">
           <div class="click active">1.56</div>
-          <input type="radio" name="'.$key.'" data-type="E" data-value="'.$k.'" data-quote="'.round($v, 2).'"/>
+          <input type="radio" name="MT_1" data-value="Baga" data-quote="'.round($v, 2).'"/>
         </div>
       </div>
       <div class="card row ml-0 mr-0" style="flex-direction: row;">
@@ -66,7 +66,7 @@
         </div>
         <div class="card-body col-6 p-0">
           <div class="click">1.56</div>
-          <input type="radio" name="'.$key.'" data-type="E" data-value="'.$k.'" data-quote="'.round($v, 2).'"/>
+          <input type="radio" name="'.$key.'" data-value="'.$k.'" data-quote="'.round($v, 2).'"/>
         </div>
       </div>
 
@@ -77,7 +77,7 @@
   EUO
   <div class="card">
     <div class="card-body">
-      <div class="mb-1 ml-0 mr-0 row">
+      <div class="mb-2 ml-0 mr-0 row">
         <button class="btn btn-primary col-2">
           Back
         </button>
