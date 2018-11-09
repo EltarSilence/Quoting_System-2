@@ -44,6 +44,39 @@ function setVerifica(){
 			html += getHtml(data);
 			html += '</div></div>';
 			$('#newScommessa').html(html);
+
+$(".click").on("click", function(){
+		var n = $("input[type=radio]", this).attr("name");
+		var t = "";
+		if($("input[type=radio]", this).attr("data-type") != ""){
+			t = $("input[type=radio]", this).attr("data-type");
+		}
+		var v = $("input[type=radio]", this).attr("data-value");
+		var q = $("input[type=radio]", this).attr("data-quote");
+
+
+
+		//$(".click", $(".click input[name="+n+"]").parent().parent().parent()).removeClass("active");
+
+		$.each($(".click input[name="+n+"]"), function($k, $v){
+			$v.checked = false;
+			$($v).parent().removeClass('active');
+		});
+		$("input[type=radio]", this)[0].checked = true
+		$(this).addClass("active");
+		scommessa.addMultipla(n, t, v, q);
+
+
+		/*
+		sc.removeMultipla(n);
+
+		parent.top.$("#biglietto")[0].contentWindow.postMessage("cookieAreUpdated",'*');*/
+
+
+	});
+
+
+
 			$(".back").on('click', function(){
 				$('#newScommessa').attr('ver', "");
 				setEmpty();
