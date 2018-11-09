@@ -24,7 +24,7 @@ function setEmpty(){
 				let chiave = data[i]['fileD'];
 				html += '<button class="btn btn-primary verifica" id="'+chiave+'"> - Verifica di ... </button>';
 			}
-			//$('#newScommessa').html(html);
+			$('#newScommessa').html(html);
 			$(".verifica").on('click', function(){
 				$('#newScommessa').attr('ver', $(this).attr('id'));
 				setVerifica();
@@ -37,7 +37,7 @@ function setVerifica(){
 	$.ajax({
 		url : "/getScommessa",
 		type : "POST",
-		data : {'scommessa': "SN_1_1"},
+		data : {'scommessa': "EUO_1"},
 		//data : {'scommessa': $('#newScommessa').attr('ver')},
 		success : function(data){
 			html = '<div class="card"><div class="card-body"><div class="mb-2 ml-0 mr-0 row"><button class="btn btn-primary col-2 back">Back</button><h5 class="col-10 mb-0 pt-2 pb-2 pl-5">Diponibile fino al <b>' + data['al'] + '</b></h5></div>';
@@ -55,7 +55,22 @@ function setVerifica(){
 		html = '';
 		switch (data['type']) {
 			case "EUO":
-
+				html += '<h5>' + data['file']['descrizione'] + '</h5>';
+				for(let i = 0; i < Object.keys(data['file']['sub']).length; i++){
+					html += '<div class="card"><div class="btn card-header" data-toggle="collapse" data-target="#' + data['filename'] +'_' + Object.keys(data['file']['sub'])[i] + '"><h5 class="m-0">' + Object.keys(data['file']['sub'])[i] + '</h5></div><div id="' + data['filename'] + '_' + Object.keys(data['file']['sub'])[i] + '" class="collapse"><div class="card-body row pt-0 pb-1"><div class="col-sm-4"><div class="intestazione">VOTO ESATTO</div>';
+					for(let k = 0; k <  Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO']).length; k++){
+						html += '<div class="row click"><div class="col-6 font-weight-bold">' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'])[k] + '</div><div class="col-6">' +data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'])[k]] +'</div><input type="radio" name="' + data['filename'] + '_' + Object.keys(data['file']['sub'])[i] + '"data-type="ESATTO" data-value="' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'])[k] + '" data-quote="' + data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'])[k]] + '"/></div>';
+					}
+					html += '</div><div class="col-sm-4"><div class="intestazione">UNDER</div>';
+					for(let k = 0; k <  Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER']).length; k++){
+						html += '<div class="row click"><div class="col-6 font-weight-bold">' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'])[k] + '</div><div class="col-6">' +data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'])[k]] +'</div><input type="radio" name="' + data['filename'] + '_' + Object.keys(data['file']['sub'])[i] + '"data-type="UNDER" data-value="' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'])[k] + '" data-quote="' + data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'])[k]] + '"/></div>';
+					}
+					html += '</div><div class="col-sm-4"><div class="intestazione">OVER</div>';
+					for(let k = 0; k <  Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER']).length; k++){
+						html += '<div class="row click"><div class="col-6 font-weight-bold">' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'])[k] + '</div><div class="col-6">' +data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'])[k]] +'</div><input type="radio" name="' + data['filename'] + '_' + Object.keys(data['file']['sub'])[i] + '"data-type="OVER" data-value="' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'])[k] + '" data-quote="' + data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'])[k]] + '"/></div>';
+					}
+					html += '</div></div></div></div>';
+				}
 				break;
 			case "SN":
 				for(let i = 0; i < data['file'].length; i++){

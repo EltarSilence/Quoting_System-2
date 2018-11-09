@@ -29,15 +29,11 @@ EUO File
 {
 	"descrizione": "Verifica di ....",
 	"data" : "2018-10-31",
-	"" : {
+	"sub" : {
 		"Gallina":{
-			"Esatto":{
+			"ESATTO":{
 				"9" : 1.56
-				...
-				..
-			},
-			...
-			..
+			}
 		}
 	}
 }
