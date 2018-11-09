@@ -1,6 +1,6 @@
 Disponibili
 id		fileD				dalD					alD					DescrizioneD
-1			EUO_1				2018-10-24	2018-10-30		2018-10-30|Verifica di matematica tenuta da Scalvini
+1			EUO_1				2018-10-24	2018-10-30		30/10/2018|Verifica di matematica tenuta da Scalvini
 2			EUO_2.json	2018-10-24	2018-10-30
 3			SN_3.json		2018-10-24	2018-10-30		Desc1|Desc2....
 4			MT_4.json															Docente accompagnatore
@@ -27,13 +27,9 @@ Id		Chiave				Risultati
 
 EUO File
 {
-	"descrizione": "Verifica di ....",
-	"data" : "2018-10-31",
-	"sub" : {
-		"Gallina":{
-			"ESATTO":{
-				"9" : 1.56
-			}
+	"Gallina":{
+		"ESATTO":{
+			"9" : 1.56
 		}
 	}
 }
@@ -41,12 +37,10 @@ EUO File
 SN File
 {
 	"0":{
-		"descrizione": "Andreoli ammesso...",
 		"SI" : 1.5,
 		"NO" : 1.56
 	},
 	"1":{
-		"descrizione": "Bacchetti ammesso...",
 		"SI" : 1.56,
 		"NO" : 1.6
 	}
@@ -54,7 +48,6 @@ SN File
 
 MT File
 {
-	"descrizione": "Accompagnatore gita",
 	"0" : {
 		"titolo": "Prof1",
 		"quota" : 1.56

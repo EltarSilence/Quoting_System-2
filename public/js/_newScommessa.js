@@ -20,9 +20,25 @@ function setEmpty(){
 		type : "POST",
 		data : {},
 		success : function(data){
-			for(var i = 0; i < data.length; i++){
-				let chiave = data[i]['fileD'];
-				html += '<button class="btn btn-primary verifica" id="'+chiave+'"> - Verifica di ... </button>';
+			if(data.length == 0){
+				html = '<h5>Non ci sono scommesse disponibili</h5>';
+			}else{
+				for(var i = 0; i < data.length; i++){
+					let chiave = data[i]['fileD'];
+					html += '<button class="btn btn-primary verifica" id="'+chiave+'">' + chiave + ' || ';
+					switch (data[i]['type']) {
+						case 'EUO':
+							html += data[i]['descrizioneD'][1] + ' - ' + data[i]['descrizioneD'][0];
+							break;
+						case 'SN':
+							html += 'Serie di Si/No (' + data[i]['descrizioneD'][0] + ')';
+							break;
+						case 'MT':
+							html += data[i]['descrizioneD'][0];
+							break;
+					}
+					html += '</button>';
+				}
 			}
 			$('#newScommessa').html(html);
 			$(".verifica").on('click', function(){
@@ -76,30 +92,30 @@ function setVerifica(){
 		html = '';
 		switch (data['type']) {
 			case "EUO":
-				html += '<h5>' + data['file']['descrizione'] + '</h5>';
-				for(let i = 0; i < Object.keys(data['file']['sub']).length; i++){
-					html += '<div class="card"><div class="btn card-header" data-toggle="collapse" data-target="#' + data['filename'] +'_' + Object.keys(data['file']['sub'])[i] + '"><h5 class="m-0">' + Object.keys(data['file']['sub'])[i] + '</h5></div><div id="' + data['filename'] + '_' + Object.keys(data['file']['sub'])[i] + '" class="collapse"><div class="card-body row pt-0 pb-1"><div class="col-sm-4"><div class="intestazione">VOTO ESATTO</div>';
-					for(let k = 0; k <  Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO']).length; k++){
-						html += '<div class="row click"><div class="col-6 font-weight-bold">' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'])[k] + '</div><div class="col-6">' +data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'])[k]] +'</div><input type="radio" name="' + data['filename'] + '_' + Object.keys(data['file']['sub'])[i] + '"data-type="ESATTO" data-value="' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'])[k] + '" data-quote="' + data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['ESATTO'])[k]] + '"/></div>';
+				html += '<h5>' + data['descrizione'][0] + ' - ' + data['descrizione'][1] + '</h5>';
+				for(let i = 0; i < Object.keys(data['file']).length; i++){
+					html += '<div class="card"><div class="btn card-header" data-toggle="collapse" data-target="#' + data['filename'] +'_' + Object.keys(data['file'])[i] + '"><h5 class="m-0">' + Object.keys(data['file'])[i] + '</h5></div><div id="' + data['filename'] + '_' + Object.keys(data['file'])[i] + '" class="collapse"><div class="card-body row pt-0 pb-1"><div class="col-sm-4"><div class="intestazione">VOTO ESATTO</div>';
+					for(let k = 0; k <  Object.keys(data['file'][Object.keys(data['file'])[i]]['ESATTO']).length; k++){
+						html += '<div class="row click"><div class="col-6 font-weight-bold">' + Object.keys(data['file'][Object.keys(data['file'])[i]]['ESATTO'])[k] + '</div><div class="col-6">' +data['file'][Object.keys(data['file'])[i]]['ESATTO'][Object.keys(data['file'][Object.keys(data['file'])[i]]['ESATTO'])[k]] +'</div><input type="radio" name="' + data['filename'] + '_' + Object.keys(data['file'])[i] + '"data-type="ESATTO" data-value="' + Object.keys(data['file'][Object.keys(data['file'])[i]]['ESATTO'])[k] + '" data-quote="' + data['file'][Object.keys(data['file'])[i]]['ESATTO'][Object.keys(data['file'][Object.keys(data['file'])[i]]['ESATTO'])[k]] + '"/></div>';
 					}
 					html += '</div><div class="col-sm-4"><div class="intestazione">UNDER</div>';
-					for(let k = 0; k <  Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER']).length; k++){
-						html += '<div class="row click"><div class="col-6 font-weight-bold">' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'])[k] + '</div><div class="col-6">' +data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'])[k]] +'</div><input type="radio" name="' + data['filename'] + '_' + Object.keys(data['file']['sub'])[i] + '"data-type="UNDER" data-value="' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'])[k] + '" data-quote="' + data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['UNDER'])[k]] + '"/></div>';
+					for(let k = 0; k <  Object.keys(data['file'][Object.keys(data['file'])[i]]['UNDER']).length; k++){
+						html += '<div class="row click"><div class="col-6 font-weight-bold">' + Object.keys(data['file'][Object.keys(data['file'])[i]]['UNDER'])[k] + '</div><div class="col-6">' +data['file'][Object.keys(data['file'])[i]]['UNDER'][Object.keys(data['file'][Object.keys(data['file'])[i]]['UNDER'])[k]] +'</div><input type="radio" name="' + data['filename'] + '_' + Object.keys(data['file'])[i] + '"data-type="UNDER" data-value="' + Object.keys(data['file'][Object.keys(data['file'])[i]]['UNDER'])[k] + '" data-quote="' + data['file'][Object.keys(data['file'])[i]]['UNDER'][Object.keys(data['file'][Object.keys(data['file'])[i]]['UNDER'])[k]] + '"/></div>';
 					}
 					html += '</div><div class="col-sm-4"><div class="intestazione">OVER</div>';
-					for(let k = 0; k <  Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER']).length; k++){
-						html += '<div class="row click"><div class="col-6 font-weight-bold">' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'])[k] + '</div><div class="col-6">' +data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'])[k]] +'</div><input type="radio" name="' + data['filename'] + '_' + Object.keys(data['file']['sub'])[i] + '"data-type="OVER" data-value="' + Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'])[k] + '" data-quote="' + data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'][Object.keys(data['file']['sub'][Object.keys(data['file']['sub'])[i]]['OVER'])[k]] + '"/></div>';
+					for(let k = 0; k <  Object.keys(data['file'][Object.keys(data['file'])[i]]['OVER']).length; k++){
+						html += '<div class="row click"><div class="col-6 font-weight-bold">' + Object.keys(data['file'][Object.keys(data['file'])[i]]['OVER'])[k] + '</div><div class="col-6">' +data['file'][Object.keys(data['file'])[i]]['OVER'][Object.keys(data['file'][Object.keys(data['file'])[i]]['OVER'])[k]] +'</div><input type="radio" name="' + data['filename'] + '_' + Object.keys(data['file'])[i] + '"data-type="OVER" data-value="' + Object.keys(data['file'][Object.keys(data['file'])[i]]['OVER'])[k] + '" data-quote="' + data['file'][Object.keys(data['file'])[i]]['OVER'][Object.keys(data['file'][Object.keys(data['file'])[i]]['OVER'])[k]] + '"/></div>';
 					}
 					html += '</div></div></div></div>';
 				}
 				break;
 			case "SN":
 				for(let i = 0; i < data['file'].length; i++){
-					html += '<div class="card mt-1"><div class="btn card-header" data-toggle="collapse" data-target="#' + data['filename'] + '_' + i + '"><h5 class="m-0">' + data['file'][i]['descrizione'] + '</h5></div><div id="' + data['filename'] + '_' + i + '" class="collapse row pl-2 pr-2"><div class="card-body col-6 pt-0 pb-1 border-right"><div class="intestazione">SI</div><div class="click"><div>' + data['file'][i]['SI'] + '</div><input type="radio" name="' + data['filename'] + '_' + i + '" data-value="SI" data-quote="' + data['file'][i]['SI'] + '"/></div></div><div class="card-body col-6 pt-0 pb-1 border-left"><div class="intestazione">NO</div><div class="click"><div>' + data['file'][i]['NO'] + '</div><input type="radio" name="' + data['filename'] + '_' + i + '" data-value="NO" data-quote="' + data['file'][i]['NO'] + '"/></div></div></div></div>';
+					html += '<div class="card mt-1"><div class="btn card-header" data-toggle="collapse" data-target="#' + data['filename'] + '_' + i + '"><h5 class="m-0">' + data['descrizione'][i] + '</h5></div><div id="' + data['filename'] + '_' + i + '" class="collapse row pl-2 pr-2"><div class="card-body col-6 pt-0 pb-1 border-right"><div class="intestazione">SI</div><div class="click"><div>' + data['file'][i]['SI'] + '</div><input type="radio" name="' + data['filename'] + '_' + i + '" data-value="SI" data-quote="' + data['file'][i]['SI'] + '"/></div></div><div class="card-body col-6 pt-0 pb-1 border-left"><div class="intestazione">NO</div><div class="click"><div>' + data['file'][i]['NO'] + '</div><input type="radio" name="' + data['filename'] + '_' + i + '" data-value="NO" data-quote="' + data['file'][i]['NO'] + '"/></div></div></div></div>';
 				}
 				break;
 			case "MT":
-				html += '<div class="card"><div class="btn card-header"><h5 class="m-0">' + data['file']['descrizione'] + '</h5></div>';
+				html += '<div class="card"><div class="btn card-header"><h5 class="m-0">' + data['descrizione'][0] + '</h5></div>';
 				for(let i = 0; i < Object.keys(data['file']).length - 1; i++){
 					html += '<div class="card-body row ml-0 mr-0 border pt-1 pb-1"><div class="intestazione col-6">' + data['file'][i]['titolo'] + '</div><div class="click col-6"><div>' + data['file'][i]['quota'] + '</div><input type="radio" name="' + data['filename'] + '" data-value="' + i + '" data-quote="' + data['file'][i]['quota'] + '"/></div></div>';
 				}
