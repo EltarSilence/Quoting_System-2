@@ -38,21 +38,23 @@
             <?php
 
               for ($k=0; $k<count($details[$i]); $k++){
+                $txt = '{ "0":{ "descrizione": "Andreoli ammesso...", "SI" : 1.5, "NO" : 1.56 }, "1":{ "descrizione": "Bacchetti ammesso...", "SI" : 1.56, "NO" : 1.6 } }';
+                $txt = '{ "descrizione": "Accompagnatore gita", "0" : { "titolo": "Prof1", "quota" : 1.56 }, "1" : { "titolo": "Prof2", "quota" : 1.6 } }';
+                $json = json_decode($txt, true);
 
                 $key = $details[$i][$k]['chiaveM'];
                 $category = explode('_', $key)[0];
 
                 switch ($category) {
                   case 'EUO':
-                    $materia = explode('_', $key)[1];
-                    $data = explode('_', $key)[2];
-                    $nome = explode('_', $key)[3];
+                    $id = explode('_', $key)[1];
+                    $nome = explode('_', $key)[2];
                     $tipo = $details[$i][$k]['tipoM'];
                     $value = $details[$i][$k]['valueM'];
                     $quota = $details[$i][$k]['quotaM'];
                     $esito = $details[$i][$k]['risultatoR'];
 
-                    echo "<i>$materia ($data)</i>
+                    echo "<i>$id</i>
                     <h6>$nome: <b>$tipo $value</b> ($quota) ";
                     if (!is_null($esito)){
                       switch ($tipo) {
@@ -99,7 +101,58 @@
                       <i>Scommessa aperta</i>
                       <br /><br />";
                     break;
-                  default:
+                  case 'SN':
+                    $id = explode('_', $key)[1];
+                    $subj = explode('_', $key)[2];
+                    $value = $details[$i][$k]['valueM'];
+                    $quota = $details[$i][$k]['quotaM'];
+                    $desc = $json[$id]['descrizione'];
+                    $esito = $details[$i][$k]['risultatoR'];
+
+                    echo "<h6>$desc SI/NO:<b> $value</b> ($quota) ";
+                    if (!is_null($esito)){
+                      if ($value == $esito){
+                        echo '<span class="dot-won"></span>';
+                      }
+                      else {
+                        echo '<span class="dot-lost"></span>';
+                      }
+                    }
+                    else {
+                      echo '<span class="dot-open"></span>';
+                    }
+                    if (!is_null($esito))
+                      echo "</h6>
+                      <i>Evento terminato - $esito</i>
+                      <br /><br />";
+                    else
+                      echo "</h6>
+                      <i>Scommessa aperta</i>
+                      <br /><br />";
+                    break;
+                  case 'MT':
+                    $id = explode('_', $key)[1];
+                    $desc = $json['descrizione'];
+                    $titolo = $json[$id]['titolo'];
+                    $quota = $details[$i][$k]['quotaM'];
+                    $esito = $details[$i][$k]['risultatoR'];
+
+                    echo "<i>$desc</i>
+                    <h6>$titolo: <b></b> ($quota) ";
+                    if (!is_null($esito)){
+                      if ($esito == $id){
+                        echo '<span class="dot-won"></span>';
+                      }
+                      else {
+                        echo '<span class="dot-lost"></span>';
+                      }
+                    }
+                    else {
+                      echo "</h6>
+                      <i>Scommessa aperta</i>
+                      <br /><br />";
+                    }
+
                     break;
                 }
 

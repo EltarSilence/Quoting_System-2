@@ -177,11 +177,18 @@ class ScommessaController extends Controller
     // SELECT * FROM multiplas
     // LEFT JOIN risultatis ON multiplas.chiaveM = risultatis.chiaveR
     // WHERE idScommessaM = 1
+
+    //SELECT * FROM multiplas
+    //LEFT JOIN risultatis
+    //ON multiplas.chiaveM = risultatis.chiaveR
+    //inner join disponibilis ON multiplas.chiaveM
+    //LIKE "%" WHERE idScommessaM = 1
     $mult = Multipla
       ::leftJoin('risultatis', 'multiplas.chiaveM', '=', 'risultatis.chiaveR')
+      ->join('disponibilis', 'multiplas.chiaveM', '=', 'disponibilis.fileD')
       ->where('idScommessaM', '=', $scommessa->idS)
       ->get();
-
+    var_dump($mult);
     return $mult;
 
   }
