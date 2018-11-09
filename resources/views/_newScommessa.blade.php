@@ -1,5 +1,5 @@
 @guest
-<span>ACCEDI X GICARE</span>
+<span>ACCEDI X GIOCARE</span>
 @else
 <div class="col-md-12" id="newScommessa" ver="">
 

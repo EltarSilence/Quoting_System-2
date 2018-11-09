@@ -7,11 +7,12 @@ CREATE TABLE `disponibilis` (
   `idD` int(10) UNSIGNED NOT NULL,
   `fileD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dalD` date NOT NULL,
-  `alD` date NOT NULL
+  `alD` date NOT NULL,
+  `descrizioneD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `disponibilis` (`idD`, `fileD`, `dalD`, `alD`) VALUES
-(1, 'MT_1.txt', '2018-11-06', '2018-11-15');
+INSERT INTO `disponibilis` (`idD`, `fileD`, `dalD`, `alD`, `descrizioneD`) VALUES
+(1, 'MT_1', '2018-11-06', '2018-11-15', 'Docente accompagnatore');
 
 
 CREATE TABLE `migrations` (
