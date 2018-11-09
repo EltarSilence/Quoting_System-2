@@ -40,7 +40,7 @@ function setVerifica(){
 		data : {'scommessa': "SN_1_1"},
 		//data : {'scommessa': $('#newScommessa').attr('ver')},
 		success : function(data){
-			html = '<div class="card"><div class="card-body"><div class="mb-2 ml-0 mr-0 row"><button class="btn btn-primary col-2 back">Back</button></div>';
+			html = '<div class="card"><div class="card-body"><div class="mb-2 ml-0 mr-0 row"><button class="btn btn-primary col-2 back">Back</button><h5 class="col-10 mb-0 pt-2 pb-2 pl-5">Diponibile fino al <b>' + data['al'] + '</b></h5></div>';
 			html += getHtml(data);
 			html += '</div></div>';
 			$('#newScommessa').html(html);

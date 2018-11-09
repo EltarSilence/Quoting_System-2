@@ -10,8 +10,8 @@
         <button class="btn btn-primary col-2 back">
           Back
         </button>
-        <h5 class="col-10">
-          Diponibile fino al 20/10/2018
+        <h5 class="col-10 mb-0 pt-2 pb-2 pl-5">
+          Diponibile fino al <b>20/10/2018</b>
         </h5>
       </div>
 

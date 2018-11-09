@@ -45,6 +45,7 @@ class ScommessaController extends Controller
 
     $multiple = array();
     $multiple['type'] = substr($key, 0, stripos($key, "_"));
+    $multiple['al'] = "2018-10-31";
     $multiple['filename'] = $key;
     $multiple['file'] = json_decode('{"0":{"descrizione": "Andreoli ammesso...","SI" : 1.5,"NO" : 1.56},"1":{"descrizione": "Bacchetti ammesso...","SI" : 1.56,"NO" : 1.6}}', true);
 
