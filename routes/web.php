@@ -15,7 +15,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/my-bet', 'ScommessaController@index')->name('my-bet');
+Route::get('/scommetti', 'ScommessaController@scommetti')->name('scommetti');
+Route::get('/my-bet', 'ScommessaController@myBet')->name('my-bet');
 
 Route::post('/getDisponibili', 'ScommessaController@getDisponibili');
 Route::post('/getScommessa', 'ScommessaController@getScommessa');

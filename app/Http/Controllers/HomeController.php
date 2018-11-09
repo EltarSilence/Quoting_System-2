@@ -3,27 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\ScommessaController;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware('auth');
+    public function __construct(){
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $verifiche = ScommessaController::getDisponibili();
+    public function index(){
         $weekWin = ScommessaController::getWeekWin();
         $mouthWin = ScommessaController::getMouthWin();
         return view('home')->with('weekWin', $weekWin)->with('mouthWin', $mouthWin);

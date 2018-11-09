@@ -12,7 +12,7 @@ use App\Disponibili;
 class ScommessaController extends Controller
 {
 
-  public function index(){
+  public function myBet(){
       $userBets = ScommessaController::getAllBetsBy(1);
       $vincite = array();
       $dettagli = array();
@@ -25,9 +25,14 @@ class ScommessaController extends Controller
       }
 
       return view('my-bet')
-      ->with('userBets', $userBets)
-      ->with('isWon', $vincite)
-      ->with('details', $dettagli);
+        ->with('userBets', $userBets)
+        ->with('isWon', $vincite)
+        ->with('details', $dettagli);
+  }
+
+  public function scommetti(){
+    $verifiche = ScommessaController::getDisponibili();
+    return view('scommetti');
   }
 
   public static function getDisponibili(){
