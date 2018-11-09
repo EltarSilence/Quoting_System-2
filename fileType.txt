@@ -1,9 +1,9 @@
 Disponibili
-Id		File				Dal					Al					Descrizione
-1			EUO_1.json	2018-10-24	2018-10-30	...
-2			EUO_2.json	2018-10-24	2018-10-30	....
-3			SN_3.json		2018-10-24	2018-10-30	.....
-4			MT_4.json														Accompa
+id		fileD				dalD					alD					DescrizioneD
+1			EUO_1				2018-10-24	2018-10-30		2018-10-30|Verifica di matematica tenuta da Scalvini
+2			EUO_2.json	2018-10-24	2018-10-30
+3			SN_3.json		2018-10-24	2018-10-30		Desc1|Desc2....
+4			MT_4.json															Docente accompagnatore
 
 
 Scommessa
@@ -29,15 +29,11 @@ EUO File
 {
 	"descrizione": "Verifica di ....",
 	"data" : "2018-10-31",
-	"" : {
+	"sub" : {
 		"Gallina":{
-			"Esatto":{
+			"ESATTO":{
 				"9" : 1.56
-				...
-				..
-			},
-			...
-			..
+			}
 		}
 	}
 }

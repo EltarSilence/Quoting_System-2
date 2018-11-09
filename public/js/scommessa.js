@@ -3,28 +3,37 @@ class Scommessa{
 		this.list = new Array();
 	}
 	addMultipla(chiave, type, value, quota){
-		if(chiave != "" && type != "" && value != "" && quota != "" && quota > 0){
-			var index = -1;
-			for(let i = 0; i < this.size(); i++){
-				if(this.list[i]['chiave'] == chiave){
-					index = i;
-				}
+		if(chiave != "" && value != "" && quota != "" && quota > 0){
+			if(!chiave.includes('EUO')){
+				this.add(chiave, type, value, quota)
+			}else if(type != ""){
+				this.add(chiave, type, value, quota)
+			}else{
+				//errore
 			}
-			if(index >= 0){
-				for(let i = index; i < this.size(); i++){
-					this.list[i] = this.list[i + 1]
-				}
-				this.list.pop();
-			}
-			var a = new Array();
-			a['chiave'] = chiave;
-			a['type'] = type;
-			a['value'] = value;
-			a['quota'] = quota;
-			this.list.push(a);
 		}else{
 			//dai un errore
 		}
+	}
+	add(chiave, type, value, quota){
+		var index = -1;
+		for(let i = 0; i < this.size(); i++){
+			if(this.list[i]['chiave'] == chiave){
+				index = i;
+			}
+		}
+		if(index >= 0){
+			for(let i = index; i < this.size(); i++){
+				this.list[i] = this.list[i + 1]
+			}
+			this.list.pop();
+		}
+		var a = new Array();
+		a['chiave'] = chiave;
+		a['type'] = type;
+		a['value'] = value;
+		a['quota'] = quota;
+		this.list.push(a);
 	}
 	removeMultipla(chiave){
 		if(chiave != ""){
@@ -46,6 +55,7 @@ class Scommessa{
 			//dai un errore
 		}
 	}
+/*
 	scommetti(coin){
 		if(this.size() > 0 && coin != ""){
 			var formdata = new FormData();
@@ -78,10 +88,11 @@ class Scommessa{
 		}else{
 			//dai un errore
 		}
-	}
+	}*/
 	size(){
 		return this.list.length;
 	}
+	/*
 	getMultipla(i){
 		return this.list[i];
 	}
@@ -91,6 +102,6 @@ class Scommessa{
 			f = f * parseFloat(this.list[i]['quota']);
 		}
 		return f.toFixed(2);
-	}
+	}*/
 
 }

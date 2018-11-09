@@ -18,6 +18,9 @@ class CreateDisponibilisTable extends Migration
             $table->string('fileD', 191);
             $table->date('dalD');
             $table->date('alD');
+            $table->string('descrizioneD', 191)
+
+
         });
     }
 
