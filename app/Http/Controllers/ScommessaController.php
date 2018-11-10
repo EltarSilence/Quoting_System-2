@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use App\Multipla;
 use App\Scommessa;
@@ -208,14 +209,14 @@ class ScommessaController extends Controller
     // LEFT JOIN risultatis ON multiplas.chiaveM = risultatis.chiaveR
     // WHERE idScommessaM = 1
 
-    //SELECT * FROM multiplas
-    //LEFT JOIN risultatis
-    //ON multiplas.chiaveM = risultatis.chiaveR
-    //inner join disponibilis ON multiplas.chiaveM
-    //LIKE "%" WHERE idScommessaM = 1
+    /*SELECT * FROM multiplas
+    LEFT JOIN risultatis ON multiplas.chiaveM = risultatis.chiaveR
+    inner join disponibilis ON multiplas.chiaveM
+    LIKE CONCAT(disponibilis.fileD, "%") WHERE idScommessaM = 1*/
+
     $mult = Multipla
       ::leftJoin('risultatis', 'multiplas.chiaveM', '=', 'risultatis.chiaveR')
-      ->join('disponibilis', 'multiplas.chiaveM', '=', 'disponibilis.fileD')
+      ->join('disponibilis', 'multiplas.chiaveM', 'LIKE', DB::raw('CONCAT(disponibilis.fileD, "%")'))
       ->where('idScommessaM', '=', $scommessa->idS)
       ->get();
     var_dump($mult);
