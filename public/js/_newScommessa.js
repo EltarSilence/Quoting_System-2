@@ -10,6 +10,7 @@ $(document).ready(function (){
 		}else{
 			setVerifica();
 		}
+		scommessa.setTheActive();
 	}
 });
 

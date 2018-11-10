@@ -5,9 +5,9 @@ class Scommessa{
 	addMultipla(chiave, type, value, quota){
 		if(chiave != "" && value != "" && quota != "" && quota > 0){
 			if(!chiave.includes('EUO')){
-				this.add(chiave, type, value, quota)
+				this.add(chiave, type, value, quota);
 			}else if(type != ""){
-				this.add(chiave, type, value, quota)
+				this.add(chiave, type, value, quota);
 			}else{
 				//errore
 			}
@@ -34,6 +34,7 @@ class Scommessa{
 		a['value'] = value;
 		a['quota'] = quota;
 		this.list.push(a);
+		this.setTheActive();
 	}
 	removeMultipla(chiave){
 		if(chiave != ""){
@@ -48,6 +49,7 @@ class Scommessa{
 					this.list[i] = this.list[i + 1]
 				}
 				this.list.pop();
+				this.setTheActive();
 			}else{
 				//non esiste non ho nulla da rimuovere
 			}
@@ -55,8 +57,7 @@ class Scommessa{
 			//dai un errore
 		}
 	}
-/*
-	scommetti(coin){
+	scommetti(coin){/*
 		if(this.size() > 0 && coin != ""){
 			var formdata = new FormData();
 			formdata.append("coin", coin);
@@ -87,12 +88,11 @@ class Scommessa{
 			});
 		}else{
 			//dai un errore
-		}
-	}*/
+		}*/
+	}
 	size(){
 		return this.list.length;
 	}
-	/*
 	getMultipla(i){
 		return this.list[i];
 	}
@@ -102,6 +102,20 @@ class Scommessa{
 			f = f * parseFloat(this.list[i]['quota']);
 		}
 		return f.toFixed(2);
-	}*/
+	}
+	setTheActive(){
+		$.each($('.click input[type=radio]', $('#newScommessa')), function(k, v){
+			v.checked = false;
+			$(v).parent().removeClass('active');
+		});
+		for(var i = 0; i < this.size(); i++){
+			var m = this.getMultipla(i);
+			m = $('.click input[type=radio][name="' + m['chiave'] + '"][data-type="' + m['type'] + '"][data-value="' + m['value'] + '"]', $('#newScommessa'))[0];
+			$(m).parent().addClass('active');
+			$(m).checked = true;
+		}
 
+
+
+	}
 }
