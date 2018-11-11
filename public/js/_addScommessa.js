@@ -1,4 +1,24 @@
 $(document).ready(function() {
+
+  $("#importo").on("change", function(){
+    if($(this).val() < 100){
+      $(this).val(100);
+    }
+    setPossibileVincita();
+  });
+  $("#aum").on("click", function(){
+    if ($("input#importo").val() < 10000)
+      $("input#importo").val(parseInt($("input#importo").val())+100);
+    setPossibileVincita();
+  });
+  $("#decr").on("click", function(){
+    if ($("input#importo").val() >= 200)
+      $("input#importo").val($("input#importo").val()-100);
+    setPossibileVincita();
+  });
+
+
+
 /*
 	var sc = new Scommessa();
 	update();
@@ -15,17 +35,7 @@ $(document).ready(function() {
 		parent.top.$("#scom")[0].contentWindow.postMessage("cookieAreUpdated",'*');
 	});
 
-	$("#aum").on("click", function(){
-		if ($("input#importo").val() < 10000)
-			$("input#importo").val(parseInt($("input#importo").val())+100);
-		$("#vincita").html(Math.round(sc.getQuotaFinale()*parseInt($("#importo").val())*100)/100);
-	});
 
-	$("#decr").on("click", function(){
-		if ($("input#importo").val() >= 200)
-			$("input#importo").val($("input#importo").val()-100);
-		$("#vincita").html(Math.round(sc.getQuotaFinale()*parseInt($("#importo").val())*100)/100);
-	});
 
 	$("#scommetti").on("click", function(){
 		sc.scommetti($("input#importo").val());
@@ -33,15 +43,7 @@ $(document).ready(function() {
 
 
 
-  $("#importo").on("change", function(){
 
-    if($(this).val() < 100){
-
-      $(this).val(100);
-
-    }
-
-  });
 
 
 	function update(){
@@ -73,3 +75,6 @@ $(document).ready(function() {
 
 */
 });
+function setPossibileVincita(){
+  $("#vincita").html(Math.round(scommessa.getQuotaFinale()*parseInt($("#importo").val())*100)/100 + '<i class="icon icon-exacoin"></i>');
+}
