@@ -54,7 +54,7 @@ function setVerifica(){
 	$.ajax({
 		url : "/getScommessa",
 		type : "POST",
-		data : {'scommessa': "EUO_1"},
+		data : {'scommessa': "SN_1"},
 		//data : {'scommessa': $('#newScommessa').attr('ver')},
 		success : function(data){
 			html = '<div class="card"><div class="card-body"><div class="mb-2 ml-0 mr-0 row"><button class="btn btn-primary col-2 back">Back</button><h5 class="col-10 mb-0 pt-2 pb-2 pl-5">Diponibile fino al <b>' + data['al'] + '</b></h5></div>';
@@ -70,7 +70,10 @@ function setVerifica(){
 				}
 				var v = $("input[type=radio]", this).attr("data-value");
 				var q = $("input[type=radio]", this).attr("data-quote");
-
+				var d = $('#dsc').html();
+				if(n.includes('SN')){
+						d = $('#dsc', $(this).parent().parent().parent()).html()
+				}
 
 				$.each($(".click input[name="+n+"]"), function($k, $v){
 					$v.checked = false;
@@ -78,8 +81,7 @@ function setVerifica(){
 				});
 				$("input[type=radio]", this)[0].checked = true
 				$(this).addClass("active");
-				scommessa.addMultipla(n, t, v, q);
-
+				scommessa.addMultipla(n, t, v, q, d);
 			});
 
 			$(".back").on('click', function(){
@@ -93,7 +95,7 @@ function setVerifica(){
 		html = '';
 		switch (data['type']) {
 			case "EUO":
-				html += '<h5>' + data['descrizione'][0] + ' - ' + data['descrizione'][1] + '</h5>';
+				html += '<h5 id="dsc">' + data['descrizione'][0] + ' - ' + data['descrizione'][1] + '</h5>';
 				for(let i = 0; i < Object.keys(data['file']).length; i++){
 					html += '<div class="card"><div class="btn card-header" data-toggle="collapse" data-target="#' + data['filename'] +'_' + Object.keys(data['file'])[i] + '"><h5 class="m-0">' + Object.keys(data['file'])[i] + '</h5></div><div id="' + data['filename'] + '_' + Object.keys(data['file'])[i] + '" class="collapse"><div class="card-body row pt-0 pb-1"><div class="col-sm-4"><div class="intestazione">VOTO ESATTO</div>';
 					for(let k = 0; k <  Object.keys(data['file'][Object.keys(data['file'])[i]]['ESATTO']).length; k++){
@@ -112,11 +114,11 @@ function setVerifica(){
 				break;
 			case "SN":
 				for(let i = 0; i < data['file'].length; i++){
-					html += '<div class="card mt-1"><div class="btn card-header" data-toggle="collapse" data-target="#' + data['filename'] + '_' + i + '"><h5 class="m-0">' + data['descrizione'][i] + '</h5></div><div id="' + data['filename'] + '_' + i + '" class="collapse row pl-2 pr-2"><div class="card-body col-6 pt-0 pb-1 border-right"><div class="intestazione">SI</div><div class="click"><div>' + data['file'][i]['SI'] + '</div><input type="radio" name="' + data['filename'] + '_' + i + '" data-value="SI" data-quote="' + data['file'][i]['SI'] + '"/></div></div><div class="card-body col-6 pt-0 pb-1 border-left"><div class="intestazione">NO</div><div class="click"><div>' + data['file'][i]['NO'] + '</div><input type="radio" name="' + data['filename'] + '_' + i + '" data-value="NO" data-quote="' + data['file'][i]['NO'] + '"/></div></div></div></div>';
+					html += '<div class="card mt-1"><div class="btn card-header" data-toggle="collapse" data-target="#' + data['filename'] + '_' + i + '"><h5 class="m-0" id="dsc">' + data['descrizione'][i] + '</h5></div><div id="' + data['filename'] + '_' + i + '" class="collapse row pl-2 pr-2"><div class="card-body col-6 pt-0 pb-1 border-right"><div class="intestazione">SI</div><div class="click"><div>' + data['file'][i]['SI'] + '</div><input type="radio" name="' + data['filename'] + '_' + i + '" data-value="SI" data-quote="' + data['file'][i]['SI'] + '"/></div></div><div class="card-body col-6 pt-0 pb-1 border-left"><div class="intestazione">NO</div><div class="click"><div>' + data['file'][i]['NO'] + '</div><input type="radio" name="' + data['filename'] + '_' + i + '" data-value="NO" data-quote="' + data['file'][i]['NO'] + '"/></div></div></div></div>';
 				}
 				break;
 			case "MT":
-				html += '<div class="card"><div class="btn card-header"><h5 class="m-0">' + data['descrizione'][0] + '</h5></div>';
+				html += '<div class="card"><div class="btn card-header"><h5 class="m-0" id="dsc">' + data['descrizione'][0] + '</h5></div>';
 				for(let i = 0; i < Object.keys(data['file']).length - 1; i++){
 					html += '<div class="card-body row ml-0 mr-0 border pt-1 pb-1"><div class="intestazione col-6">' + data['file'][i]['titolo'] + '</div><div class="click col-6"><div>' + data['file'][i]['quota'] + '</div><input type="radio" name="' + data['filename'] + '" data-value="' + i + '" data-quote="' + data['file'][i]['quota'] + '"/></div></div>';
 				}

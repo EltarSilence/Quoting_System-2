@@ -6,8 +6,8 @@
       <div class="card-header">
         Multiple:
       </div>
-
       <ul class="p-0 list-group-flush mb-0" id="multipla">
+
 
           <li class="list-group-item">
             Verifica di matematica
@@ -24,11 +24,11 @@
             </div>
           </li>
 
-      </ul>
 
+      </ul>
     </div>
     <center>
-      <h5 class="mb-1">
+      <h5 class="mb-1" style="height: 40px;">
         <div class="row ml-0 mr-0">
           <div class="col-8 text-left">
             Quota finale:
@@ -38,8 +38,7 @@
           </div>
         </div>
       </h5>
-
-      <h5 class="mb-1">
+      <h5 class="mb-1" style="height: 40px;">
         <div class="row ml-0 mr-0">
           <div class="col-5 text-left">
             Puntata:
@@ -53,11 +52,9 @@
               <i class="icon-up"></i>
             </button>
           </div>
-
         </div>
       </h5>
-
-      <h5 class="mb-1">
+      <h5 class="mb-1" style="height: 40px;">
         <div class="row ml-0 mr-0">
           <div class="col-8 text-left">
             Possibile Vincita:
@@ -67,7 +64,6 @@
           </div>
         </div>
       </h5>
-
       <button type="submit" id="scommetti" class="btn btn-primary mt-2">
         Scommetti
       </button>

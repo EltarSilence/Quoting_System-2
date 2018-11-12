@@ -2,20 +2,22 @@ class Scommessa{
 	constructor(){
 		this.list = new Array();
 	}
-	addMultipla(chiave, type, value, quota){
+	addMultipla(chiave, type, value, quota, descrizione){
 		if(chiave != "" && value != "" && quota != "" && quota > 0){
-			if(!chiave.includes('EUO')){
-				this.add(chiave, type, value, quota);
-			}else if(type != ""){
-				this.add(chiave, type, value, quota);
+			if(chiave.includes('EUO')){
+				this.add(chiave, type, value, quota, descrizione);
+			}else if(chiave.includes('SN')){
+				this.add(chiave, "", value, quota, descrizione);
+			}else if(chiave.includes('MT')){
+				this.add(chiave, "", value, quota, descrizione);
 			}else{
-				//errore
+					//dai l'errore
 			}
 		}else{
 			//dai un errore
 		}
 	}
-	add(chiave, type, value, quota){
+	add(chiave, type, value, quota, descrizione){
 		var index = -1;
 		for(let i = 0; i < this.size(); i++){
 			if(this.list[i]['chiave'] == chiave){
@@ -33,6 +35,7 @@ class Scommessa{
 		a['type'] = type;
 		a['value'] = value;
 		a['quota'] = quota;
+		a['descrizione'] = descrizione;
 		this.list.push(a);
 		this.setTheActive();
 	}
@@ -104,17 +107,21 @@ class Scommessa{
 		return f.toFixed(2);
 	}
 	setTheActive(){
+		/*
 		$.each($('.click input[type=radio]', $('#newScommessa')), function(k, v){
 			v.checked = false;
 			$(v).parent().removeClass('active');
 		});
 		for(var i = 0; i < this.size(); i++){
 			var m = this.getMultipla(i);
+debugger;
+/*
 			m = $('.click input[type=radio][name="' + m['chiave'] + '"][data-type="' + m['type'] + '"][data-value="' + m['value'] + '"]', $('#newScommessa'))[0];
 			$(m).parent().addClass('active');
 			$(m).checked = true;
+			
 		}
-
+*/
 
 
 	}
