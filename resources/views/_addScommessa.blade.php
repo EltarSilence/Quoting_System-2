@@ -7,13 +7,24 @@
         Multiple:
       </div>
 
-      <div class="" id="multipla">
+      <ul class="p-0 list-group-flush mb-0" id="multipla">
 
-        <div class="card">
+          <li class="list-group-item">
+            Verifica di matematica
+            <div class="row">
+              <div class="col-7">
+                Gallina - ESATTO
+              </div>
+              <div class="col-3">
+                <b>2.56</b>
+              </div>
+              <div class="col-2">
+                <i class="icon icon-cancel"></i>
+              </div>
+            </div>
+          </li>
 
-        </div>
-
-      </div>
+      </ul>
 
     </div>
     <center>
