@@ -38,11 +38,13 @@
             <?php
 
               for ($k=0; $k<count($details[$i]); $k++){
-                $txt = '{ "0":{ "descrizione": "Andreoli ammesso...", "SI" : 1.5, "NO" : 1.56 }, "1":{ "descrizione": "Bacchetti ammesso...", "SI" : 1.56, "NO" : 1.6 } }';
-                $txt = '{ "descrizione": "Accompagnatore gita", "0" : { "titolo": "Prof1", "quota" : 1.56 }, "1" : { "titolo": "Prof2", "quota" : 1.6 } }';
+
+                $txt = '{ "0" : { "titolo": "Prof1", "quota" : 1.56 }, "1" : { "titolo": "Prof2", "quota" : 1.6 } }';
                 $json = json_decode($txt, true);
 
                 $key = $details[$i][$k]['chiaveM'];
+                var_dump($key);
+                $vl = $details[$i][$k]['valueM'];
                 $category = explode('_', $key)[0];
 
                 switch ($category) {
@@ -132,15 +134,15 @@
                     break;
                   case 'MT':
                     $id = explode('_', $key)[1];
-                    $desc = $json['descrizione'];
-                    $titolo = $json[$id]['titolo'];
+                    $desc = $details[$i][$k]['descrizioneD'];
+                    $titolo = $json[$vl]['titolo'];
                     $quota = $details[$i][$k]['quotaM'];
                     $esito = $details[$i][$k]['risultatoR'];
 
                     echo "<i>$desc</i>
                     <h6>$titolo: <b></b> ($quota) ";
                     if (!is_null($esito)){
-                      if ($esito == $id){
+                      if ($esito == $vl){
                         echo '<span class="dot-won"></span>';
                       }
                       else {
