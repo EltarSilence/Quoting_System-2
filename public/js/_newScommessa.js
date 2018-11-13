@@ -120,7 +120,7 @@ function setVerifica(){
 			case "MT":
 				html += '<div class="card"><div class="btn card-header"><h5 class="m-0" id="dsc">' + data['descrizione'][0] + '</h5></div>';
 				for(let i = 0; i < Object.keys(data['file']).length - 1; i++){
-					html += '<div class="card-body row ml-0 mr-0 border pt-1 pb-1"><div class="intestazione col-6">' + data['file'][i]['titolo'] + '</div><div class="click col-6"><div>' + data['file'][i]['quota'] + '</div><input type="radio" name="' + data['filename'] + '" data-value="' + i + '" data-quote="' + data['file'][i]['quota'] + '"/></div></div>';
+					html += '<div class="card-body row ml-0 mr-0 border pt-1 pb-1"><div class="intestazione col-6">' + data['file'][i]['titolo'] + '</div><div class="click col-6"><div>' + data['file'][i]['quota'] + '</div><input type="radio" name="' + data['filename'] + '" data-value="' + i + '-' + data['file'][i]['titolo'] + '" data-quote="' + data['file'][i]['quota'] + '"/></div></div>';
 				}
 				html += '</div>';
 				break;

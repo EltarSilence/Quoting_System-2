@@ -60,7 +60,8 @@ class Scommessa{
 			//dai un errore
 		}
 	}
-	scommetti(coin){/*
+	scommetti(coin){
+		/*
 		if(this.size() > 0 && coin != ""){
 			var formdata = new FormData();
 			formdata.append("coin", coin);
@@ -107,22 +108,30 @@ class Scommessa{
 		return f.toFixed(2);
 	}
 	setTheActive(){
-		/*
 		$.each($('.click input[type=radio]', $('#newScommessa')), function(k, v){
 			v.checked = false;
 			$(v).parent().removeClass('active');
 		});
+		$('#multipla').html('');
 		for(var i = 0; i < this.size(); i++){
 			var m = this.getMultipla(i);
-debugger;
-/*
-			m = $('.click input[type=radio][name="' + m['chiave'] + '"][data-type="' + m['type'] + '"][data-value="' + m['value'] + '"]', $('#newScommessa'))[0];
-			$(m).parent().addClass('active');
-			$(m).checked = true;
-			
+			var mu = null;
+			if(m['chiave'].includes('EUO_')){
+				mu = $('.click input[type=radio][name="' + m['chiave'] + '"][data-type="' + m['type'] + '"][data-value="' + m['value'] + '"]', $('#newScommessa'))[0];
+
+			}else{
+				mu = $('.click input[type=radio][name="' + m['chiave'] + '"][data-value="' + m['value'] + '"]', $('#newScommessa'))[0];
+			}
+			$(mu).parent().addClass('active');
+			$(mu).checked = true;
+			if(m['chiave'].includes('EUO_')){
+				$('#multipla').append('<li class="list-group-item">' + m['descrizione'] + '<div class="row"><div class="col-7">' + m['chiave'].split('_')[2] + ' - ' + m['type'] + ' - ' + m['value'] + '</div><div class="col-3"><b>' + m['quota'] + '</b></div><div class="col-2"><i class="icon icon-cancel" data-key="' + m['chiave'] + '"></i></div></div></li>');
+			}else if(m['chiave'].includes('SN_')){
+				$('#multipla').append('<li class="list-group-item">' + m['descrizione'] + '<div class="row"><div class="col-7">' + m['value'] + '</div><div class="col-3"><b>' + m['quota'] + '</b></div><div class="col-2"><i class="icon icon-cancel" data-key="' + m['chiave'] + '"></i></div></div></li>');
+			}else if(m['chiave'].includes('MT_')){
+				$('#multipla').append('<li class="list-group-item">' + m['descrizione'] + '<div class="row"><div class="col-7">' + m['value'].split('-')[1] + '</div><div class="col-3"><b>' + m['quota'] + '</b></div><div class="col-2"><i class="icon icon-cancel" data-key="' + m['chiave'] + '"></i></div></div></li>');
+			}
 		}
-*/
-
-
+		setPossibileVincita();
 	}
 }

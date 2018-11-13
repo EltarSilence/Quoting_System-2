@@ -7,24 +7,6 @@
         Multiple:
       </div>
       <ul class="p-0 list-group-flush mb-0" id="multipla">
-
-
-          <li class="list-group-item">
-            Verifica di matematica
-            <div class="row">
-              <div class="col-7">
-                Gallina - ESATTO
-              </div>
-              <div class="col-3">
-                <b>2.56</b>
-              </div>
-              <div class="col-2">
-                <i class="icon icon-cancel"></i>
-              </div>
-            </div>
-          </li>
-
-
       </ul>
     </div>
     <center>
@@ -34,7 +16,7 @@
             Quota finale:
           </div>
           <div class="col-4" id="quota_finale">
-            5.14
+            X.XX
           </div>
         </div>
       </h5>
@@ -60,7 +42,7 @@
             Possibile Vincita:
           </div>
           <div class="col-4" id="vincita">
-            1000<i class="icon icon-exacoin"></i>
+            XXX<i class="icon icon-exacoin"></i>
           </div>
         </div>
       </h5>
