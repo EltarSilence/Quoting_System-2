@@ -20,3 +20,4 @@ Route::get('/my-bet', 'ScommessaController@myBet')->name('my-bet');
 
 Route::post('/getDisponibili', 'ScommessaController@getDisponibili');
 Route::post('/getScommessa', 'ScommessaController@getScommessa');
+Route::post('/addScommessa', 'ScommessaController@addScommessa');
