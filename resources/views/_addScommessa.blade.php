@@ -50,6 +50,7 @@
         Scommetti
       </button>
     </center>
+    @csrf
   </form>
 </div>
 @endguest
