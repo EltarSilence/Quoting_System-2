@@ -132,6 +132,18 @@ class Scommessa{
 				$('#multipla').append('<li class="list-group-item">' + m['descrizione'] + '<div class="row"><div class="col-7">' + m['value'].split('-')[1] + '</div><div class="col-3"><b>' + m['quota'] + '</b></div><div class="col-2"><i class="icon icon-cancel" data-key="' + m['chiave'] + '"></i></div></div></li>');
 			}
 		}
+		$('i.icon-cancel').on('click', function () {
+			scommessa.removeMultipla($(this).attr('data-key'));
+		});
+		$('#scommetti').unbind('click');
+		$('#scommetti').on('click', function(){
+			for(var i = 0; i < scommessa.size(); i++){
+				var s = scommessa.getMultipla(i);
+				$('#bigliettoForm').append('<input type="text" name="chiave[]" value="' + s['chiave'] + '">');
+				$('#bigliettoForm').append('<input type="text" name="type[]" value="' + s['type'] + '">');
+				$('#bigliettoForm').append('<input type="text" name="value[]" value="' + s['value'] + '">');
+			}
+		});
 		setPossibileVincita();
 	}
 }

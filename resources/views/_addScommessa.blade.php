@@ -1,7 +1,7 @@
 @guest
 @else
 <div class="card">
-  <form class="card-body" method="POST" action="\addScommessa">
+  <form class="card-body" method="POST" action="\addScommessa" id="bigliettoForm">
     <div class="card mb-2">
       <div class="card-header">
         Multiple:

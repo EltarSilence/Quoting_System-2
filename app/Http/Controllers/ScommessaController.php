@@ -203,9 +203,9 @@ class ScommessaController extends Controller
   }
 
   public static function addScommessa(){
-    /*$key = Input::get();
-    var_dump($key);*/
-    return redirect(route('home'));
+    $key = Input::get();
+    var_dump($key);
+    //return redirect(route('home'));
 
   }
 
