@@ -39,11 +39,11 @@
 
               for ($k=0; $k<count($details[$i]); $k++){
 
-                $txt = '{ "0" : { "titolo": "Prof1", "quota" : 1.56 }, "1" : { "titolo": "Prof2", "quota" : 1.6 } }';
+                $txt = '{ "0" : { "titolo": "COLUCCI E", "quota" : 1.10 }, "1" : { "titolo": "BAGA F", "quota" : 5.50 } }';
                 $json = json_decode($txt, true);
 
                 $key = $details[$i][$k]['chiaveM'];
-                var_dump($key);
+                //var_dump($key);
                 $vl = $details[$i][$k]['valueM'];
                 $category = explode('_', $key)[0];
 
@@ -56,7 +56,7 @@
                     $quota = $details[$i][$k]['quotaM'];
                     $esito = $details[$i][$k]['risultatoR'];
 
-                    echo "<i>$id</i>
+                    echo "<i>Cod. palinsesto $id</i>
                     <h6>$nome: <b>$tipo $value</b> ($quota) ";
                     if (!is_null($esito)){
                       switch ($tipo) {
@@ -108,7 +108,7 @@
                     $subj = explode('_', $key)[2];
                     $value = $details[$i][$k]['valueM'];
                     $quota = $details[$i][$k]['quotaM'];
-                    $desc = $json[$id]['descrizione'];
+                    $desc = $details[$i][$k]['descrizioneD'];
                     $esito = $details[$i][$k]['risultatoR'];
 
                     echo "<h6>$desc SI/NO:<b> $value</b> ($quota) ";
@@ -138,16 +138,23 @@
                     $titolo = $json[$vl]['titolo'];
                     $quota = $details[$i][$k]['quotaM'];
                     $esito = $details[$i][$k]['risultatoR'];
+                    $vincente = $json[$esito]['titolo'];
 
                     echo "<i>$desc</i>
-                    <h6>$titolo: <b></b> ($quota) ";
+                    <h6>Vincente: <b>$titolo</b> ($quota) ";
                     if (!is_null($esito)){
                       if ($esito == $vl){
-                        echo '<span class="dot-won"></span>';
+                        echo '<span class="dot-won"></span></h6><br />';
+
                       }
                       else {
-                        echo '<span class="dot-lost"></span>';
+                        echo '<span class="dot-lost"></span>
+                        </h6><i>Vincente: '.$vincente.'</i>
+                        <br /><br />
+                        </h6><br /><br />';
                       }
+
+
                     }
                     else {
                       echo "</h6>
