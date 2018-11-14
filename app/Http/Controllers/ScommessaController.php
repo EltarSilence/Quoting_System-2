@@ -68,7 +68,16 @@ class ScommessaController extends Controller
     $data['descrizione'] = explode("|", $scom[0]->descrizioneD);
     $data['al'] = date("d/m/Y", strtotime($scom[0]->alD));
     $data['filename'] = $key;
-    $data['file'] = json_decode('{"0":{"SI" : 1.5,"NO" : 1.56},"1":{"SI" : 1.56,"NO" : 1.6}}', true);
+
+if($data['type'] == 'EUO'){
+  $data['file'] = json_decode('{"Gallina":{"ESATTO":{"9" : 1.56},"UNDER":{"9" : 1.56},"OVER":{"9" : 1.56}}}', true);
+}else if($data['type'] == 'SN'){
+  $data['file'] = json_decode('{"0":{"SI" : 1.5,"NO" : 1.56},"1":{"SI" : 1.56,"NO" : 1.6}}', true);
+}else{
+  $data['file'] = json_decode('{"0" : {"titolo": "Prof1","quota" : 1.56},"1" : {"titolo": "Prof2","quota" : 1.6}}', true);
+}
+
+
 
     return $data;
   }
