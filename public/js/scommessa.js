@@ -60,40 +60,6 @@ class Scommessa{
 			//dai un errore
 		}
 	}
-	scommetti(coin){
-		/*
-		if(this.size() > 0 && coin != ""){
-			var formdata = new FormData();
-			formdata.append("coin", coin);
-			for(var i = 0; i < this.size(); i++){
-				var s = this.list[0]['chiave']+"|"+this.list[0]['type']+"|"+this.list[0]['value'];
-				formdata.append("multiple", s);
-			}
-			$.ajax({
-				url: "sendData.php",
-				type: 'POST',
-				data: formdata,
-				processData: false,
-				contentType: false,
-				beforeSend: function(){
-					//show eventuale loader
-				},
-				success: function (data){
-					//hide eventuale loader
-					debugger;
-
-					this.list = new Array();
-				},
-				error: function(er){
-					//show errori
-					console.log(er);
-					debugger;
-				}
-			});
-		}else{
-			//dai un errore
-		}*/
-	}
 	size(){
 		return this.list.length;
 	}
@@ -139,9 +105,9 @@ class Scommessa{
 		$('#scommetti').on('click', function(){
 			for(var i = 0; i < scommessa.size(); i++){
 				var s = scommessa.getMultipla(i);
-				$('#bigliettoForm').append('<input type="text" name="chiave[]" value="' + s['chiave'] + '">');
-				$('#bigliettoForm').append('<input type="text" name="type[]" value="' + s['type'] + '">');
-				$('#bigliettoForm').append('<input type="text" name="value[]" value="' + s['value'] + '">');
+				$('#bigliettoForm').append('<input type="hidden" name="chiave[]" value="' + s['chiave'] + '">');
+				$('#bigliettoForm').append('<input type="hidden" name="type[]" value="' + s['type'] + '">');
+				$('#bigliettoForm').append('<input type="hidden" name="value[]" value="' + s['value'] + '">');
 			}
 		});
 		setPossibileVincita();

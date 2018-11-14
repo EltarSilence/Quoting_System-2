@@ -29,7 +29,7 @@
             <button class="btn btn-default col-2 pl-0 pr-0" type="button" id="decr">
               <i class="icon-down"></i>
             </button>
-            <input class="col-8" id="importo" type="number" min="100" max="10000" value="100">
+            <input class="col-8" id="importo" name="importo" type="number" min="100" max="10000" value="100">
             <button class="btn btn-default col-2 pl-0 pr-0" type="button" id="aum">
               <i class="icon-up"></i>
             </button>

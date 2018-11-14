@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 use App\Multipla;
 use App\Scommessa;
 use App\User;
@@ -204,9 +205,28 @@ class ScommessaController extends Controller
 
   public static function addScommessa(){
     $key = Input::get();
-    var_dump($key);
-    //return redirect(route('home'));
 
+    $a = new Scommessa;
+    $a->idUtenteS = Auth::user()->id;
+    $a->coinS = Input::get('importo');
+    $a->dataS = date('Y-m-d');
+    $a->pagataS = 0;
+    $a->save();
+
+    $id = $a->id;
+
+    for($i = 0; $i < sizeof(Input::get('chiave')); $i++){
+      $b = new Multipla;
+      $b->idScommessaM = $id;
+      $b->chiaveM = Input::get('chiave')[$i];
+      $b->tipoM = (strpos(Input::get('chiave')[$i], 'EUO_') !== false ? Input::get('type')[$i] : "");
+      $b->valueM = Input::get('value')[$i];
+      //quota da cercase su file
+      $b->quotaM = 1.2;
+      $b->save();
+    }
+
+    //return redirect(route('home'));
   }
 
 }
