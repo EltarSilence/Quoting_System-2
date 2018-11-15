@@ -37,22 +37,8 @@ CREATE TABLE `disponibilis` (
   `descrizioneD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-<<<<<<< HEAD
 INSERT INTO `disponibilis` (`idD`, `typeD`, `fileD`, `dalD`, `alD`, `descrizioneD`) VALUES
 (1, 'MT_1', '{}', '2018-11-06', '2018-11-15', 'Docente accompagnatore');
-=======
---
--- Dump dei dati per la tabella `disponibilis`
---
-
-INSERT INTO `disponibilis` (`idD`, `fileD`, `dalD`, `alD`, `descrizioneD`) VALUES
-(1, 'MT_2', '2018-11-06', '2018-11-15', 'DOCENTE ACCOMPAGNATORE'),
-(2, 'EUO_1', '2018-11-06', '2018-12-15', 'VERIFICA DI MATEMATICA'),
-(3, 'SN_1_0', '2018-11-06', '2018-12-15', 'CANIPARI A. PRENDE 10 IN MATEMATICA ENTRO IL 01/06/2019'),
-(4, 'SN_1_1', '2018-11-06', '2018-12-15', 'CONZADORI F. PRENDE 10 IN MATEMATICA ENTRO IL 01/06/2019');
-
--- --------------------------------------------------------
->>>>>>> 63fba4e81a40bf312497171ff6e81bde3fa28af0
 
 --
 -- Struttura della tabella `migrations`
@@ -96,24 +82,7 @@ CREATE TABLE `multiplas` (
 --
 
 INSERT INTO `multiplas` (`idM`, `idScommessaM`, `chiaveM`, `tipoM`, `valueM`, `quotaM`) VALUES
-<<<<<<< HEAD
 (1, 1, 'MT_1', '', '0', 1.65);
-=======
-(1, 1, 'EUO_1_Gallina', 'ESATTO', '9', 1.65),
-(2, 1, 'MT_2', '', '0', 1.15),
-(3, 1, 'SN_1_0', '', 'SI', 3.30),
-(4, 1, 'SN_1_1', '', 'SI', 5.15),
-(5, 2, 'EUO_1_Rizza', 'OVER', '4.75', 1.25),
-(6, 2, 'EUO_1_Siliqua', 'OVER', '4.75', 1.45),
-(7, 2, 'EUO_1_Canipari', 'OVER', '7.75', 1.42),
-(8, 2, 'EUO_1_Marchi', 'ESATTO', '9', 3.55);
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `password_resets`
---
->>>>>>> 63fba4e81a40bf312497171ff6e81bde3fa28af0
 
 CREATE TABLE `password_resets` (
   `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -138,24 +107,7 @@ CREATE TABLE `risultatis` (
 --
 
 INSERT INTO `risultatis` (`idR`, `chiaveR`, `risultatoR`) VALUES
-<<<<<<< HEAD
 (1, 'MT_1', '0');
-=======
-(1, 'EUO_1_Gallina', '9'),
-(2, 'MT_2', '0'),
-(3, 'SN_1_0', 'SI'),
-(4, 'SN_1_1', 'NO'),
-(5, 'EUO_1_Rizza', '7.5'),
-(6, 'EUO_1_Siliqua', '4.5'),
-(7, 'EUO_1_Canipari', '9.5'),
-(8, 'EUO_1_Marchi', '9');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `scommessas`
---
->>>>>>> 63fba4e81a40bf312497171ff6e81bde3fa28af0
 
 CREATE TABLE `scommessas` (
   `idS` int(10) UNSIGNED NOT NULL,
