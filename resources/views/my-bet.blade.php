@@ -138,14 +138,20 @@
                     $titolo = $json[$vl]['titolo'];
                     $quota = $details[$i][$k]['quotaM'];
                     $esito = $details[$i][$k]['risultatoR'];
-                    $vincente = $json[$esito]['titolo'];
+
+                    if (is_null($esito)) {
+                      $vincente = $json[$esito]['titolo'];
+                    }
+                    else {
+                      $vincente = "-";
+                    }
 
                     echo "<i>$desc</i>
                     <h6>Vincente: <b>$titolo</b> ($quota) ";
                     if (!is_null($esito)){
+
                       if ($esito == $vl){
                         echo '<span class="dot-won"></span></h6><br />';
-
                       }
                       else {
                         echo '<span class="dot-lost"></span>
@@ -153,8 +159,6 @@
                         <br /><br />
                         </h6><br /><br />';
                       }
-
-
                     }
                     else {
                       echo "</h6>
