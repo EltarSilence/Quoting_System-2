@@ -33,20 +33,18 @@ class ScommessaController extends Controller
   }
 
   public function scommetti(){
-    $verifiche = ScommessaController::getDisponibili();
     return view('scommetti');
   }
 
   public static function getDisponibili(){
-    $verifiche = Disponibili::select('alD', 'fileD', 'descrizioneD')
-    ->whereDate('dalD', '<=', date('Y-m-d'))
+    $verifiche = Disponibili::whereDate('dalD', '<=', date('Y-m-d'))
     ->whereDate('alD', '>=', date('Y-m-d'))
     ->get();
     $ret = array();
     foreach ($verifiche as $v) {
       $a = array();
       $a['alD'] = $v->alD;
-      $a['type'] = substr($v->fileD, 0, stripos($v->fileD, "_"));
+      $a['typeD'] = $v->typeD;
       $a['fileD'] = $v->fileD;
       $a['descrizioneD'] = explode("|", $v->descrizioneD);
 
@@ -64,20 +62,11 @@ class ScommessaController extends Controller
       ->get();
 
     $data = array();
-    $data['type'] = substr($key, 0, stripos($key, "_"));
+    $data['type'] = $scom[0]->typeD;
     $data['descrizione'] = explode("|", $scom[0]->descrizioneD);
     $data['al'] = date("d/m/Y", strtotime($scom[0]->alD));
     $data['filename'] = $key;
-
-if($data['type'] == 'EUO'){
-  $data['file'] = json_decode('{"Gallina":{"ESATTO":{"9" : 1.56},"UNDER":{"9" : 1.56},"OVER":{"9" : 1.56}}}', true);
-}else if($data['type'] == 'SN'){
-  $data['file'] = json_decode('{"0":{"SI" : 1.5,"NO" : 1.56},"1":{"SI" : 1.56,"NO" : 1.6}}', true);
-}else{
-  $data['file'] = json_decode('{"0" : {"titolo": "Prof1","quota" : 1.56},"1" : {"titolo": "Prof2","quota" : 1.6}}', true);
-}
-
-
+    $data['file'] = json_decode($scom[0]->fileD, true);
 
     return $data;
   }
@@ -205,7 +194,7 @@ if($data['type'] == 'EUO'){
   public static function getBetDetail($scommessa){
     $mult = Multipla
       ::leftJoin('risultatis', 'multiplas.chiaveM', '=', 'risultatis.chiaveR')
-      ->join('disponibilis', 'multiplas.chiaveM', 'LIKE', DB::raw('CONCAT(disponibilis.fileD, "%")'))
+      ->join('disponibilis', 'multiplas.chiaveM', 'LIKE', DB::raw('CONCAT(disponibilis.typeD, "%")'))
       ->where('idScommessaM', '=', $scommessa->idS)
       ->get();
     return $mult;

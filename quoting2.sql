@@ -5,14 +5,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `disponibilis` (
   `idD` int(10) UNSIGNED NOT NULL,
+  `typeD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fileD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dalD` date NOT NULL,
   `alD` date NOT NULL,
   `descrizioneD` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `disponibilis` (`idD`, `fileD`, `dalD`, `alD`, `descrizioneD`) VALUES
-(1, 'MT_1', '2018-11-06', '2018-11-15', 'Docente accompagnatore');
+INSERT INTO `disponibilis` (`idD`, `typeD`, `fileD`, `dalD`, `alD`, `descrizioneD`) VALUES
+(1, 'MT_1', '{}', '2018-11-06', '2018-11-15', 'Docente accompagnatore');
 
 
 CREATE TABLE `migrations` (
@@ -40,7 +41,7 @@ CREATE TABLE `multiplas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `multiplas` (`idM`, `idScommessaM`, `chiaveM`, `tipoM`, `valueM`, `quotaM`) VALUES
-(1, 1, 'Informatica_20181031_Gallina', 'ESATTO', '9', 1.65);
+(1, 1, 'MT_1', '', '0', 1.65);
 
 CREATE TABLE `password_resets` (
   `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -55,7 +56,7 @@ CREATE TABLE `risultatis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `risultatis` (`idR`, `chiaveR`, `risultatoR`) VALUES
-(1, 'Informatica_20181031_Gallina', '9');
+(1, 'MT_1', '0');
 
 CREATE TABLE `scommessas` (
   `idS` int(10) UNSIGNED NOT NULL,
