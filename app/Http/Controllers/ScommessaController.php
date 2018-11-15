@@ -58,7 +58,7 @@ class ScommessaController extends Controller
     $key = Input::get('scommessa');
 
     $scom = Disponibili
-      ::where('fileD', '=', $key)
+      ::where('typeD', '=', $key)
       ->get();
 
     $data = array();

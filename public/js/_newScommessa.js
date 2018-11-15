@@ -25,9 +25,9 @@ function setEmpty(){
 				html = '<h5>Non ci sono scommesse disponibili</h5>';
 			}else{
 				for(var i = 0; i < data.length; i++){
-					let chiave = data[i]['fileD'];
+					let chiave = data[i]['typeD'];
 					html += '<button class="btn btn-primary verifica" id="'+chiave+'">' + chiave + ' || ';
-					switch (data[i]['type']) {
+					switch (data[i]['typeD'].split('_')[0]) {
 						case 'EUO':
 							html += data[i]['descrizioneD'][1] + ' - ' + data[i]['descrizioneD'][0];
 							break;
@@ -54,8 +54,7 @@ function setVerifica(){
 	$.ajax({
 		url : "/getScommessa",
 		type : "POST",
-		data : {'scommessa': "SN_1"},
-		//data : {'scommessa': $('#newScommessa').attr('ver')},
+		data : {'scommessa': $('#newScommessa').attr('ver')},
 		success : function(data){
 			html = '<div class="card"><div class="card-body"><div class="mb-2 ml-0 mr-0 row"><button class="btn btn-primary col-2 back">Back</button><h5 class="col-10 mb-0 pt-2 pb-2 pl-5">Diponibile fino al <b>' + data['al'] + '</b></h5></div>';
 			html += getHtml(data);
@@ -93,7 +92,7 @@ function setVerifica(){
 
 	function getHtml(data){
 		html = '';
-		switch (data['type']) {
+		switch (data['type'].split('_')[0]) {
 			case "EUO":
 				html += '<h5 id="dsc">' + data['descrizione'][0] + ' - ' + data['descrizione'][1] + '</h5>';
 				for(let i = 0; i < Object.keys(data['file']).length; i++){
@@ -129,6 +128,4 @@ function setVerifica(){
 		}
 		return html;
 	}
-
-
 }

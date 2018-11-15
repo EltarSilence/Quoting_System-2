@@ -16,7 +16,7 @@ class CreateDisponibilisTable extends Migration
         Schema::create('disponibilis', function (Blueprint $table) {
             $table->increments('idD');
             $table->string('typeD', 191);
-            $table->string('fileD');
+            $table->string('fileD', 2000);
             $table->date('dalD');
             $table->date('alD');
             $table->string('descrizioneD', 191);
