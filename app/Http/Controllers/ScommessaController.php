@@ -232,6 +232,8 @@ class ScommessaController extends Controller
             $b->quotaM = $j[$t[2]][Input::get('type')[$i]][Input::get('value')[$i]];
             break;
           case "SN":
+
+          
             break;
           case "MT":
             $d = Disponibili::where('typeD', '=', $t[0]."_".$t[1])
