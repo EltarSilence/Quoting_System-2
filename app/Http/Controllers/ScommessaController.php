@@ -205,52 +205,47 @@ class ScommessaController extends Controller
     $key = Input::get();
 
     if(Auth::user()->coin >= Input::get('importo') + 100){
-          $a = new Scommessa;
-          $a->idUtenteS = Auth::user()->id;
-          $a->coinS = Input::get('importo');
-          $a->dataS = date('Y-m-d');
-          $a->pagataS = 0;
-          $a->save();
-          $ut = User
-            ::where('id', '=', Auth::user()->id)
-            ->update(['coin' => Auth::user()->coin - Input::get('importo')]);
-          $id = $a->id;
-          for($i = 0; $i < sizeof(Input::get('chiave')); $i++){
-            $b = new Multipla;
-            $b->idScommessaM = $id;
-            $b->chiaveM = Input::get('chiave')[$i];
-            $b->tipoM = (strpos(Input::get('chiave')[$i], 'EUO_') !== false ? Input::get('type')[$i] : "");
-            $b->valueM = Input::get('value')[$i];
+      $a = new Scommessa;
+      $a->idUtenteS = Auth::user()->id;
+      $a->coinS = Input::get('importo');
+      $a->dataS = date('Y-m-d');
+      $a->pagataS = 0;
+      $a->save();
+      $ut = User
+        ::where('id', '=', Auth::user()->id)
+        ->update(['coin' => Auth::user()->coin - Input::get('importo')]);
+      $id = $a->id;
+      for($i = 0; $i < sizeof(Input::get('chiave')); $i++){
+        $b = new Multipla;
+        $b->idScommessaM = $id;
+        $b->chiaveM = Input::get('chiave')[$i];
+        $b->tipoM = (strpos(Input::get('chiave')[$i], 'EUO_') !== false ? Input::get('type')[$i] : "");
+        $b->valueM = Input::get('value')[$i];
 
-            switch(explode("_", Input::get('chiave')[$i])[0]){
-              case "EUO":
-                $d = Disponibili::where('typeD', '=', Input::get('chiave')[$i])
-                  ->get();
-                $j = json_decode($d[0]->fileD, true);
+        $t = explode("_", Input::get('chiave')[$i]);
 
-
-                break;
-              case "SN":
-                break;
-              case "MT":
-                $d = Disponibili::where('typeD', '=', Input::get('chiave')[$i])
-                  ->get();
-                $j = json_decode($d[0]->fileD, true);
-
-
-
-                break;
-            }
-
-            //quota da cercase su file
-            $b->quotaM = 1.2;
-            $b->save();
-          }
+        switch($t[0]){
+          case "EUO":
+            $d = Disponibili::where('typeD', '=', $t[0]."_".$t[1])
+              ->get();
+            $j = json_decode($d[0]->fileD, true);
+            $b->quotaM = $j[$t[2]][Input::get('type')[$i]][Input::get('value')[$i]];
+            break;
+          case "SN":
+            break;
+          case "MT":
+            $d = Disponibili::where('typeD', '=', $t[0]."_".$t[1])
+              ->get();
+            $j = json_decode($d[0]->fileD, true);
+            $b->quotaM = $j[$t[2]][Input::get('value')[$i]];
+            break;
+        }
+        $b->save();
+      }
+      return redirect(route('home'));
     }else{
 
     }
-
-    //return redirect(route('home'));
   }
 
 }
