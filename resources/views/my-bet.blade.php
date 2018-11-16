@@ -13,11 +13,11 @@
                 Puntata: {!! $userBets[$i]['coinS'] !!}
                 <i class="icon icon-exacoin"></i>
                 @if ($userBets[$i]['pagataS'] == 1 && $isWon[$i] > 0)
-                  <span class="dot-won"></span>
+                  <span class="dot dot-won"></span>
                 @elseif ($userBets[$i]['pagataS'] == 1 && $isWon[$i] == 0)
-                    <span class="dot-lost"></span>
+                    <span class="dot dot-lost"></span>
                 @else
-                  <span class="dot-open"></span>
+                  <span class="dot dot-open"></span>
                 @endif
               </h6>
             </li>
@@ -62,26 +62,26 @@
                       switch ($tipo) {
                         case 'ESATTO':
                           if ($value == $esito){
-                            echo '<span class="dot-won"></span>';
+                            echo '<span class="dot dot-won"></span>';
                           }
                           else {
-                            echo '<span class="dot-lost"></span>';
+                            echo '<span class="dot dot-lost"></span>';
                           }
                           break;
                         case 'UNDER':
                           if ($esito < $value){
-                            echo '<span class="dot-won"></span>';
+                            echo '<span class="dot dot-won"></span>';
                           }
                           else {
-                            echo '<span class="dot-lost"></span>';
+                            echo '<span class="dot dot-lost"></span>';
                           }
                           break;
                         case 'OVER':
                           if ($esito > $value){
-                            echo '<span class="dot-won"></span>';
+                            echo '<span class="dot dot-won"></span>';
                           }
                           else {
-                            echo '<span class="dot-lost"></span>';
+                            echo '<span class="dot dot-lost"></span>';
                           }
                           break;
                         default:
@@ -90,7 +90,7 @@
                       }
                     }
                     else {
-                      echo '<span class="dot-open"></span>';
+                      echo '<span class="dot dot-open"></span>';
                     }
 
 
@@ -114,14 +114,14 @@
                     echo "<h6>$desc SI/NO:<b> $value</b> ($quota) ";
                     if (!is_null($esito)){
                       if ($value == $esito){
-                        echo '<span class="dot-won"></span>';
+                        echo '<span class="dot dot-won"></span>';
                       }
                       else {
-                        echo '<span class="dot-lost"></span>';
+                        echo '<span class="dot dot-lost"></span>';
                       }
                     }
                     else {
-                      echo '<span class="dot-open"></span>';
+                      echo '<span class="dot dot-open"></span>';
                     }
                     if (!is_null($esito))
                       echo "</h6>
@@ -151,10 +151,10 @@
                     if (!is_null($esito)){
 
                       if ($esito == $vl){
-                        echo '<span class="dot-won"></span></h6><br />';
+                        echo '<span class="dot dot-won"></span></h6><br />';
                       }
                       else {
-                        echo '<span class="dot-lost"></span>
+                        echo '<span class="dot dot-lost"></span>
                         </h6><i>Vincente: '.$vincente.'</i>
                         <br /><br />
                         </h6><br /><br />';

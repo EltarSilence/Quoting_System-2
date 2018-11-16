@@ -204,24 +204,50 @@ class ScommessaController extends Controller
   public static function addScommessa(){
     $key = Input::get();
 
-    $a = new Scommessa;
-    $a->idUtenteS = Auth::user()->id;
-    $a->coinS = Input::get('importo');
-    $a->dataS = date('Y-m-d');
-    $a->pagataS = 0;
-    $a->save();
+    if(Auth::user()->coin >= Input::get('importo') + 100){
+          $a = new Scommessa;
+          $a->idUtenteS = Auth::user()->id;
+          $a->coinS = Input::get('importo');
+          $a->dataS = date('Y-m-d');
+          $a->pagataS = 0;
+          $a->save();
+          $ut = User
+            ::where('id', '=', Auth::user()->id)
+            ->update(['coin' => Auth::user()->coin - Input::get('importo')]);
+          $id = $a->id;
+          for($i = 0; $i < sizeof(Input::get('chiave')); $i++){
+            $b = new Multipla;
+            $b->idScommessaM = $id;
+            $b->chiaveM = Input::get('chiave')[$i];
+            $b->tipoM = (strpos(Input::get('chiave')[$i], 'EUO_') !== false ? Input::get('type')[$i] : "");
+            $b->valueM = Input::get('value')[$i];
 
-    $id = $a->id;
+            switch(explode("_", Input::get('chiave')[$i])[0]){
+              case "EUO":
+                $d = Disponibili::where('typeD', '=', Input::get('chiave')[$i])
+                  ->get();
+                $j = json_decode($d[0]->fileD, true);
 
-    for($i = 0; $i < sizeof(Input::get('chiave')); $i++){
-      $b = new Multipla;
-      $b->idScommessaM = $id;
-      $b->chiaveM = Input::get('chiave')[$i];
-      $b->tipoM = (strpos(Input::get('chiave')[$i], 'EUO_') !== false ? Input::get('type')[$i] : "");
-      $b->valueM = Input::get('value')[$i];
-      //quota da cercase su file
-      $b->quotaM = 1.2;
-      $b->save();
+
+                break;
+              case "SN":
+                break;
+              case "MT":
+                $d = Disponibili::where('typeD', '=', Input::get('chiave')[$i])
+                  ->get();
+                $j = json_decode($d[0]->fileD, true);
+
+
+
+                break;
+            }
+
+            //quota da cercase su file
+            $b->quotaM = 1.2;
+            $b->save();
+          }
+    }else{
+
     }
 
     //return redirect(route('home'));

@@ -1,23 +1,18 @@
-.dot-won {
-  height: 11px;
-  width: 11px;
-  background-color: green;
+.dot{
+  height: 15px;
+  width: 15px;
   border-radius: 50%;
   display: inline-block;
+  float: right;
+}
+.dot-won {
+  background-color: green;
 }
 .dot-lost {
-  height: 11px;
-  width: 11px;
   background-color: red;
-  border-radius: 50%;
-  display: inline-block;
 }
 .dot-open {
-  height: 11px;
-  width: 11px;
   background-color: blue;
-  border-radius: 50%;
-  display: inline-block;
 }
 #detail > .card{
   display: none;
