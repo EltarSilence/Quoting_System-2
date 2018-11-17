@@ -35,6 +35,12 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+                  <ul class="navbar-nav">
+                    <li class="nav-item"><a class="btn btn-outline-secondary" href="{{route('home') }}" role="button">Homepage</a></li>
+
+                    <li class="nav-item"><a class="btn btn-outline-secondary" href="{{route('scommetti') }}" role="button">Scommetti</a></li>
+                  </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
