@@ -22,7 +22,7 @@ Id		Chiave				Risultati
 1			EUO_1_Gallina	9
 2
 3			SN_3_0				SI
-4			MT_4					0
+4			MT_4					0-Baga
 
 
 EUO File
@@ -55,11 +55,11 @@ SN File
 MT File
 {
 	"0" : {
-		"titolo": "Prof1",
+		"titolo": "Baga",
 		"quota" : 1.56
 	},
 	"1" : {
-		"titolo": "Prof2",
+		"titolo": "Colucci",
 		"quota" : 1.6
 	}
 }

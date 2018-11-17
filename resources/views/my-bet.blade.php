@@ -149,13 +149,13 @@
                   case 'MT':
                     $id = explode('_', $key)[1];
                     $desc = $details[$i][$k]['descrizioneD'];
-                    $titolo = $json[$vl]['titolo'];
+                    $titolo = $json[explode("-", $vl)[0]]['titolo'];
                     $quota = $details[$i][$k]['quotaM'];
                     $q_totale *= $quota;
                     $esito = $details[$i][$k]['risultatoR'];
 
                     if (is_null($esito)) {
-                      $vincente = $json[$esito]['titolo'];
+                    //  $vincente = $json[$esito]['titolo'];
                     }
                     else {
                       $vincente = "-";

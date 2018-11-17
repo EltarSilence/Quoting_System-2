@@ -232,14 +232,17 @@ class ScommessaController extends Controller
             $b->quotaM = $j[$t[2]][Input::get('type')[$i]][Input::get('value')[$i]];
             break;
           case "SN":
-
-          
+            $d = Disponibili::where('typeD', '=', $t[0]."_".$t[1])
+              ->get();
+            $j = json_decode($d[0]->fileD, true);
+            $b->quotaM = $j[$t[2]][Input::get('value')[$i]];
             break;
           case "MT":
             $d = Disponibili::where('typeD', '=', $t[0]."_".$t[1])
               ->get();
             $j = json_decode($d[0]->fileD, true);
-            $b->quotaM = $j[$t[2]][Input::get('value')[$i]];
+            //Colucci
+            $b->quotaM = $j[explode("-", Input::get('value')[$i])[0]]['quota'];
             break;
         }
         $b->save();
