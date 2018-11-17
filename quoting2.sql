@@ -41,6 +41,11 @@ CREATE TABLE `multiplas` (
   `quotaM` double(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `multiplas` (`idM`, `idScommessaM`, `chiaveM`, `tipoM`, `valueM`, `quotaM`) VALUES
+(1, 1, 'MT_3', '', '1-Colucci', 1.60),
+(2, 1, 'SN_2_0', '', 'NO', 1.56),
+(3, 1, 'EUO_1_Andreoli', 'ESATTO', '10.0', 8.08);
+
 CREATE TABLE `password_resets` (
   `email` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -60,6 +65,9 @@ CREATE TABLE `scommessas` (
   `dataS` date NOT NULL,
   `pagataS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `scommessas` (`idS`, `idUtenteS`, `coinS`, `dataS`, `pagataS`) VALUES
+(1, 1, 100, '2018-11-17', 0);
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
