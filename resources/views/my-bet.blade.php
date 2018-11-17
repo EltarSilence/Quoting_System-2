@@ -18,11 +18,11 @@
                 Puntata: {!! $userBets[$i]['coinS'] !!}
                 <i class="icon icon-exacoin"></i>
                 @if ($userBets[$i]['pagataS'] == 1 && $isWon[$i] > 0)
-                  <span class="dot dot-won" data-toggle="tooltip" title="Vincente"></span>
+                  <span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>
                 @elseif ($userBets[$i]['pagataS'] == 1 && $isWon[$i] == 0)
-                    <span class="dot dot-lost" data-toggle="tooltip" title="Perdente"></span>
+                    <span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>
                 @else
-                  <span class="dot dot-open" data-toggle="tooltip" title="Aperta"></span>
+                  <span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>
                 @endif
               </h6>
             </li>
@@ -75,26 +75,26 @@
                       switch ($tipo) {
                         case 'ESATTO':
                           if ($value == $esito){
-                            echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente"></span>';
+                            echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>';
                           }
                           else {
-                            echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente"></span>';
+                            echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>';
                           }
                           break;
                         case 'UNDER':
                           if ($esito < $value){
-                            echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente"></span>';
+                            echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>';
                           }
                           else {
-                            echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente"></span>';
+                            echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>';
                           }
                           break;
                         case 'OVER':
                           if ($esito > $value){
-                            echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente"></span>';
+                            echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>';
                           }
                           else {
-                            echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente"></span>';
+                            echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>';
                           }
                           break;
                         default:
@@ -103,7 +103,7 @@
                       }
                     }
                     else {
-                      echo '<span class="dot dot-open" data-toggle="tooltip" title="Aperta"></span>';
+                      echo '<span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>';
                     }
 
 
@@ -128,14 +128,14 @@
                     echo "<h6>$desc SI/NO:<b> $value</b> ($quota) ";
                     if (!is_null($esito)){
                       if ($value == $esito){
-                        echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente"></span>';
+                        echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>';
                       }
                       else {
-                        echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente"></span>';
+                        echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>';
                       }
                     }
                     else {
-                      echo '<span class="dot dot-open" data-toggle="tooltip" title="Aperta"></span>';
+                      echo '<span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>';
                     }
                     if (!is_null($esito))
                       echo "</h6>
@@ -166,10 +166,10 @@
                     if (!is_null($esito)){
 
                       if ($esito == $vl){
-                        echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente"></span></h6><br />';
+                        echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span></h6><br />';
                       }
                       else {
-                        echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente"></span>
+                        echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>
                         </h6><i>Vincente: '.$vincente.'</i>
                         <br /><br />
                         </h6><br /><br />';

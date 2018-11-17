@@ -241,7 +241,6 @@ class ScommessaController extends Controller
             $d = Disponibili::where('typeD', '=', $t[0]."_".$t[1])
               ->get();
             $j = json_decode($d[0]->fileD, true);
-            //Colucci
             $b->quotaM = $j[explode("-", Input::get('value')[$i])[0]]['quota'];
             break;
         }
