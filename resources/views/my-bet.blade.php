@@ -40,13 +40,45 @@
             </h5>
           </div>
           <div class="card-body">
+            @for ($k = 0; $k < count($details[$i]); $k++)
+              @if(explode('_', $details[$i][$k]['chiaveM'])[0] == "EUO")
+                <i>Cod. palinsesto {!! md5(explode('_', $details[$i][$k]['chiaveM'])[1]) !!}</i><br>
+                <small>{!! explode("|", $details[$i][$k]['descrizioneD'])[0] !!}</small> - {!! explode("|", $details[$i][$k]['descrizioneD'])[1] !!}
+                <h6>{!! explode('_', $details[$i][$k]['chiaveM'])[2] !!}: <b>{!! $details[$i][$k]['tipoM'] !!} {!! $details[$i][$k]['valueM'] !!}</b> ({!! number_format((float)$details[$i][$k]['quotaM'], 2, ',', '') !!})
+              @elseif(explode('_', $details[$i][$k]['chiaveM'])[0] == "SN")
+
+              @elseif(explode('_', $details[$i][$k]['chiaveM'])[0] == "MT")
+
+              @endif
+
+
+
+              @if($isWon[$i] > 0)
+                <span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>
+              @elseif($isWon[$i] < 0)
+                <span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>
+              @else
+                <span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>
+              @endif
+
+              <hr>
+            @endfor
+            <h6>Quota totale: ".number_format((float)$q_totale, 2, ',', '').'</h6>
+            <h6>Importo versato: {!! $userBets[$i]['coinS'] !!}<i class="icon icon-exacoin"></i></h6>
+            <h6>Pagabile: '.floor($userBets[$i]['coinS'] * $q_totale).' <i class="icon icon-exacoin"></i></h6>
+
+            @if($isWon[$i] > 0)
+              <h6>Esito finale della scommessa: Vincente</h6>
+            @elseif($isWon[$i] < 0)
+              <h6>Esito finale della scommessa: Perdente</h6>
+            @else
+              <h6>Esito finale della scommessa: Aperta</h6>
+            @endif
+
             <?php
+            /*
             $q_totale = 1;
               for ($k=0; $k<count($details[$i]); $k++){
-
-
-                $txt = '{ "0" : { "titolo": "COLUCCI E", "quota" : 1.10 }, "1" : { "titolo": "BAGA F", "quota" : 5.50 } }';
-                $json = json_decode($txt, true);
 
                 $key = $details[$i][$k]['chiaveM'];
                 //var_dump($key);
@@ -202,6 +234,7 @@
                 }
               }
               echo "</h6>";
+              */
             ?>
           </div>
         </div>
