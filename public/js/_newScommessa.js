@@ -32,7 +32,7 @@ function setEmpty(){
 							html += data[i]['descrizioneD'][1] + ' - ' + data[i]['descrizioneD'][0];
 							break;
 						case 'SN':
-							html += 'Serie di Si/No (' + data[i]['descrizioneD'][0] + ')';
+							html += data[i]['descrizioneD'][0] + ' S/N, ...';
 							break;
 						case 'MT':
 							html += data[i]['descrizioneD'][0];

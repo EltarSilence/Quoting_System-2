@@ -1,0 +1,15 @@
+DescrizioneD =
+
+CAMBIO PROF ZOLA ENTRO PASQUA| CAMBIO PROF LICENZIATO ENTRO PASQUA|
+
+{
+	"0":{
+		"SI" : 1500,
+		"NO" : 1
+	},
+
+	"1":{
+		"SI" : 3.5,
+		"NO" : 1
+	}
+}

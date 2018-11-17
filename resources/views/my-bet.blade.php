@@ -45,7 +45,7 @@
               for ($k=0; $k<count($details[$i]); $k++){
 
 
-                $txt = '{ "0" : { "titolo": "COLUCCI E", "quota" : 1.10 }, "1" : { "titolo": "BAGA F", "quota" : 5.50 } }';
+                $txt = $details[$i][$k]['fileD'];
                 $json = json_decode($txt, true);
 
                 $key = $details[$i][$k]['chiaveM'];

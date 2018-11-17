@@ -1,0 +1,51 @@
+{
+	"0" : {
+		"titolo": "BACCHETTI N",
+		"quota" : 12
+	},
+	"1" : {
+		"titolo": "ANDREOLI L",
+		"quota" : 12
+	},
+	"2" : {
+		"titolo": "RIZZA G",
+		"quota" : 4
+	},
+	"3" : {
+		"titolo": "GALLINA R",
+		"quota" : 4.4
+	},
+	"4" : {
+		"titolo": "CANIPARI A",
+		"quota" : 6
+	},
+	"5" : {
+		"titolo": "OTTOLINI A",
+		"quota" : 8.50
+	},
+	"6" : {
+		"titolo": "BARA O",
+		"quota" : 4.5
+	},
+	"7" : {
+		"titolo": "CAVEDAGHI A",
+		"quota" : 2.5
+	},
+	"8" : {
+		"titolo": "MARCHI A",
+		"quota" : 6
+	},
+	"9" : {
+		"titolo": "CONZADORI F",
+		"quota" : 2.1
+	},
+	"10" : {
+		"titolo": "DEAMBROSIS D",
+		"quota" : 9
+	},
+	"11" : {
+		"titolo": "RAVASI I",
+		"quota" : 1.85
+	}
+
+}

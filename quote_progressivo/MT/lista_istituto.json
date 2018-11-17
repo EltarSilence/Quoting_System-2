@@ -1,0 +1,21 @@
+{
+	"0" : {
+		"titolo": "CREATIVEITIS",
+		"quota" : 2.25
+	},
+
+	"1" : {
+		"titolo": "LISTA ALIEN",
+		"quota" : 2.25
+	},
+
+	"2" : {
+		"titolo": "LISTA PERITIS",
+		"quota" : 5.75
+	},
+
+	"3" : {
+		"titolo": "LISTA UNITIS",
+		"quota" : 9.00
+	}
+}

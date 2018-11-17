@@ -1,0 +1,20 @@
+DescrizioneD =
+
+CANIPARI A PRENDE 10 IN MATEMATICA | CONZADORI F PRENDE 10 IN MATEMATICA | SILIQUA R PRENDE 10 IN MATEMATICA
+
+{
+	"0":{
+		"SI" : 4.00,
+		"NO" : 1
+	},
+
+	"1":{
+		"SI" : 4.50,
+		"NO" : 1
+	},
+
+	"2":{
+		"SI" : 6.20,
+		"NO" : 1
+	}
+}

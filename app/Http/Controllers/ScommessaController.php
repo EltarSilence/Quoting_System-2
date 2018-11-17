@@ -22,6 +22,8 @@ class ScommessaController extends Controller
       for ($i=0; $i<count($userBets); $i++){
         $won = ScommessaController::isWon($userBets[$i]);
         $details = ScommessaController::getBetDetail($userBets[$i]);
+        /*
+
         for ($k=0; $k<count($details[$i]); $k++){
           //-1 APERTA, 0 PERDENTE, 1 VINCENTE
           $key = $details[$i][$k]['chiaveM'];
@@ -129,17 +131,18 @@ class ScommessaController extends Controller
             }
 
           array_push($single_won, $details);
+          */
           array_push($vincite, $won);
           array_push($dettagli, $details);
         }
 
-      }
+      //}
 
 
       return view('my-bet')
         ->with('userBets', $userBets)
         ->with('isWon', $vincite)
-        ->with('quota_totale', $quota_totale)
+        //->with('quota_totale', $quota_totale)
         ->with('details', $dettagli);
   }
 
