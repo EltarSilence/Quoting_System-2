@@ -18,17 +18,128 @@ class ScommessaController extends Controller
       $userBets = ScommessaController::getAllBetsBy(1);
       $vincite = array();
       $dettagli = array();
+      $q_totale = 1;
+      for ($i=0; $i<count($userBets); $i++){
+        $won = ScommessaController::isWon($userBets[$i]);
+        $details = ScommessaController::getBetDetail($userBets[$i]);
+        for ($k=0; $k<count($details[$i]); $k++){
+          //-1 APERTA, 0 PERDENTE, 1 VINCENTE
+          $key = $details[$i][$k]['chiaveM'];
+          $vl = $details[$i][$k]['valueM'];
+          $category = explode('_', $key)[0];
+          switch ($category) {
+            case 'EUO':
+              $id = explode('_', $key)[1];
+              $nome = explode('_', $key)[2];
+              $tipo = $details[$i][$k]['tipoM'];
+              $value = $details[$i][$k]['valueM'];
+              $desc = $details[$i][$k]['descrizioneD'];
+              $maxdata = explode("|", $desc)[0];
+              $testo_scom = explode("|", $desc)[1];
+              $q_totale *= $details[$i][$k]['quotaM'];
+              $esito = $details[$i][$k]['risultatoR'];
 
-      foreach($userBets as $bet){
-        $won = ScommessaController::isWon($bet);
-        $details = ScommessaController::getBetDetail($bet);
-        array_push($vincite, $won);
-        array_push($dettagli, $details);
+              if (!is_null($esito)){
+                switch ($tipo) {
+                  case 'ESATTO':
+                    if ($value == $esito){
+                      $single_won = 1;
+                    }
+                    else {
+                      $single_won = 0;
+                    }
+                    break;
+                  case 'UNDER':
+                    if ($esito < $value){
+                      $single_won = 1;
+                    }
+                    else {
+                      $single_won = 0;
+                    }
+                    break;
+                  case 'OVER':
+                    if ($esito > $value){
+                      $single_won = 1;
+                    }
+                    else {
+                      $single_won = 0;
+                    }
+                    break;
+                  default:
+
+                    break;
+                }
+              }
+              else {
+
+              }
+
+
+              if (!is_null($esito))
+                echo "</h6>
+                <i>Verifica riconsegnata - $esito</i>
+                <br /><br />";
+              else
+                echo "</h6>
+                <i>Scommessa aperta</i>
+                <br /><br />";
+              break;
+            case 'SN':
+              $id = explode('_', $key)[1];
+              $subj = explode('_', $key)[2];
+              $value = $details[$i][$k]['valueM'];
+              $quota = $details[$i][$k]['quotaM'];
+              $q_totale *= $quota;
+              $desc = $details[$i][$k]['descrizioneD'];
+              $esito = $details[$i][$k]['risultatoR'];
+
+              if (!is_null($esito)){
+                if ($value == $esito){
+                  $single_won = 1;
+                }
+                else {
+                  $single_won = 0;
+                }
+              }
+              else {
+                $single_won = -1;
+              }
+              break;
+            case 'MT':
+              $id = explode('_', $key)[1];
+              $desc = $details[$i][$k]['descrizioneD'];
+              $titolo = $json[explode("-", $vl)[0]]['titolo'];
+              $quota = $details[$i][$k]['quotaM'];
+              $q_totale *= $quota;
+              $esito = $details[$i][$k]['risultatoR'];
+
+              if (!is_null($esito)){
+                if ($esito == $vl){
+                  $single_won = 1;
+                }
+                else {
+                  $single_won = 0;
+                }
+              }
+              else {
+                $single_won = -1;
+              }
+
+              break;
+            }
+
+          array_push($single_won, $details);
+          array_push($vincite, $won);
+          array_push($dettagli, $details);
+        }
+
       }
+
 
       return view('my-bet')
         ->with('userBets', $userBets)
         ->with('isWon', $vincite)
+        ->with('quota_totale', $quota_totale)
         ->with('details', $dettagli);
   }
 
@@ -186,7 +297,7 @@ class ScommessaController extends Controller
 
   public static function getAllBetsBy($id){
     $bets = Scommessa::where('idUtenteS', '=', $id)
-    ->orderBy('dataS', 'desc')
+    ->orderBy('idS', 'desc')
     ->get();
     return $bets;
   }
