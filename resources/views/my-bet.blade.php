@@ -1,25 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<script>
-  $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
-  });
-</script>
 <div class="col-md-12">
   <div class="row justify-content-center">
     <div class="col-md-4" id="list">
-      @for ($i = 0; $i < count($userBets); $i++)
+      @for ($i = 0; $i < count($scommesse); $i++)
         <div class="card" data-det="{!! $i !!}">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <h6>
-                N. Biglietto #{!! $userBets[$i]['idS'] !!}<br />
-                Puntata: {!! $userBets[$i]['coinS'] !!}
+                N. Biglietto #{!! $scommesse[$i]['id'] !!}<br />
+                Puntata: {!! $scommesse[$i]['puntata'] !!}
                 <i class="icon icon-exacoin"></i>
-                @if ($userBets[$i]['pagataS'] == 1 && $isWon[$i] > 0)
+                @if ($scommesse[$i]['isWon'] > 0)
                   <span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>
-                @elseif ($userBets[$i]['pagataS'] == 1 && $isWon[$i] == 0)
+                @elseif ($scommesse[$i]['isWon']  == 0)
                     <span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>
                 @else
                   <span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>
@@ -31,31 +26,38 @@
       @endfor
     </div>
     <div class="col-md-8" id="detail">
-
-      @for ($i = 0; $i < count($userBets); $i++)
+      @for ($i = 0; $i < count($scommesse); $i++)
         <div class="card" data-det="{!! $i !!}">
           <div class="card-header">
             <h5 class="mb-0">
-                N. #{!! $userBets[$i]['idS'] !!}
+                N. #{!! $scommesse[$i]['id'] !!}
             </h5>
           </div>
           <div class="card-body">
-            @for ($k = 0; $k < count($details[$i]); $k++)
+            @for ($k = 0; $k < count($scommesse[$i]['multiple']); $k++)
+
+              {{--
               @if(explode('_', $details[$i][$k]['chiaveM'])[0] == "EUO")
+
                 <i>Cod. palinsesto {!! md5(explode('_', $details[$i][$k]['chiaveM'])[1]) !!}</i><br>
                 <small>{!! explode("|", $details[$i][$k]['descrizioneD'])[0] !!}</small> - {!! explode("|", $details[$i][$k]['descrizioneD'])[1] !!}
                 <h6>{!! explode('_', $details[$i][$k]['chiaveM'])[2] !!}: <b>{!! $details[$i][$k]['tipoM'] !!} {!! $details[$i][$k]['valueM'] !!}</b> ({!! number_format((float)$details[$i][$k]['quotaM'], 2, ',', '') !!})
+
               @elseif(explode('_', $details[$i][$k]['chiaveM'])[0] == "SN")
+
+
 
               @elseif(explode('_', $details[$i][$k]['chiaveM'])[0] == "MT")
 
+
+
               @endif
+--}}
 
 
-
-              @if($isWon[$i] > 0)
+              @if($scommesse[$i]['multiple'][$k]['isWon'] > 0)
                 <span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>
-              @elseif($isWon[$i] < 0)
+              @elseif($scommesse[$i]['multiple'][$k]['isWon'] < 0)
                 <span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>
               @else
                 <span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>
@@ -63,18 +65,9 @@
 
               <hr>
             @endfor
-            <h6>Quota totale: ".number_format((float)$q_totale, 2, ',', '').'</h6>
-            <h6>Importo versato: {!! $userBets[$i]['coinS'] !!}<i class="icon icon-exacoin"></i></h6>
-            <h6>Pagabile: '.floor($userBets[$i]['coinS'] * $q_totale).' <i class="icon icon-exacoin"></i></h6>
-
-            @if($isWon[$i] > 0)
-              <h6>Esito finale della scommessa: Vincente</h6>
-            @elseif($isWon[$i] < 0)
-              <h6>Esito finale della scommessa: Perdente</h6>
-            @else
-              <h6>Esito finale della scommessa: Aperta</h6>
-            @endif
-
+            <h6>Quota totale: {-- number_format((float)$q_totale, 2, ',', '') --}</h6>
+            <h6>Importo versato: {!! $scommesse[$i]['puntata'] !!}<i class="icon icon-exacoin"></i></h6>
+            <h6>Pagabile: {!! floor($scommesse[$i]['puntata'] * 1.2) !!} <i class="icon icon-exacoin"></i></h6>
             <?php
             /*
             $q_totale = 1;

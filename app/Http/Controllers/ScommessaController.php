@@ -15,11 +15,48 @@ class ScommessaController extends Controller
 {
 
   public function myBet(){
-      $userBets = ScommessaController::getAllBetsBy(1);
+      $userBets = ScommessaController::getAllBetsBy(Auth::user()->id);
+
+      $scommesse = array();
+
+      for ($i = 0; $i < count($userBets); $i++){
+        $scommessa = array();
+
+        $scommessa["isWon"] = ScommessaController::isWon($userBets[$i]);
+        $scommessa["puntata"] = $userBets[$i]->coinS;
+        $scommessa["data"] = $userBets[$i]->dataS;
+        $scommessa["id"] = $userBets[$i]->idS;
+
+        $mul = ScommessaController::getBetDetail($userBets[$i]);
+
+        $multiple = array();
+        for($k = 0; $k < count($mul); $k++){
+          //SELECT * FROM multiplas LEFT joIN risultatis oN multiplas.chiaveM = risultatis.chiaveR INNER JOIN disponibilis ON multiplas.chiaveM LIKE disponibilis.typeD WHERE multiplas.idScommessaM = 1
+          $multipla = array();
+          $multipla["id"] = $mul[$k]->idScommessaM;
+          $multipla["chiave"] = $mul[$k]->chiaveM;
+          $multipla["tipo"] = $mul[$k]->tipoM;
+          $multipla["value"] = $mul[$k]->valueM;
+          $multipla["quota"] = $mul[$k]->quotaM;
+          $multipla["risultato"] = $mul[$k]->risultatoR;
+          $multipla["descrizione"] = $mul[$k]->descrizioneD;
+
+          $multipla["isWon"] = 0;
+
+          array_push($multiple, $multipla);
+        }
+        $scommessa["multiple"] = $multiple;
+        array_push($scommesse, $scommessa);
+      }
+
+
+
+
+/*
       $vincite = array();
       $dettagli = array();
       $q_totale = 1;
-      for ($i=0; $i<count($userBets); $i++){
+      for ($i = 0; $i < count($userBets); $i++){
         $won = ScommessaController::isWon($userBets[$i]);
         $details = ScommessaController::getBetDetail($userBets[$i]);
         /*
@@ -132,18 +169,15 @@ class ScommessaController extends Controller
 
           array_push($single_won, $details);
           */
-          array_push($vincite, $won);
+          /*array_push($vincite, $won);
           array_push($dettagli, $details);
         }
 
       //}
-
+*/
 
       return view('my-bet')
-        ->with('userBets', $userBets)
-        ->with('isWon', $vincite)
-        //->with('quota_totale', $quota_totale)
-        ->with('details', $dettagli);
+        ->with('scommesse', $scommesse);
   }
 
   public function scommetti(){
@@ -311,13 +345,11 @@ class ScommessaController extends Controller
       ->join('disponibilis', 'multiplas.chiaveM', 'LIKE', DB::raw('CONCAT(disponibilis.typeD, "%")'))
       ->where('idScommessaM', '=', $scommessa->idS)
       ->get();
-    return $mult;
 
+    return $mult;
   }
 
   public static function addScommessa(){
-    $key = Input::get();
-
     if(Auth::user()->coin >= Input::get('importo') + 100){
       $a = new Scommessa;
       $a->idUtenteS = Auth::user()->id;
