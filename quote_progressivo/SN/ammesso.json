@@ -1,0 +1,58 @@
+DescrizioneD =
+
+ANDREOLI L AMMESSO AGLI ESAMI|BACCHETTI N AMMESSO AGLI ESAMI|BARA O AMMESSO AGLI ESAMI|CANIPARI A AMMESSO AGLI ESAMI|CONZADORI F AMMESSO AGLI ESAMI|CAVEDAGHI A AMMESSO AGLI ESAMI|DEAMBROSIS D AMMESSO AGLI ESAMI|GALLINA R AMMESSO AGLI ESAMI|MARCHI A AMMESSO AGLI ESAMI|OTTOLINI A AMMESSO AGLI ESAMI|RAVASI I AMMESSO AGLI ESAMI|RIZZA G AMMESSO AGLI ESAMI|SILIQUA R AMMESSO AGLI ESAMI
+
+{ 
+	"0":{
+		"SI" : 1.05,
+		"NO" : 20.00
+	},
+	"1":{
+		"SI" : 1.05,
+		"NO" : 17.00
+	},
+	"2":{
+		"SI" : 1.05,
+		"NO" : 20.00
+	},
+	"3":{
+		"SI" : 1.05,
+		"NO" : 20.00
+	},
+	"4":{
+		"SI" : 1,
+		"NO" : 275.00
+	},
+	"5":{
+		"SI" : 1,
+		"NO" : 175.00
+	},
+	"6":{
+		"SI" : 1.01,
+		"NO" : 50.00
+	},
+	"7":{
+		"SI" : 1,
+		"NO" : 4000.00
+	},
+	"8":{
+		"SI" : 1,
+		"NO" : 80.00
+	},
+	"9":{
+		"SI" : 1.01,
+		"NO" : 55.00
+	},
+	"10":{
+		"SI" : 1,
+		"NO" : 4501.00
+	},
+	"11":{
+		"SI" : 1.06,
+		"NO" : 23.00
+	},
+	"12":{
+		"SI" : 1,
+		"NO" : 50.00
+	}
+}

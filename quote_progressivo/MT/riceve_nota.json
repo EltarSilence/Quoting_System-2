@@ -1,0 +1,57 @@
+PRIMO A RICEVERE NOTA DISCIPLINARE
+
+{
+	"0" : {
+		"titolo": "BACCHETTI N",
+		"quota" : 4.45
+	},
+	"1" : {
+		"titolo": "ANDREOLI L",
+		"quota" : 6.60
+	},
+	"2" : {
+		"titolo": "RIZZA G",
+		"quota" : 5.75
+	},
+	"3" : {
+		"titolo": "GALLINA R",
+		"quota" : 5.50
+	},
+	"4" : {
+		"titolo": "CANIPARI A",
+		"quota" : 7.25
+	},
+	"5" : {
+		"titolo": "OTTOLINI A",
+		"quota" : 5.25
+	},
+	"6" : {
+		"titolo": "BARA O",
+		"quota" : 6.95
+	},
+	"7" : {
+		"titolo": "CAVEDAGHI A",
+		"quota" : 15.50
+	},
+	"8" : {
+		"titolo": "MARCHI A",
+		"quota" : 23.00
+	},
+	"9" : {
+		"titolo": "CONZADORI F",
+		"quota" : 75.00
+	},
+	"10" : {
+		"titolo": "DEAMBROSIS D",
+		"quota" : 75.00
+	},
+	"11" : {
+		"titolo": "RAVASI I",
+		"quota" : 250.00
+	},
+	"12" : {
+		"titolo": "NESSUNA NOTA",
+		"quota" : 1.85
+	}
+
+}
