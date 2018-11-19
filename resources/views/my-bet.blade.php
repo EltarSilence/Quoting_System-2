@@ -59,7 +59,7 @@
 
               @if($scommesse[$i]['multiple'][$k]['isWon'] > 0)
                 <span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>
-              @elseif($scommesse[$i]['multiple'][$k]['isWon'] < 0)
+              @elseif($scommesse[$i]['multiple'][$k]['isWon'] == 0)
                 <span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>
               @else
                 <span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>
