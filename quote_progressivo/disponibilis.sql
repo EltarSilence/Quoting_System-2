@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 17, 2018 alle 17:21
+-- Creato il: Nov 19, 2018 alle 09:23
 -- Versione del server: 10.1.30-MariaDB
 -- Versione PHP: 7.2.1
 
@@ -49,9 +49,10 @@ INSERT INTO `disponibilis` (`idD`, `typeD`, `fileD`, `dalD`, `alD`, `descrizione
 (8, 'SN_4', '{\r\n	\"0\":{\r\n		\"SI\" : 100.00,\r\n		\"NO\" : 1\r\n	}\r\n}', '2018-11-17', '2019-05-31', 'MOLINARI SMETTE DI FUMARE ENTRO IL 01/06/2019'),
 (9, 'SN_5', '{\r\n	\"0\":{\r\n		\"SI\" : 4.00,\r\n		\"NO\" : 1\r\n	},\r\n\r\n	\"1\":{\r\n		\"SI\" : 4.50,\r\n		\"NO\" : 1\r\n	},\r\n\r\n	\"2\":{\r\n		\"SI\" : 6.20,\r\n		\"NO\" : 1\r\n	}\r\n}', '2018-11-17', '2019-05-31', 'CANIPARI A PRENDE 10 IN MATEMATICA | CONZADORI F PRENDE 10 IN MATEMATICA | SILIQUA R PRENDE 10 IN MATEMATICA\r\n'),
 (10, 'MT_2', '{\r\n	\"0\" : {\r\n		\"titolo\": \"BACCHETTI N\",\r\n		\"quota\" : 4.45\r\n	},\r\n	\"1\" : {\r\n		\"titolo\": \"ANDREOLI L\",\r\n		\"quota\" : 6.60\r\n	},\r\n	\"2\" : {\r\n		\"titolo\": \"RIZZA G\",\r\n		\"quota\" : 5.75\r\n	},\r\n	\"3\" : {\r\n		\"titolo\": \"GALLINA R\",\r\n		\"quota\" : 5.50\r\n	},\r\n	\"4\" : {\r\n		\"titolo\": \"CANIPARI A\",\r\n		\"quota\" : 7.25\r\n	},\r\n	\"5\" : {\r\n		\"titolo\": \"OTTOLINI A\",\r\n		\"quota\" : 5.25\r\n	},\r\n	\"6\" : {\r\n		\"titolo\": \"BARA O\",\r\n		\"quota\" : 6.95\r\n	},\r\n	\"7\" : {\r\n		\"titolo\": \"CAVEDAGHI A\",\r\n		\"quota\" : 15.50\r\n	},\r\n	\"8\" : {\r\n		\"titolo\": \"MARCHI A\",\r\n		\"quota\" : 23.00\r\n	},\r\n	\"9\" : {\r\n		\"titolo\": \"CONZADORI F\",\r\n		\"quota\" : 75.00\r\n	},\r\n	\"10\" : {\r\n		\"titolo\": \"DEAMBROSIS D\",\r\n		\"quota\" : 75.00\r\n	},\r\n	\"11\" : {\r\n		\"titolo\": \"RAVASI I\",\r\n		\"quota\" : 250.00\r\n	},\r\n	\"12\" : {\r\n		\"titolo\": \"NESSUNA NOTA\",\r\n		\"quota\" : 1.85\r\n	}\r\n\r\n}', '2018-11-17', '2019-06-05', 'PRIMO A RICEVERE NOTA DISCIPLINARE'),
-(11, 'MT_3', '{\r\n	\"0\" : {\r\n		\"titolo\": \"BACCHETTI N\",\r\n		\"quota\" : 12\r\n	},\r\n	\"1\" : {\r\n		\"titolo\": \"ANDREOLI L\",\r\n		\"quota\" : 12\r\n	},\r\n	\"2\" : {\r\n		\"titolo\": \"RIZZA G\",\r\n		\"quota\" : 4\r\n	},\r\n	\"3\" : {\r\n		\"titolo\": \"GALLINA R\",\r\n		\"quota\" : 4.4\r\n	},\r\n	\"4\" : {\r\n		\"titolo\": \"CANIPARI A\",\r\n		\"quota\" : 6\r\n	},\r\n	\"5\" : {\r\n		\"titolo\": \"OTTOLINI A\",\r\n		\"quota\" : 8.50\r\n	},\r\n	\"6\" : {\r\n		\"titolo\": \"BARA O\",\r\n		\"quota\" : 4.5\r\n	},\r\n	\"7\" : {\r\n		\"titolo\": \"CAVEDAGHI A\",\r\n		\"quota\" : 2.5\r\n	},\r\n	\"8\" : {\r\n		\"titolo\": \"MARCHI A\",\r\n		\"quota\" : 6\r\n	},\r\n	\"9\" : {\r\n		\"titolo\": \"CONZADORI F\",\r\n		\"quota\" : 2.1\r\n	},\r\n	\"10\" : {\r\n		\"titolo\": \"DEAMBROSIS D\",\r\n		\"quota\" : 9\r\n	},\r\n	\"11\" : {\r\n		\"titolo\": \"RAVASI I\",\r\n		\"quota\" : 1.85\r\n	}\r\n\r\n}', '2018-11-17', '2018-11-30', 'VINCENTE PROSSIMO KAHOOT'),
+(11, 'MT_3', '{\r\n	\"0\" : {\r\n		\"titolo\": \"BACCHETTI N\",\r\n		\"quota\" : 12\r\n	},\r\n	\"1\" : {\r\n		\"titolo\": \"ANDREOLI L\",\r\n		\"quota\" : 12\r\n	},\r\n	\"2\" : {\r\n		\"titolo\": \"RIZZA G\",\r\n		\"quota\" : 4\r\n	},\r\n	\"3\" : {\r\n		\"titolo\": \"GALLINA R\",\r\n		\"quota\" : 4.4\r\n	},\r\n	\"4\" : {\r\n		\"titolo\": \"CANIPARI A\",\r\n		\"quota\" : 6\r\n	},\r\n	\"5\" : {\r\n		\"titolo\": \"OTTOLINI A\",\r\n		\"quota\" : 8.50\r\n	},\r\n	\"6\" : {\r\n		\"titolo\": \"BARA O\",\r\n		\"quota\" : 4.5\r\n	},\r\n	\"7\" : {\r\n		\"titolo\": \"CAVEDAGHI A\",\r\n		\"quota\" : 2.5\r\n	},\r\n	\"8\" : {\r\n		\"titolo\": \"MARCHI A\",\r\n		\"quota\" : 6\r\n	},\r\n	\"9\" : {\r\n		\"titolo\": \"CONZADORI F\",\r\n		\"quota\" : 2.1\r\n	},\r\n	\"10\" : {\r\n		\"titolo\": \"DEAMBROSIS D\",\r\n		\"quota\" : 9\r\n	},\r\n	\"11\" : {\r\n		\"titolo\": \"RAVASI I\",\r\n		\"quota\" : 1.85\r\n	},\r\n	\"12\" : {\r\n		\"titolo\": \"ALTRO\",\r\n		\"quota\" : 3.11\r\n	}\r\n\r\n}', '2018-11-17', '2018-11-30', 'VINCENTE PROSSIMO KAHOOT'),
 (12, 'MT_4', '{\r\n	\"0\" : {\r\n		\"titolo\": \"BACCHETTI N\",\r\n		\"quota\" : 150\r\n	},\r\n	\"1\" : {\r\n		\"titolo\": \"ANDREOLI L\",\r\n		\"quota\" : 150\r\n	},\r\n	\"2\" : {\r\n		\"titolo\": \"RIZZA G\",\r\n		\"quota\" : 100\r\n	},\r\n	\"3\" : {\r\n		\"titolo\": \"GALLINA R\",\r\n		\"quota\" : 6\r\n	},\r\n	\"4\" : {\r\n		\"titolo\": \"CANIPARI A\",\r\n		\"quota\" : 50\r\n	},\r\n	\"5\" : {\r\n		\"titolo\": \"OTTOLINI A\",\r\n		\"quota\" : 35\r\n	},\r\n	\"6\" : {\r\n		\"titolo\": \"BARA O\",\r\n		\"quota\" : 30\r\n	},\r\n	\"7\" : {\r\n		\"titolo\": \"CAVEDAGHI A\",\r\n		\"quota\" : 16\r\n	},\r\n	\"8\" : {\r\n		\"titolo\": \"MARCHI A\",\r\n		\"quota\" : 6.55\r\n	},\r\n	\"9\" : {\r\n		\"titolo\": \"CONZADORI F\",\r\n		\"quota\" : 6\r\n	},\r\n	\"10\" : {\r\n		\"titolo\": \"DEAMBROSIS D\",\r\n		\"quota\" : 45\r\n	},\r\n	\"11\" : {\r\n		\"titolo\": \"RAVASI I\",\r\n		\"quota\" : 1.25\r\n	}\r\n\r\n}', '2018-11-17', '2019-05-31', 'MIGLIOR VOTO IN CENTESIMI OTTENUTO ALL\'ESAME DI STATO'),
-(13, 'SN_6', '{\r\n	\"0\":{\r\n		\"SI\" : 1500,\r\n		\"NO\" : 1\r\n	},\r\n\r\n	\"1\":{\r\n		\"SI\" : 3.5,\r\n		\"NO\" : 1\r\n	}\r\n}', '2018-11-17', '2019-04-10', 'CAMBIO PROF ZOLA ENTRO PASQUA| CAMBIO PROF LICENZIATO ENTRO PASQUA|');
+(13, 'SN_6', '{\r\n	\"0\":{\r\n		\"SI\" : 1500,\r\n		\"NO\" : 1\r\n	},\r\n\r\n	\"1\":{\r\n		\"SI\" : 3.5,\r\n		\"NO\" : 1\r\n	}\r\n}', '2018-11-17', '2019-04-10', 'CAMBIO PROF ZOLA ENTRO PASQUA| CAMBIO PROF LICENZIATO ENTRO PASQUA|'),
+(14, 'MT_5', '{\r\n	\"0\" : {\r\n		\"titolo\": \"BARCELLONA\",\r\n		\"quota\" : 1.05\r\n	},\r\n	\"1\" : {\r\n		\"titolo\": \"SARAJEVO\",\r\n		\"quota\" : 50\r\n	},\r\n	\"2\" : {\r\n		\"titolo\": \"ALTRA\",\r\n		\"quota\" : 200\r\n	}\r\n\r\n}', '2018-11-17', '2019-03-20', 'META DELLA GITA 2019');
 
 --
 -- Indici per le tabelle scaricate
@@ -71,7 +72,7 @@ ALTER TABLE `disponibilis`
 -- AUTO_INCREMENT per la tabella `disponibilis`
 --
 ALTER TABLE `disponibilis`
-  MODIFY `idD` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idD` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
