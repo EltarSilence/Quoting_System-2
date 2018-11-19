@@ -32,7 +32,6 @@ class ScommessaController extends Controller
 
         $multiple = array();
         for($k = 0; $k < count($mul); $k++){
-          //SELECT * FROM multiplas LEFT joIN risultatis oN multiplas.chiaveM = risultatis.chiaveR INNER JOIN disponibilis ON multiplas.chiaveM LIKE disponibilis.typeD WHERE multiplas.idScommessaM = 1
           $multipla = array();
           $multipla["id"] = $mul[$k]->idScommessaM;
           $multipla["chiave"] = $mul[$k]->chiaveM;
@@ -45,138 +44,13 @@ class ScommessaController extends Controller
           $multipla["risultato"] = $mul[$k]->risultatoR;
           $multipla["descrizione"] = $mul[$k]->descrizioneD;
 
-          $multipla["isWon"] = 0;
+          $multipla["isWon"] = ScommessaController::isMultiplaWon($mul[$k]);
 
           array_push($multiple, $multipla);
         }
         $scommessa["multiple"] = $multiple;
         array_push($scommesse, $scommessa);
       }
-
-
-/*
-      $vincite = array();
-      $dettagli = array();
-      $q_totale = 1;
-      for ($i = 0; $i < count($userBets); $i++){
-        $won = ScommessaController::isWon($userBets[$i]);
-        $details = ScommessaController::getBetDetail($userBets[$i]);
-        /*
-
-        for ($k=0; $k<count($details[$i]); $k++){
-          //-1 APERTA, 0 PERDENTE, 1 VINCENTE
-          $key = $details[$i][$k]['chiaveM'];
-          $vl = $details[$i][$k]['valueM'];
-          $category = explode('_', $key)[0];
-          switch ($category) {
-            case 'EUO':
-              $id = explode('_', $key)[1];
-              $nome = explode('_', $key)[2];
-              $tipo = $details[$i][$k]['tipoM'];
-              $value = $details[$i][$k]['valueM'];
-              $desc = $details[$i][$k]['descrizioneD'];
-              $maxdata = explode("|", $desc)[0];
-              $testo_scom = explode("|", $desc)[1];
-              $q_totale *= $details[$i][$k]['quotaM'];
-              $esito = $details[$i][$k]['risultatoR'];
-
-              if (!is_null($esito)){
-                switch ($tipo) {
-                  case 'ESATTO':
-                    if ($value == $esito){
-                      $single_won = 1;
-                    }
-                    else {
-                      $single_won = 0;
-                    }
-                    break;
-                  case 'UNDER':
-                    if ($esito < $value){
-                      $single_won = 1;
-                    }
-                    else {
-                      $single_won = 0;
-                    }
-                    break;
-                  case 'OVER':
-                    if ($esito > $value){
-                      $single_won = 1;
-                    }
-                    else {
-                      $single_won = 0;
-                    }
-                    break;
-                  default:
-
-                    break;
-                }
-              }
-              else {
-
-              }
-
-
-              if (!is_null($esito))
-                echo "</h6>
-                <i>Verifica riconsegnata - $esito</i>
-                <br /><br />";
-              else
-                echo "</h6>
-                <i>Scommessa aperta</i>
-                <br /><br />";
-              break;
-            case 'SN':
-              $id = explode('_', $key)[1];
-              $subj = explode('_', $key)[2];
-              $value = $details[$i][$k]['valueM'];
-              $quota = $details[$i][$k]['quotaM'];
-              $q_totale *= $quota;
-              $desc = $details[$i][$k]['descrizioneD'];
-              $esito = $details[$i][$k]['risultatoR'];
-
-              if (!is_null($esito)){
-                if ($value == $esito){
-                  $single_won = 1;
-                }
-                else {
-                  $single_won = 0;
-                }
-              }
-              else {
-                $single_won = -1;
-              }
-              break;
-            case 'MT':
-              $id = explode('_', $key)[1];
-              $desc = $details[$i][$k]['descrizioneD'];
-              $titolo = $json[explode("-", $vl)[0]]['titolo'];
-              $quota = $details[$i][$k]['quotaM'];
-              $q_totale *= $quota;
-              $esito = $details[$i][$k]['risultatoR'];
-
-              if (!is_null($esito)){
-                if ($esito == $vl){
-                  $single_won = 1;
-                }
-                else {
-                  $single_won = 0;
-                }
-              }
-              else {
-                $single_won = -1;
-              }
-
-              break;
-            }
-
-          array_push($single_won, $details);
-          */
-          /*array_push($vincite, $won);
-          array_push($dettagli, $details);
-        }
-
-      //}
-*/
 
       return view('my-bet')
         ->with('scommesse', $scommesse);
@@ -272,66 +146,76 @@ class ScommessaController extends Controller
       ->where('idScommessaM', '=', $scommessa->idS)
       ->get();
     foreach ($mult as $m) {
-      if (!isset($m->chiaveR)){
+      if($vin == 0){
+        return 0;
+      }
+      if($vin < 0){
         return -1;
       }
-      $chiave = explode('_', $m->chiaveR);
-      $tipo = $chiave[0];
-      switch ($tipo) {
-        case 'EUO':
-          $cat = $m->tipoM;
-          switch ($cat){
-            case 'ESATTO':
-            if ($m->valueM == $m->risultatoR){
-              $vin = $vin*$m->quotaM;
-            }
-            else {
-              return 0;
-            }
-            break;
-            case 'UNDER':
-            $value = floatval($m->valueM);
-            $res = floatval($m->risultatoR);
-
-            if ($res < $value) {
-              $vin *= $m->quotaM;
-            }
-            else {
-              return 0;
-            }
-            break;
-          case 'OVER':
-            $value = floatval($m->valueM);
-            $res = floatval($m->risultatoR);
-
-            if ($res > $value) {
-              $vin *= $m->quotaM;
-            }
-            else {
-              return 0;
-            }
-            break;
-          default:
-            return 0;
-            break;
-        }
-        break;
-        case 'SN':
-        case 'MT':
-        if ($m->risultatoR == $m->valueM){
-          $vin = $vin*$m->quotaM;
-        }
-        else {
-          return 0;
-        }
-        break;
-
-        default:
-        return 0;
-        break;
-      }
+      $vin *= ScommessaController::isMultiplaWon($m);
     }
     return $vin*$scommessa->coinS;
+  }
+
+  private static function isMultiplaWon($m){
+    if (!isset($m->chiaveR)){
+      return -1;
+    }
+    $chiave = explode('_', $m->chiaveR);
+    $tipo = $chiave[0];
+    switch ($tipo) {
+      case 'EUO':
+        $cat = $m->tipoM;
+        switch ($cat){
+          case 'ESATTO':
+          if ($m->valueM == $m->risultatoR){
+            $vin = $vin*$m->quotaM;
+          }
+          else {
+            return 0;
+          }
+          break;
+          case 'UNDER':
+          $value = floatval($m->valueM);
+          $res = floatval($m->risultatoR);
+
+          if ($res < $value) {
+            $vin *= $m->quotaM;
+          }
+          else {
+            return 0;
+          }
+          break;
+        case 'OVER':
+          $value = floatval($m->valueM);
+          $res = floatval($m->risultatoR);
+
+          if ($res > $value) {
+            $vin *= $m->quotaM;
+          }
+          else {
+            return 0;
+          }
+          break;
+        default:
+          return 0;
+          break;
+      }
+      break;
+      case 'SN':
+      case 'MT':
+      if ($m->risultatoR == $m->valueM){
+        $vin = $vin*$m->quotaM;
+      }
+      else {
+        return 0;
+      }
+      break;
+
+      default:
+      return 0;
+      break;
+    }
   }
 
   public static function getAllBetsBy($id){
