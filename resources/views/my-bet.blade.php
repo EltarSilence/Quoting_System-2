@@ -33,6 +33,8 @@
                 N. #{!! $scommesse[$i]['id'] !!}
             </h5>
           </div>
+          <?php
+          var_dump($scommesse); ?>
           <div class="card-body">
             @for ($k = 0; $k < count($scommesse[$i]['multiple']); $k++)
 
@@ -65,170 +67,9 @@
 
               <hr>
             @endfor
-            <h6>Quota totale: {-- number_format((float)$q_totale, 2, ',', '') --}</h6>
-            <h6>Importo versato: {!! $scommesse[$i]['puntata'] !!}<i class="icon icon-exacoin"></i></h6>
-            <h6>Pagabile: {!! floor($scommesse[$i]['puntata'] * 1.2) !!} <i class="icon icon-exacoin"></i></h6>
-            <?php
-            /*
-            $q_totale = 1;
-              for ($k=0; $k<count($details[$i]); $k++){
-
-                $key = $details[$i][$k]['chiaveM'];
-                //var_dump($key);
-                $vl = $details[$i][$k]['valueM'];
-                $category = explode('_', $key)[0];
-
-                switch ($category) {
-                  case 'EUO':
-                    $id = explode('_', $key)[1];
-                    $nome = explode('_', $key)[2];
-                    $tipo = $details[$i][$k]['tipoM'];
-                    $value = $details[$i][$k]['valueM'];
-                    $desc = $details[$i][$k]['descrizioneD'];
-                    $maxdata = explode("|", $desc)[0];
-                    $testo_scom = explode("|", $desc)[1];
-                    $q_totale *= $details[$i][$k]['quotaM'];
-                    //stampa CIFRA,DD
-                    $quota = number_format((float)$details[$i][$k]['quotaM'], 2, ',', '');
-
-                    $esito = $details[$i][$k]['risultatoR'];
-
-                    echo "<i>Cod. palinsesto ".md5($id)."</i><br />
-                    <small>$maxdata</small> - $testo_scom
-                    <h6>$nome: <b>$tipo $value</b> ($quota) ";
-                    if (!is_null($esito)){
-                      switch ($tipo) {
-                        case 'ESATTO':
-                          if ($value == $esito){
-                            echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>';
-                          }
-                          else {
-                            echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>';
-                          }
-                          break;
-                        case 'UNDER':
-                          if ($esito < $value){
-                            echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>';
-                          }
-                          else {
-                            echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>';
-                          }
-                          break;
-                        case 'OVER':
-                          if ($esito > $value){
-                            echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>';
-                          }
-                          else {
-                            echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>';
-                          }
-                          break;
-                        default:
-
-                          break;
-                      }
-                    }
-                    else {
-                      echo '<span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>';
-                    }
-
-
-                    if (!is_null($esito))
-                      echo "</h6>
-                      <i>Verifica riconsegnata - $esito</i>
-                      <br /><br />";
-                    else
-                      echo "</h6>
-                      <i>Scommessa aperta</i>
-                      <br /><br />";
-                    break;
-                  case 'SN':
-                    $id = explode('_', $key)[1];
-                    $subj = explode('_', $key)[2];
-                    $value = $details[$i][$k]['valueM'];
-                    $quota = $details[$i][$k]['quotaM'];
-                    $q_totale *= $quota;
-                    $desc = $details[$i][$k]['descrizioneD'];
-                    $esito = $details[$i][$k]['risultatoR'];
-
-                    echo "<h6>$desc SI/NO:<b> $value</b> ($quota) ";
-                    if (!is_null($esito)){
-                      if ($value == $esito){
-                        echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>';
-                      }
-                      else {
-                        echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>';
-                      }
-                    }
-                    else {
-                      echo '<span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>';
-                    }
-                    if (!is_null($esito))
-                      echo "</h6>
-                      <i>Evento terminato - $esito</i>
-                      <br /><br />";
-                    else
-                      echo "</h6>
-                      <i>Scommessa aperta</i>
-                      <br /><br />";
-                    break;
-                  case 'MT':
-                    $id = explode('_', $key)[1];
-                    $desc = $details[$i][$k]['descrizioneD'];
-                    $titolo = $json[explode("-", $vl)[0]]['titolo'];
-                    $quota = $details[$i][$k]['quotaM'];
-                    $q_totale *= $quota;
-                    $esito = $details[$i][$k]['risultatoR'];
-
-                    if (is_null($esito)) {
-                    //  $vincente = $json[$esito]['titolo'];
-                    }
-                    else {
-                      $vincente = "-";
-                    }
-
-                    echo "<i>$desc</i>
-                    <h6>Vincente: <b>$titolo</b> ($quota) ";
-                    if (!is_null($esito)){
-
-                      if ($esito == $vl){
-                        echo '<span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span></h6><br />';
-                      }
-                      else {
-                        echo '<span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>
-                        </h6><i>Vincente: '.$vincente.'</i>
-                        <br /><br />
-                        </h6><br /><br />';
-                      }
-                    }
-                    else {
-                      echo "</h6>
-                      <i>Scommessa aperta</i>
-                      <br /><br />";
-                    }
-
-                    break;
-                }
-
-                echo '<hr>';
-              }
-              echo "<h6>Quota totale: ".number_format((float)$q_totale, 2, ',', '').'</h6>';
-              echo "<h6>Importo versato: ".$userBets[$i]['coinS'].'<i class="icon icon-exacoin"></i></h6>';
-              echo '<h6>Pagabile: '.floor($userBets[$i]['coinS'] * $q_totale).' <i class="icon icon-exacoin"></i></h6>';
-              echo '<h6>Esito finale della scommessa: ';
-              if ($isWon[$i] > 0) {
-                echo 'Vincente';
-              }
-              else {
-                if ($isWon[$i] == 0) {
-                  echo 'Perdente';
-                }
-                else {
-                  echo 'Aperta';
-                }
-              }
-              echo "</h6>";
-              */
-            ?>
+            <h6>Quota totale: {!! floor($scommesse[$i]['quotaFinale']*100)/100 !!}</h6>
+            <h6>Puntata: {!! $scommesse[$i]['puntata'] !!}<i class="icon icon-exacoin"></i></h6>
+            <h6>Possibile Vincita: {!! floor($scommesse[$i]['puntata'] * $scommesse[$i]['quotaFinale']) !!} <i class="icon icon-exacoin"></i></h6>
           </div>
         </div>
       @endfor

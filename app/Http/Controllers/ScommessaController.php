@@ -26,6 +26,7 @@ class ScommessaController extends Controller
         $scommessa["puntata"] = $userBets[$i]->coinS;
         $scommessa["data"] = $userBets[$i]->dataS;
         $scommessa["id"] = $userBets[$i]->idS;
+        $scommessa['quotaFinale'] = 1;
 
         $mul = ScommessaController::getBetDetail($userBets[$i]);
 
@@ -38,6 +39,9 @@ class ScommessaController extends Controller
           $multipla["tipo"] = $mul[$k]->tipoM;
           $multipla["value"] = $mul[$k]->valueM;
           $multipla["quota"] = $mul[$k]->quotaM;
+
+          $scommessa['quotaFinale'] *= $mul[$k]->quotaM;
+
           $multipla["risultato"] = $mul[$k]->risultatoR;
           $multipla["descrizione"] = $mul[$k]->descrizioneD;
 
@@ -48,8 +52,6 @@ class ScommessaController extends Controller
         $scommessa["multiple"] = $multiple;
         array_push($scommesse, $scommessa);
       }
-
-
 
 
 /*
