@@ -33,30 +33,42 @@
                 N. #{!! $scommesse[$i]['id'] !!}
             </h5>
           </div>
-          <?php
-          var_dump($scommesse); ?>
+
           <div class="card-body">
             @for ($k = 0; $k < count($scommesse[$i]['multiple']); $k++)
 
-              {{--
-              @if(explode('_', $details[$i][$k]['chiaveM'])[0] == "EUO")
 
-                <i>Cod. palinsesto {!! md5(explode('_', $details[$i][$k]['chiaveM'])[1]) !!}</i><br>
-                <small>{!! explode("|", $details[$i][$k]['descrizioneD'])[0] !!}</small> - {!! explode("|", $details[$i][$k]['descrizioneD'])[1] !!}
-                <h6>{!! explode('_', $details[$i][$k]['chiaveM'])[2] !!}: <b>{!! $details[$i][$k]['tipoM'] !!} {!! $details[$i][$k]['valueM'] !!}</b> ({!! number_format((float)$details[$i][$k]['quotaM'], 2, ',', '') !!})
+              @if (explode('_', $scommesse[$i]['multiple'][$k]['chiave'])[0] == "EUO")
 
-              @elseif(explode('_', $details[$i][$k]['chiaveM'])[0] == "SN")
+                <i>Cod. palinsesto {!! md5($scommesse[$i]['multiple'][$k]['id']) !!}</i><br>
+                <small>{!! explode('|',$scommesse[$i]['multiple'][$k]['descrizione'])[0] !!}</small> -
+                {!! explode('|',$scommesse[$i]['multiple'][$k]['descrizione'])[1] !!}
+                <h6>{!! explode('_',$scommesse[$i]['multiple'][$k]['chiave'])[2] !!}: <b>
+                  {!! $scommesse[$i]['multiple'][$k]['tipo'] !!}
+                  {!! $scommesse[$i]['multiple'][$k]['value'] !!}</b> - {!! $scommesse[$i]['multiple'][$k]['quota'] !!}
 
-
-
-              @elseif(explode('_', $details[$i][$k]['chiaveM'])[0] == "MT")
-
-
+                  @if($scommesse[$i]['multiple'][$k]['isWon'] > 0)
+                    <span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>
+                  @elseif($scommesse[$i]['multiple'][$k]['isWon'] == 0)
+                    <span class="dot dot-lost" data-toggle="tooltip" title="Perdente" data-placement="left"></span>
+                  @else
+                    <span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>
+                  @endif
+                  
+                  @if($scommesse[$i]['multiple'][$k]['isWon'] < 0)
+                    <h6>Sconosciuto</h6>
+                  @else
+                    <h6> Scom. Chiusa con esito {!! $scommesse[$i]['multiple'][$k]['risultato'] !!}</h6>
+                  @endif
 
               @endif
---}}
 
+              @if (explode('_', $scommesse[$i]['multiple'][$k]['chiave'])[0] == "SN")
 
+              <i>Cod. palinsesto {!! md5($scommesse[$i]['multiple'][$k]['id']) !!}</i><br>
+              {!! $scommesse[$i]['multiple'][$k]['descrizione'] !!}:
+              <b>{!! $scommesse[$i]['multiple'][$k]['value'] !!}</b>
+              - {!! $scommesse[$i]['multiple'][$k]['quota'] !!}
               @if($scommesse[$i]['multiple'][$k]['isWon'] > 0)
                 <span class="dot dot-won" data-toggle="tooltip" title="Vincente" data-placement="left"></span>
               @elseif($scommesse[$i]['multiple'][$k]['isWon'] == 0)
@@ -64,6 +76,17 @@
               @else
                 <span class="dot dot-open" data-toggle="tooltip" title="Aperta" data-placement="left"></span>
               @endif
+              @endif
+
+              @if (explode('_', $scommesse[$i]['multiple'][$k]['chiave'] == "MT"))
+
+
+
+              @endif
+
+
+
+
 
               <hr>
             @endfor

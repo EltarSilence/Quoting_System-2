@@ -158,9 +158,11 @@ class ScommessaController extends Controller
   }
 
   private static function isMultiplaWon($m){
+    $vin = 1;
     if (!isset($m->chiaveR)){
       return -1;
     }
+    //var_dump($chiave)
     $chiave = explode('_', $m->chiaveR);
     $tipo = $chiave[0];
     switch ($tipo) {
@@ -169,7 +171,7 @@ class ScommessaController extends Controller
         switch ($cat){
           case 'ESATTO':
           if ($m->valueM == $m->risultatoR){
-            $vin = $vin*$m->quotaM;
+            return $vin = $vin*$m->quotaM;
           }
           else {
             return 0;
@@ -180,7 +182,7 @@ class ScommessaController extends Controller
           $res = floatval($m->risultatoR);
 
           if ($res < $value) {
-            $vin *= $m->quotaM;
+            return $vin *= $m->quotaM;
           }
           else {
             return 0;
@@ -191,7 +193,7 @@ class ScommessaController extends Controller
           $res = floatval($m->risultatoR);
 
           if ($res > $value) {
-            $vin *= $m->quotaM;
+            return $vin *= $m->quotaM;
           }
           else {
             return 0;
@@ -205,7 +207,7 @@ class ScommessaController extends Controller
       case 'SN':
       case 'MT':
       if ($m->risultatoR == $m->valueM){
-        $vin = $vin*$m->quotaM;
+        return $vin = $vin*$m->quotaM;
       }
       else {
         return 0;
